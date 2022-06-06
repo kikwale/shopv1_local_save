@@ -187,205 +187,25 @@
                                           <td>{{$value->location}}</td>
                                         
                                           <td>
-                                            @if ($value->category == "Jumla")
-                                            <a class="btn btn-success btn-sm" href="seller_update_jum?id={{$value->id}}&&dhfjhdhgfjhgfjdhfhghguh@#gfdf$=5hj5hjg$3$$$$$#*^fg">
+                                           
+                                            @if ($value->isExpired == 0)
+                                             <a class="btn btn-warning btn-sm" href="seller-accept-expired?pid={{$value->id}}&&dhfjhdhgfjhgfjdhfhghguh@#gfdf$=5hj5hjg$3$$$$$#*^fg">
+                                            Accept
+                                             </a>
                                             
-                                             Update
-                                            </a>
-                                            @else 
-                                            <a class="btn btn-success btn-sm" href="seller_update_rej?id={{$value->id}}&&dhfjhdhgfjhgfjdhfhghguh@#gfdf$=5hj5hjg$3$$$$$#*^fg">
-                                            
-                                              Update
-                                            </a>
-                                            @endif
-
+                                            @else
+                                               
+                                             {{-- <a class="btn btn-d1nger btn-sm" href="seller_update_rej?id={{$value->id}}&&dhfjhdhgfjhgfjdhfhghguh@#gfdf$=5hj5hjg$3$$$$$#*^fg">
                                              
+                                              <i class="fas fa-trash"></i>
+                                             </a> --}}
+                                             <p>No Action</p>
+                                            @endif
+                                          
+
                                           </td>
 
-                                          @if ($value->category == "Jumla")
-                                                                
                                           
-                                        <!-- Modal -->
-                                                <div class="modal fade" id="staticBackdrop{{$value->id}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                                  <div class="modal-content">
-                                                      <div class="modal-header">
-                                                      <h5 class="modal-title" id="staticBackdropLabel">Create User</h5>
-                                                      <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
-                                                          <span aria-hidden="true">&times;</span>
-                                                      </button>
-                                                      </div>
-                                                      <div class="modal-body">
-                                                          <form method="POST" action="/jumlaForm">
-                                                              @csrf
-
-                                                            
-
-                                                            <div class="form-group row">
-                                                              <label for="total_quantity" class="col-md-4 col-form-label text-md-right"><sup class="text-danger">*</sup>{{ __('Total Goods Sold') }}</label>
-
-                                                              <div class="col-md-6">
-                                                                  <input id="total_quantity" type="number" class="form-control @error('total_quantity') is-invalid @enderror" name="total_quantity" value="{{ old('total_quantity') }}" required autocomplete="total_quantity" autofocus>
-
-                                                                  <input id="owner_id" type="text" class="form-control @error('owner_id') is-invalid @enderror" name="owner_id" hidden value="{{ Session::get('owner_id') }}" required autocomplete="owner_id" autofocus>
-
-                                                                  <input id="shop_id" type="text" class="form-control @error('shop_id') is-invalid @enderror" name="shop_id" hidden value="{{Session::get('shop_id') }}" required autocomplete="shop_id" autofocus>
-
-                                                                  @error('total_quantity')
-                                                                      <span class="invalid-feedback" role="alert">
-                                                                          <strong>{{ $message }}</strong>
-                                                                      </span>
-                                                                  @enderror
-                                                              </div>
-                                                          </div>
-
-                                                            <div class="form-group row">
-                                                              <label for="discount" class="col-md-4 col-form-label text-md-right"><sup></sup>{{ __('Discount') }}</label>
-
-                                                              <div class="col-md-6">
-                                                                  <input id="discount" type="number" placeholder="Option" class="form-control @error('discount') is-invalid @enderror" name="discount" value="{{ old('discount') }}" autocomplete="discount" autofocus>
-                                                                  <input id="product_id" type="text" class="form-control @error('product_id') is-invalid @enderror" name="product_id" value="{{ $value->id }}" hidden required autocomplete="product_id" autofocus>
-                                                              
-                                                                  @error('discount')
-                                                                      <span class="invalid-feedback" role="alert">
-                                                                          <strong>{{ $message }}</strong>
-                                                                      </span>
-                                                                  @enderror
-                                                              </div>
-                                                          </div>
-
-                                                        
-
-                                                              {{-- <div class="form-group row">
-                                                                  <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Select Role') }}</label>
-
-                                                                  <div class="col-md-6">
-                                                                      <select id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role" autofocus>
-                                                                          <option value=""></option>
-                                                                          <option value="Admin">Admin</option>
-                                                                          <option value="Farmer">Farmer</option>
-                                                                          <option value="Trader">Trader</option>
-                                                                      </select>
-                                                                      @error('role')
-                                                                          <span class="invalid-feedback" role="alert">
-                                                                              <strong>{{ $message }}</strong>
-                                                                          </span>
-                                                                      @enderror
-                                                                  </div>
-                                                              </div> --}}
-
-                                                              <div class="form-group row mb-0">
-                                                                  <div class="col-md-6 offset-md-4">
-                                                                      <button type="submit" class="btn btn-primary">
-                                                                          {{ __('Sell') }}
-                                                                      </button>
-                                                                  </div>
-                                                              </div>
-                                                          </form>
-                                                      </div>
-                                                      <div class="modal-footer">
-                                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                      </div>
-                                                  </div>
-
-
-                                                  </div>
-                                                </div>
-
-
-                                 @else
-                                        
-                          
-                                                            <!-- Modal -->
-                                                      <div class="modal fade" id="staticBackdrop{{$value->id}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                            <h5 class="modal-title" id="staticBackdropLabel">Create User</h5>
-                                                            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form method="POST" action="/rejarejaForm">
-                                                                    @csrf
-
-                                                                    <div class="form-group row">
-                                                                      <label for="total_quantity" class="col-md-4 col-form-label text-md-right"><sup class="text-danger">*</sup>{{ __('Total Quantity Sold') }}</label>
-                                          
-                                                                      <div class="col-md-6">
-                                                                          <input id="total_quantity" type="number" class="form-control @error('total_quantity') is-invalid @enderror" name="total_quantity" value="{{ old('total_quantity') }}" autocomplete="total_quantity" autofocus>
-                                                                          
-                                                                          <input id="product_id" type="text" class="form-control @error('product_id') is-invalid @enderror" name="product_id" hidden value="{{ $value->id }}" required autocomplete="owner_id" autofocus>
-                                                                          <input id="owner_id" type="text" class="form-control @error('owner_id') is-invalid @enderror" name="owner_id" hidden value="{{ Session::get('owner_id') }}" required autocomplete="owner_id" autofocus>
-                                          
-                                                                          <input id="shop_id" type="text" class="form-control @error('shop_id') is-invalid @enderror" name="shop_id" hidden value="{{Session::get('shop_id') }}" required autocomplete="shop_id" autofocus>
-                                          
-                                                                          @error('total_quantity')
-                                                                              <span class="invalid-feedback" role="alert">
-                                                                                  <strong>{{ $message }}</strong>
-                                                                              </span>
-                                                                          @enderror
-                                                                      </div>
-                                                                  </div>
-
-                                                                  
-                                      {{-- id	product_id	seller_id	owner_id	shop_id	day	month	year	quantity	amount	profit	created_at	updated_at	 --}}
-
-
-                                                                    <div class="form-group row">
-                                                                        <label for="subquantity" class="col-md-4 col-form-label text-md-right">{{ __('Sub-Quantity') }}</label>
-
-                                                                        <div class="col-md-6">
-                                                                            <select id="subquantity" type="text" class="form-control @error('subquantity') is-invalid @enderror" name="subquantity" value="{{ old('subquantity') }}"  autocomplete="subquantity" autofocus>
-                                                                                <option value=""></option>
-                                                                                <option value="0.5">1/2</option>
-                                                                                <option value="0.25">1/4</option>
-                                                                                <option value="0.75">3/4</option>
-                                                                            </select>
-                                                                            @error('subquantity')
-                                                                                <span class="invalid-feedback" role="alert">
-                                                                                    <strong>{{ $message }}</strong>
-                                                                                </span>
-                                                                            @enderror
-                                                                        </div>
-                                                                    </div>
-
-
-                                                                    <div class="form-group row">
-                                                                      <label for="discount" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('discount') }}</label>
-                                          
-                                                                      <div class="col-md-6">
-                                                                          <input id="discount" type="number" class="form-control @error('discount') is-invalid @enderror" name="discount" value="{{ old('discount') }}" placeholder="Option" autocomplete="discount" autofocus>
-                                                                          
-                                                                      
-                                                                          @error('discount')
-                                                                              <span class="invalid-feedback" role="alert">
-                                                                                  <strong>{{ $message }}</strong>
-                                                                              </span>
-                                                                          @enderror
-                                                                      </div>
-                                                                  </div>
-
-                                                                    <div class="form-group row mb-0">
-                                                                        <div class="col-md-6 offset-md-4">
-                                                                            <button type="submit" class="btn btn-primary">
-                                                                                {{ __('Sell') }}
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                            </div>
-                                                        </div>
-
-
-                                                        </div>
-                                                      </div>
-
-                                        @endif
 
                                         </tr> 
                                       

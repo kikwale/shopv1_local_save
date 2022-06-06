@@ -78,9 +78,9 @@ App::setLocale(Session::get('locale'));
                 <div class="row">
                     <div class="col-md-4">
                       <a href="" data-toggle="modal" data-target="#sold_annual">
-                            <div class="info-box bg-" style="background-color:#c6e7faf1">
+                            <div class="info-box bg-" style="background-color: #F15A24">
                                 <div class="info-box-content">
-                                    <span class="info-box-text text-center text-info">Annual Sales</span>
+                                    <span class="info-box-text text-center text-light">Annual Sales</span>
                                 </div>
                             </div>
                         </a>
@@ -88,9 +88,9 @@ App::setLocale(Session::get('locale'));
 
                     <div class="col-md-4">
                         <a href="#" data-toggle="modal" data-target="#sold_month">
-                            <div class="info-box bg-" style="background-color:#c6e7faf1">
+                            <div class="info-box bg-" style="background-color:#F15A24">
                                 <div class="info-box-content">
-                                    <span class="info-box-text text-center text-info">Monthly Sales</span>
+                                    <span class="info-box-text text-center text-light">Monthly Sales</span>
                                 </div>
                             </div>
                         </a>
@@ -98,9 +98,9 @@ App::setLocale(Session::get('locale'));
 
                     <div class="col-md-4">
                         <a href="" data-toggle="modal" data-target="#sold_day">
-                            <div class="info-box bg-" style="background-color:#c6e7faf1">
+                            <div class="info-box bg-" style="background-color:#F15A24">
                                 <div class="info-box-content">
-                                    <span class="info-box-text text-center text-info">Daily Sales</span>
+                                    <span class="info-box-text text-center text-light">Daily Sales</span>
                                 </div>
                             </div>
                         </a>
@@ -394,7 +394,7 @@ App::setLocale(Session::get('locale'));
                                         <th>Discount</th>
                                         <th>Final Price</th>
                                         <th>Customer Name</th>
-                                        <th>Action</th>
+                                 
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -435,12 +435,7 @@ updated_at
                                             <td>{{ $value->discount }}</td>
                                             <td>{{ $value->true_price }}</td>
                                             <td>{{ $value->customer_name }}</td>
-                                            <td><a
-                                                    href="seller-print-receipt?id={{ $value->id }}&&shop_id={{ Session::get('shop_id') }} "><i
-                                                        class="fas fa-print"></i></a></td>
-
-
-
+                                            
 
                                         </tr>
                                     @endforeach
@@ -459,7 +454,7 @@ updated_at
                                         <th>Discount</th>
                                         <th>Final Price</th>
                                         <th>Customer Name</th>
-                                        <th> Action</th>
+                                       
                                     </tr>
                                 </tfoot>
                             </table>
@@ -503,7 +498,7 @@ updated_at
                                                 <th>Discount</th>
                                                 <th>Final Price</th>
                                                 <th>Customer Name</th>
-                                                <th> Action</th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -523,7 +518,7 @@ updated_at
                                                 <th>Discount</th>
                                                 <th>Final Price</th>
                                                 <th>Customer Name</th>
-                                                <th> Action</th>
+                                                
                                             </tr>
                                         </tfoot>
                                     </table>

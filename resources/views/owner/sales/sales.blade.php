@@ -126,35 +126,25 @@
                 
             
                 <div class="row">
-                  <div class="col-md-4">
-                    <a href="#" data-toggle="modal" data-target="#sold_annual">
-                          <div class="info-box bg-" style="background-color:#c6e7faf1">
-                              <div class="info-box-content">
-                                  <span class="info-box-text text-center text-info">Annual Sales</span>
-                              </div>
-                          </div>
-                      </a>
-                  </div>
 
-                  <div class="col-md-4">
-                      <a href="#" data-toggle="modal" data-target="#sold_month">
-                          <div class="info-box bg-" style="background-color:#c6e7faf1">
-                              <div class="info-box-content">
-                                  <span class="info-box-text text-center text-info">Monthly Sales</span>
-                              </div>
-                          </div>
-                      </a>
-                  </div>
+                  <div class="col-md-2"></div>
+                  <a class="btn btn-app bg-white" style="width: 200px; height:150px" data-toggle="modal" data-target="#sold_annual"><br>
+                    {{-- <span class="badge bg-purple">891</span> --}}
+                    <img src="dist/img/sales-icon-01.png" width="30px" height="30px" alt="" srcset=""><br>
+                     Annual Sales
+                  </a>
 
-                  <div class="col-md-4">
-                      <a href="#" data-toggle="modal" data-target="#sold_day">
-                          <div class="info-box bg- " style="background-color:#c6e7faf1">
-                              <div class="info-box-content">
-                                  <span class="info-box-text text-center text-info">Daily Sales</span>
-                              </div>
-                          </div>
-                      </a>
-                  </div>
+                  <a class="btn btn-app bg-white" style="width: 200px; height:150px" data-toggle="modal" data-target="#sold_month"><br>
+                    {{-- <span class="badge bg-purple">891</span> --}}
+                    <i class="fas fa-shopping-bag"></i> Monthly Sales
+                  </a>
+
+                  <a class="btn btn-app bg-white" style="width: 200px; height:150px" data-toggle="modal" data-target="#sold_day"><br>
+                    {{-- <span class="badge bg-purple">891</span> --}}
+                    <i class="fas fa-shopping-bag"></i> Daily Sales
+                  </a>
+
+               
 
               </div>
 

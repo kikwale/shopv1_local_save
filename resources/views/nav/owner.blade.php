@@ -87,6 +87,34 @@
         <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
       </div>
     </li>
+
+
+    <li class="nav-item dropdown">
+      <a class="nav-link text-secondary" data-toggle="dropdown" href="#">
+
+          <p>{{__('message.language')}}</p>
+
+        
+      </a>
+      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+        {{-- <span class="dropdown-item dropdown-header">15 Notifications</span> --}}
+        <div class="dropdown-divider"></div>
+        <a href="en" class="dropdown-item">
+         English
+          {{-- <span class="float-right text-muted text-sm">3 mins</span> --}}
+        </a>
+        <div class="dropdown-divider"></div>
+        <a href="sw" class="dropdown-item">
+        Swahili
+          {{-- <span class="float-right text-muted text-sm">12 hours</span> --}}
+        </a>
+        <div class="dropdown-divider"></div>
+       
+
+        {{-- <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a> --}}
+      </div>
+    </li>
+
     <!-- Notifications Dropdown Menu -->
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
@@ -96,12 +124,12 @@
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         {{-- <span class="dropdown-item dropdown-header">15 Notifications</span> --}}
         <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">
+        <a href="owner-profile" class="dropdown-item">
           <i class="fas fa-user mr-2"></i> Profile
           {{-- <span class="float-right text-muted text-sm">3 mins</span> --}}
         </a>
         <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">
+        <a href="owner-change-pwd" class="dropdown-item">
           <i class="fas fa-lock mr-2"></i>Change Password
           {{-- <span class="float-right text-muted text-sm">12 hours</span> --}}
         </a>
@@ -143,7 +171,7 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
-        <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        <img src="dist/img/person-icon-01.png" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
         <a href="home" class="d-block">{{Auth::user()->fname}}</a>
@@ -168,8 +196,8 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <a href="owner_shop?owner_id={{ Session::get('owner_id') }}&&shop_id={{ Session::get('shop_id') }}" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt text-info"></i>
               <p>
                 Dashboard
               </p>
@@ -178,14 +206,14 @@
           </li>
           <li class="nav-item">
             <a href="home" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <img src="dist/img/shop-icon-01.png" idth="40px" height="30px" alt="" srcset="">
               <p>
                 {{__('Shops Panell')}}
               </p>
             </a>
           <li class="nav-item">
             <a href="shop_worker?ower_id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <img src="dist/img/people-01.png" width="40px" height="30px" alt="" srcset="">
               <p>
                 {{__('message.seller.workers')}}
               </p>
@@ -196,7 +224,7 @@
 
           <li class="nav-item">
             <a href="owner-sold-product?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
-              <i class="nav-icon fas fa-shopping-bag"></i>
+              <img src="dist/img/sales-icon-01.png" width="30px" height="30px" alt="" srcset="">
               <p>
                 Sales
               </p>
@@ -206,7 +234,7 @@
 
           <li class="nav-item">
             <a href="owner-receipt" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
+              <img src="dist/img/receipt-icon-01.png" width="30px" height="30px" alt="" srcset="">
               <p>
                 Receipts
               </p>
@@ -217,7 +245,8 @@
     
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-circle"></i>
+            <img src="dist/img/product-icon.png" width="30px" height="30px" alt="" srcset="">
+            {{-- <i class="nav-icon fas fa-circle"></i> --}}
             <p>
                 Products
               <i class="right fas fa-angle-left"></i>
@@ -229,18 +258,31 @@
 
             <li class="nav-item">
               <a href="owner-stock" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-circle nav-icon text-info"></i>
                 Stock
               </a>
             </li>
             <li class="nav-item">
               <a href="owner-expired-products" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
+                <i class="far fa-circle nav-icon text-info"></i>
                 <p>Expired Products</p>
               </a>
             </li>
 
           </ul>
+        </li>
+
+        <li class="nav-item has-treeview">
+          <a href="owner-expenditure" class="nav-link">
+            <img src="dist/img/product-icon.png" width="30px" height="30px" alt="" srcset="">
+            {{-- <i class="nav-icon fas fa-circle"></i> --}}
+            <p>
+          Expenditure
+       
+            </p>
+          </a>
+     
+        
         </li>
 
         <li class="nav-item has-treeview">
@@ -272,7 +314,7 @@
 
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
+            <img src="dist/img/order-icon-01.png" idth="40px" height="30px" alt="" srcset="">
             <p>
             Orders
               <i class="fas fa-angle-left right"></i>
@@ -282,19 +324,19 @@
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="owner-incoming-order" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-circle nav-icon text-info"></i>
              Incoming Order
               </a>
             </li>
             <li class="nav-item">
               <a href="owner-placed-order" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
+                <i class="far fa-circle nav-icon text-info"></i>
                 <p>My Order</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="owner-delivered-order" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
+                <i class="far fa-circle nav-icon text-info"></i>
                 <p>Delivered Order</p>
               </a>
             </li>
@@ -304,14 +346,14 @@
         </li>
 
         <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
+          {{-- <a href="#" class="nav-link">
             <i class="nav-icon fas fa-users"></i>
             <p>
             Shop Settings
               <i class="fas fa-angle-left right"></i>
-              {{-- <span class="badge badge-info right">6</span> --}}
+              {{-- <span class="badge badge-info right">6</span> 
             </p>
-          </a>
+          </a> --}}
           <ul class="nav nav-treeview">
             <li class="nav-item">
               {{-- <a href="owner-register-year" class="nav-link">

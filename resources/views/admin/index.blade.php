@@ -114,8 +114,9 @@
                                   <thead>
                                   <tr>
                                     <th>First Name</th>
-                                    <th>Last Name</th>
+                                    
                                     <th>Middle Name</th>
+                                    <th>Last Name</th>
                                     <th>Gender</th>
                                     <th>Phone</th>
                                     <th>email</th>
@@ -146,7 +147,7 @@
                                             <td>{{$value->mname}}</td>
                                             <td>{{$value->lname}}</td>
                                             <td>{{$value->gender}}</td>
-                                            <td>{{$value->phone}}</td>
+                                            <td><a href="tel:+{{$value->phone}}">{{$value->phone}}</a></td>
                                             <td>{{$value->email}}</td>
                                             <td>{{$value->role}}</td>
                                            
@@ -171,8 +172,8 @@
                                   <tfoot>
                                   <tr>
                                       <th>First Name</th>
-                                      <th>Last Name</th>
                                       <th>Middle Name</th>
+                                      <th>Last Name</th>
                                       <th>Gender</th>
                                       <th>Phone</th>
                                       <th>email</th>

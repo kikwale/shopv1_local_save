@@ -43,7 +43,7 @@ class OrderController extends Controller
         // $nameOfYear = date('Y');
 
         // Tuta select huko baadae
-        $data = Order::select('Orders.id as id','madukas.shop_name as shop_name',
+        $data = Order::select('orders.id as id','madukas.shop_name as shop_name',
         'products.name as product_name','madukas.country as country',
         'madukas.region as region',
         'madukas.district as district','madukas.street as street','madukas.seller_Phone as seller_Phone','madukas.seller_email as seller_email',
@@ -114,7 +114,7 @@ class OrderController extends Controller
     
     public function sellerIncomingOrder(Request $request){
 
-        $data = Order::select('Orders.id as id','madukas.shop_name as shop_name',
+        $data = Order::select('orders.id as id','madukas.shop_name as shop_name',
          'products.name as product_name','madukas.country as country','madukas.region as region',
          'madukas.district as district','madukas.street as street','madukas.seller_Phone as seller_Phone','madukas.seller_email as seller_email','orders.total_order as total',
          'products.unit as unit','orders.status as status')
@@ -130,7 +130,7 @@ class OrderController extends Controller
 
     public function sellerDeliveredorder(Request $request){
 
-        $data = Order::select('Orders.id as id','madukas.shop_name as shop_name',
+        $data = Order::select('orders.id as id','madukas.shop_name as shop_name',
         'products.name as product_name','madukas.country as country',
         'madukas.region as region',
         'madukas.district as district','madukas.seller_Phone as seller_Phone','madukas.seller_email as seller_email','madukas.street as street',
@@ -266,7 +266,7 @@ Mail::to($reciever_email->seller_email)->send(new OrderConfirmationMail());
         // $nameOfYear = date('Y');
 
         // Tuta select huko baadae
-        $data = Order::select('Orders.id as id','madukas.shop_name as shop_name',
+        $data = Order::select('orders.id as id','madukas.shop_name as shop_name',
         'products.name as product_name','madukas.country as country',
         'madukas.region as region',
         'madukas.district as district','madukas.street as street','madukas.seller_Phone as seller_Phone','madukas.seller_email as seller_email',
@@ -293,7 +293,7 @@ Mail::to($reciever_email->seller_email)->send(new OrderConfirmationMail());
 
     public function ownerIncomingOrder(Request $request){
 
-        $data = Order::select('Orders.id as id','madukas.shop_name as shop_name',
+        $data = Order::select('orders.id as id','madukas.shop_name as shop_name',
          'products.name as product_name','madukas.country as country','madukas.region as region',
          'madukas.district as district','madukas.street as street','madukas.seller_Phone as seller_Phone','madukas.seller_email as seller_email','orders.total_order as total',
          'products.unit as unit','orders.status as status')
@@ -301,7 +301,7 @@ Mail::to($reciever_email->seller_email)->send(new OrderConfirmationMail());
         ->where('orders.status','normal')->where('orders.isConfirmed',0)
         ->join('madukas','orders.ordering_shop_id', '=', 'madukas.id')
         ->join('sellers','sellers.user_id','=','orders.user_id')
-        ->join('products','orders.product_id', '=', 'products.id')->orderBy('Orders.id','desc')
+        ->join('products','orders.product_id', '=', 'products.id')->orderBy('orders.id','desc')
         ->get();
         Log::info($data);
         return view('owner/order.owner_incoming_order')->with('data',$data);
@@ -309,7 +309,7 @@ Mail::to($reciever_email->seller_email)->send(new OrderConfirmationMail());
 
     public function ownerDeliveredorder(Request $request){
 
-        $data = Order::select('Orders.id as id','madukas.shop_name as shop_name',
+        $data = Order::select('orders.id as id','madukas.shop_name as shop_name',
         'products.name as product_name','madukas.country as country',
         'madukas.region as region','madukas.seller_Phone as seller_Phone','madukas.seller_email as seller_email',
         'madukas.district as district','madukas.street as street',

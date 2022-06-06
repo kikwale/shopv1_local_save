@@ -88,6 +88,54 @@
           </div>
           <!-- /.content-header -->
       
+          <div class="row">
+            
+            <div class="card-body">
+              <a href="shop_worker?ower_id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                {{-- <span class="badge bg-purple">891</span> --}}
+                <i class="fas fa-users W-100" style="color: cadetblue"></i> <br>
+                <p>Employees</p>
+              </a>
+              <a class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                {{-- <i class="fas fa-edit"></i><br> --}}
+                <i class="fas fa-shopping-bag" style="color: cadetblue"></i><br>
+             <p> Monthly Sales </p>
+                
+              </a>
+              
+              <a class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                {{-- <i class="fas fa-save"></i> Save --}}
+                <i class="fas fa-shopping-bag w-100" style="color: cadetblue"></i><br>
+                <p>  Daily Sales</p>
+              </a>
+              <a class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                {{-- <span class="badge bg-success">300</span> --}}
+                <i class="fas fa-barcode"></i><br>
+                 <p> Expired Products</p>
+              </a>
+             
+              <a class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                {{-- <span class="badge bg-teal">67</span> --}}
+                <i class="fas fa-inbox"></i> Orders
+              </a>
+
+              <a class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                {{-- <span class="badge bg-success">300</span> --}}
+                <i class="fas fa-barcode"></i><br>
+                 <p> Finished Products</p>
+             </a>
+             
+
+              <a class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                {{-- <span class="badge bg-success">300</span> --}}
+                <i class="fas fa-barcode"></i><br>
+                 <p>Stock</p>
+              </a>
+             
+
+            </div>
+          </div>
+       
           <!-- Main content -->
           <section class="content">
             <div class="container-fluid">
@@ -122,218 +170,7 @@
                  
                 {{-- @include('admin.include') --}}
                         
-                <div class="row">
-                <div class="col-md-4">
-                  <a href="seller_shop_workers?ower_id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}">
-                  <div class="card card-outline card-info">
-                    <div class="card-header">
-                      <h3 class="card-title"></h3>
-      
-                      <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                      </div>
-                      <!-- /.card-tools -->
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body text-secondary text-center">
-                    <i class="fas fa-users w-100" style="color: cadetblue"></i><br>
-                  <b> Employees </b>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </a>
-                </div>
-
-                <div class="col-md-4">
-                  <a href="owner_shop">
-                  <div class="card card-outline card-info">
-                    <div class="card-header">
-                      <h3 class="card-title"></h3>
-      
-                      <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                      </div>
-                      <!-- /.card-tools -->
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body text-secondary text-center">
-                      <i class="fas fa-shopping-bag" style="color: cadetblue"></i><br>
-                   <b> Monthly Sales </b>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </a>
-                </div>
-
-                <div class="col-md-4">
-                  <a href="owner_shop">
-                  <div class="card card-outline card-info">
-                    <div class="card-header">
-                      <h3 class="card-title"></h3>
-      
-                      <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                      </div>
-                      <!-- /.card-tools -->
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body text-secondary text-center">
-                      <i class="fas fa-shopping-bag w-100" style="color: cadetblue"></i><br>
-                   <b>  Daily Sales</b>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </a>
-                </div>
-
-                <div class="col-md-4">
-                  <a href="owner_shop">
-                  <div class="card card-outline card-info">
-                    <div class="card-header">
-                      <h3 class="card-title"></h3>
-      
-                      <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                      </div>
-                      <!-- /.card-tools -->
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body text-secondary text-center">
-                    
-                  <b> Expired Products</b>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </a>
-                </div>
-
-                <div class="col-md-4">
-                  <a href="owner_shop">
-                  <div class="card card-outline card-info">
-                    <div class="card-header">
-                      <h3 class="card-title"></h3>
-      
-                      <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                      </div>
-                      <!-- /.card-tools -->
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body text-secondary text-center">
-                    
-                    <b>Orders</b>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </a>
-                </div>
-
-                <div class="col-md-4">
-                  <a href="owner_shop">
-                  <div class="card card-outline card-info">
-                    <div class="card-header">
-                      <h3 class="card-title"></h3>
-      
-                      <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                      </div>
-                      <!-- /.card-tools -->
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body text-secondary text-center">
-                    
-                    <b>Store</b>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </a>
-                </div>
-
-                <div class="col-md-4">
-                  <a href="owner_shop">
-                  <div class="card card-outline card-info">
-                    <div class="card-header">
-                      <h3 class="card-title"></h3>
-      
-                      <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                      </div>
-                      <!-- /.card-tools -->
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body text-secondary text-center">
-                    <b>Wholesale Products</b>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </a>
-                </div>
-
-                <div class="col-md-4">
-                  <a href="owner_shop">
-                  <div class="card card-outline card-info">
-                    <div class="card-header">
-                      <h3 class="card-title"></h3>
-      
-                      <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                      </div>
-                      <!-- /.card-tools -->
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body text-secondary text-center">
-                    <b>Retail Products</b>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </a>
-                </div>
-
-                <div class="col-md-4">
-                  <a href="owner_shop">
-                  <div class="card card-outline card-info">
-                    <div class="card-header">
-                      <h3 class="card-title"></h3>
-      
-                      <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                      </div>
-                      <!-- /.card-tools -->
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body text-secondary text-center">
-                    
-                    <b>Finished Products</b>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </a>
-                </div>
-
-                
-
-           </div>
-         
-                <br>
-                    
+               
             
       
               </div>

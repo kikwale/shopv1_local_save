@@ -115,7 +115,7 @@ App::setLocale(Session::get('locale'));
                             <h1 class="m-0 text-dark">Sales on {{ $val }}</h1><br>
 
                             <div class="row">
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                   <div class="info-box bg-light">
                                       <div class="info-box-content">
                                           <span
@@ -126,10 +126,20 @@ App::setLocale(Session::get('locale'));
                                   </div>
                               </div>
 
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                   <div class="info-box bg-light">
                                       <div class="info-box-content">
                                           <span class="info-box-text text-center text-secondary">Profit</span>
+                                           <span
+                                                  class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('year', $val)->where('shop_id', Session::get('shop_id'))->sum('profit') }}</span></span>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="col-md-4">
+                                  <div class="info-box bg-light">
+                                      <div class="info-box-content">
+                                          <span class="info-box-text text-center text-secondary">Gross Profit</span>
                                            <span
                                                   class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('year', $val)->where('shop_id', Session::get('shop_id'))->sum('profit') }}</span></span>
                                       </div>
@@ -160,7 +170,7 @@ App::setLocale(Session::get('locale'));
 
                                             <div class="col-md-5 form-group">
                                                 <select id="year" type="text"
-                                                    class="form-control selected2 @error('year') is-invalid @enderror"
+                                                    class=" select2 form-control @error('year') is-invalid @enderror"
                                                     name="year" value="{{ old('year') }}" autocomplete="year">
                                                     <option value="{{ $val }}">{{ $val }}</option>
                                                     <option value="2022">2022</option>
@@ -194,7 +204,7 @@ App::setLocale(Session::get('locale'));
                             <h1 class="m-0 text-dark">Sales on {{ $month }} / {{ $year }}</h1>
                             <br>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="info-box bg-light">
                                         <div class="info-box-content">
                                             <span
@@ -205,10 +215,20 @@ App::setLocale(Session::get('locale'));
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="info-box bg-light">
                                         <div class="info-box-content">
                                             <span class="info-box-text text-center text-secondary">Profit</span>
+                                             <span
+                                                    class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('month', $month)->where('year', $year)->where('shop_id', Session::get('shop_id'))->sum('profit') }}</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="info-box bg-light">
+                                        <div class="info-box-content">
+                                            <span class="info-box-text text-center text-secondary">Gross Profit</span>
                                              <span
                                                     class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('month', $month)->where('year', $year)->where('shop_id', Session::get('shop_id'))->sum('profit') }}</span></span>
                                         </div>
@@ -233,7 +253,7 @@ App::setLocale(Session::get('locale'));
                                             class="col-md- col-form-label text-md-right">{{ __('Month') }}</label>
 
                                         <select id="month" type="text"
-                                            class="form-control select2 @error('month') is-invalid @enderror" name="month"
+                                            class=" select2 form-control @error('month') is-invalid @enderror" name="month"
                                             value="{{ old('month') }}" autocomplete="month">
                                             <option value="{{ $month }}">{{ $month }}</option>
                                             <option value="Jan">1 (Jan)</option>
@@ -262,7 +282,7 @@ App::setLocale(Session::get('locale'));
                                             class="col-md- col-form-label text-md-right">{{ __('Year') }}</label>
 
                                         <select id="year" type="text"
-                                            class="form-control select2 @error('year') is-invalid @enderror" name="year"
+                                            class=" select2 form-control @error('year') is-invalid @enderror" name="year"
                                             value="{{ old('year') }}" autocomplete="year">
                                             <option value="{{ $year }}">{{ $year }}</option>
                                             <option value="2022">2022</option>
@@ -303,7 +323,7 @@ App::setLocale(Session::get('locale'));
                             <h1 class="m-0 text-dark">Sales on {{ $date }}</h1>
                             <br>
                             <div class="row">
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                   <div class="info-box bg-light">
                                       <div class="info-box-content">
                                           <span
@@ -314,10 +334,20 @@ App::setLocale(Session::get('locale'));
                                   </div>
                               </div>
 
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                   <div class="info-box bg-light">
                                       <div class="info-box-content">
                                           <span class="info-box-text text-center text-secondary">Profit</span>
+                                           <span
+                                                  class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('sales_date', $date)->where('shop_id', Session::get('shop_id'))->sum('profit') }}</span></span>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="col-md-4">
+                                  <div class="info-box bg-light">
+                                      <div class="info-box-content">
+                                          <span class="info-box-text text-center text-secondary">Gross Profit</span>
                                            <span
                                                   class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('sales_date', $date)->where('shop_id', Session::get('shop_id'))->sum('profit') }}</span></span>
                                       </div>
@@ -394,7 +424,6 @@ App::setLocale(Session::get('locale'));
                                         <th>Discount</th>
                                         <th>Final Price</th>
                                         <th>Customer Name</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -435,9 +464,7 @@ updated_at
                                             <td>{{ $value->discount }}</td>
                                             <td>{{ $value->true_price }}</td>
                                             <td>{{ $value->customer_name }}</td>
-                                            <td><a
-                                                    href="seller-print-receipt?id={{ $value->id }}&&shop_id={{ Session::get('shop_id') }} "><i
-                                                        class="fas fa-print"></i></a></td>
+                                            
 
 
 
@@ -459,7 +486,6 @@ updated_at
                                         <th>Discount</th>
                                         <th>Final Price</th>
                                         <th>Customer Name</th>
-                                        <th> Action</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -503,7 +529,6 @@ updated_at
                                                 <th>Discount</th>
                                                 <th>Final Price</th>
                                                 <th>Customer Name</th>
-                                                <th> Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -523,7 +548,6 @@ updated_at
                                                 <th>Discount</th>
                                                 <th>Final Price</th>
                                                 <th>Customer Name</th>
-                                                <th> Action</th>
                                             </tr>
                                         </tfoot>
                                     </table>

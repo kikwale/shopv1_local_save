@@ -56,7 +56,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="lname" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
+                                    <label for="lname" class="col-md-4 col-form-label text-md-right">{{ __('Last Name (login password)') }}</label>
                   
                                     <div class="col-md-6">
                                         <input id="lname" type="text" class="form-control @error('lname') is-invalid @enderror" name="lname" value="{{ old('lname') }}"  autocomplete="lname">
@@ -114,6 +114,24 @@
                                 </div>
                   
                            
+                                <div class="form-group row">
+                                   
+                                        <label for="leader" class="col-md-3 col-form-label text-md-right">{{ __('Leader') }}</label>
+                  
+                                    <div class="col-md-3">
+
+                                        <input id="leader" type="radio" class=" @error('leader') is-invalid @enderror" name="leader" value="1" required   autocomplete="leader">
+                  
+                                    </div>
+                       
+                                        <label for="leader" class="col-md-3 col-form-label text-md-right">{{ __('Not a Leader') }}</label>
+                  
+                                    
+                                    <div class="col-md-3">
+                                        <input id="leader" type="radio" class=" @error('leader') is-invalid @enderror" name="leader"  value="2" required   autocomplete="leader">
+                  
+                                    </div>
+                                </div>
                   
                                 <div class="form-group row mb-0">
                                     <div class="col-md-6 offset-md-4">

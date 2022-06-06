@@ -102,21 +102,21 @@
                                     <div class="row">
                                       <div class="col-md-12">
                                         <div class="card">
-                                          <div class="card-header">
+                                          <div class="card-header bg-info">
 
                                              
                                             <div class="card-tools">
                                            
 
-                                              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                              {{-- <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                                 <i class="fas fa-minus"></i>
-                                              </button>
+                                              </button> --}}
                                               
-                                              <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                              {{-- <button type="button" class="btn btn-tool" data-card-widget="remove">
                                                 <i class="fas fa-times"></i>
-                                              </button>
+                                              </button> --}}
                                             </div><br>
-                                            <h5 class="card-title">Sales Book</h5>
+                                            <h5 class="card-title text-light">From Shotram</h5>
                                           </div>
                                         
                                             <div class="card-body">
@@ -150,12 +150,10 @@
 
                                            <p>Customer Name: &nbsp; {{ $value->customer_name}}</p>
                                           <p>Product Name: &nbsp; {{ $value->name}}</p>
-                                          <p>name: &nbsp; {{ $value->category}}</p>
-                                          <p>name: &nbsp; {{ $value->amount}}</p>
-                                          <p>name: &nbsp; {{ $value->sold_price}}</p>
-                                          <p>name: &nbsp; {{ $value->discount}}</p>
-                                       
-                                          <p>name: &nbsp; {{ $value->name}}</p>
+                                          <p>Product Category: &nbsp; {{ $value->category}}</p>
+                                          <p>Product Amount: &nbsp; {{ $value->amount}}</p>
+                                          <p> Brought Price&nbsp; {{ $value->sold_price}}</p>
+                                          <p>Discount: &nbsp; {{ $value->discount}}</p>
                                         </tr> 
                                       
                                       

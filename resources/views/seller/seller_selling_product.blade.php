@@ -80,12 +80,14 @@
               <div class="row mb-2">
                 <div class="col-sm-6">
                
-                  <h1 class="m-0 text-dark">Dashboard</h1>
+                  <h1 class="m-0 text-dark">Selling Dashboard</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                 
                 </div><!-- /.col -->
               </div><!-- /.row -->
+
+              
             </div><!-- /.container-fluid -->
           </div>
           <!-- /.content-header -->
@@ -382,7 +384,7 @@
                                                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                            <h5 class="modal-title" id="staticBackdropLabel">Create User</h5>
+                                                            <h5 class="modal-title" id="staticBackdropLabel">Sell Product</h5>
                                                             <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>

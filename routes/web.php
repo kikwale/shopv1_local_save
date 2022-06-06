@@ -22,6 +22,15 @@ Route::get('/', function () {
 });
 
 
+Route::get('/user-guid', function() {
+  return view('user_guid');
+ });
+
+Route::get('/contact', function () {
+  return view('contact');
+});
+
+
 // Admin
 
 
@@ -70,8 +79,17 @@ Route::group(['middleware'=>'auth'], function () {
   Route::post('/owner-product-annual-sold','ProductController@ownerProductAnnualSold')->name('owner.product-annual-sold');
   Route::post('/owner-monthly-product-sold','ProductController@ownerMonthlyProductSold')->name('owner.monthly-product-sold');
   Route::post('/owner-daily-product-sold','ProductController@ownerDailyProductSold')->name('owner.daily-product-sold');
-     
+  Route::get('/owner-edit-employee','HomeController@ownerEditEmployee')->name('owner.edit-employee');
+  Route::post('/owner-save-edited-employee','HomeController@ownerSaveEditedEmployee')->name('owner.save-edited-employee');
+  Route::get('/owner-delete-employee','HomeController@ownerDeleteEmployee')->name('owner.delete-employee');
+  Route::get('/owner-change-pwd','HomeController@ownerChangePwd')->name('owner.change-pwd');
+  Route::post('/owner-save-newPwd','HomeController@ownerSaveNewPwd')->name('owner.save-newPwd');
+  Route::get('/owner-expenditure','ExpenditureController@index')->name('owner.expenditure');
+  Route::post('/owner-expenditure','ExpenditureController@saveExpenditure')->name('save-expenditure');
+
   
+
+
 });
 
 
@@ -83,22 +101,22 @@ Route::group(['middleware'=>'auth'], function () {
   
 
 Route::post('/seller-import-products','ImportingController@sellerImportProducts')->name('seller.import-products');
-Route::post('/rejarejaForm','ProductController@rejarejaForm');
-Route::post('/jumlaForm','ProductController@jumlaForm');
-Route::get('/seller_selling_product','ProductController@seller_selling_product');
-Route::get('/seller_today_sales','ProductController@seller_today_sales')->name('seller_today_sales');
-Route::get('/seller_add_jumla_product','ProductController@seller_add_jumla_product')->name('seller_add_jumla_product');
-Route::post('/seller_saveJumlaProduct','ProductController@seller_saveJumlaProduct')->name('seller_saveJumlaProduct');
-Route::get('/seller_view_jumla_product','ProductController@seller_view_jumla_product')->name('seller_view_jumla_product');
-Route::get('/seller_add_rejareja_product','ProductController@seller_add_rejareja_product')->name('seller_add_rejareja_product');
-Route::post('/seller_saveRejarejaProduct','ProductController@seller_saveRejarejaProduct')->name('seller_saveRejarejaProduct');
-Route::get('/seller_view_rejareja_product','ProductController@seller_view_rejareja_product')->name('seller_view_rejareja_product');
-Route::get('/seller_finished_product','ProductController@seller_finished_product')->name('seller_finished_product');
-Route::get('/seller_store','ProductController@seller_store')->name('seller_store');
-Route::get('/seller_shop_workers','HomeController@seller_shop_workers')->name('seller_shop_workers');
-Route::get('/seller-receipt-data','ReceiptController@showReceiptData')->name('seller-receipt-data');
-Route::get('/seller-print-receipt','ReceiptController@printReceipt')->name('seller-print-receipt');
-Route::get('/seller_printed_receipt','ReceiptController@printedReceipt')->name('seller-printed-receipt');
+Route::post('/rejarejaForm','ProductController@rejarejaForm')->name('seller.rejarejaForm');
+Route::post('/jumlaForm','ProductController@jumlaForm')->name('seller.jumlaForm');
+Route::get('/seller_selling_product','ProductController@seller_selling_product')->name('seller.selling_product');
+Route::get('/seller_today_sales','ProductController@seller_today_sales')->name('seller.today_sales');
+Route::get('/seller_add_jumla_product','ProductController@seller_add_jumla_product')->name('seller.add_jumla_product');
+Route::post('/seller_saveJumlaProduct','ProductController@seller_saveJumlaProduct')->name('seller.saveJumlaProduct');
+Route::get('/seller_view_jumla_product','ProductController@seller_view_jumla_product')->name('seller.view_jumla_product');
+Route::get('/seller-add-rejareja-product','ProductController@sellerAddRejarejaProduct')->name('seller.add_rejareja_product');
+Route::post('/seller_saveRejarejaProduct','ProductController@seller_saveRejarejaProduct')->name('seller.saveRejarejaProduct');
+Route::get('/seller_view_rejareja_product','ProductController@seller_view_rejareja_product')->name('seller.view_rejareja_product');
+Route::get('/seller-finished-product','ProductController@sellerFinishedProduct')->name('seller.finished_product');
+Route::get('/seller-store','ProductController@sellerStore')->name('seller.store');
+Route::get('/seller_shop_workers','HomeController@seller_shop_workers')->name('seller.shop_workers');
+Route::get('/seller-receipt-data','ReceiptController@showReceiptData')->name('seller.receipt-data');
+Route::get('/seller-print-receipt','ReceiptController@printReceipt')->name('seller.print-receipt');
+Route::get('/seller_printed_receipt','ReceiptController@printedReceipt')->name('seller.printed-receipt');
 Route::get('/seller-sold-product','ProductController@soldProducts')->name('seller.sold-product');
 Route::post('/seller-annual-product-sold','ProductController@soldProductsYear')->name('seller.annual-product-sold');
 Route::post('/seller-monthly-product-sold','ProductController@soldProductsMonth')->name('seller.monthly-product-sold');
@@ -112,10 +130,18 @@ Route::get('/seller-placed-order','OrderController@sellerPlacedOrder')->name('se
 Route::get('/seller-accept-order','OrderController@sellerAcceptOrder')->name('seller.accept-order');
 Route::get('/seller-reject-order','OrderController@sellerRejectOrder')->name('seller.reject-order');
 Route::get('/seller-confirm-delivery','OrderController@sellerConfirmDelivery')->name('seller.confirm-delivery');
+Route::get('/seller-change-pwd','HomeController@sellerChangePwd')->name('seller.change-pwd');
+Route::post('/seller-save-newPwd','HomeController@sellerSaveNewPwd')->name('seller.save-newPwd');
+Route::get('/seller-accept-expired','ProductController@sellerAcceptExpired')->name('seller.accept-expired');
+Route::post('/add-product-form','ProductController@addProduct')->name('seller.product-form');
+
+
+
 Route::get('/seller-calendar', function() {
  return view('seller.calendar');
 });
 
+ 
 Route::get('/seller-notify-order', 'OrderController@sellerNotifyOrder');
 
  Route::get('/seller-notify-expired', function(Request $request) {

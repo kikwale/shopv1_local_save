@@ -264,6 +264,8 @@ App::setLocale(Session::get('locale'));
     myDropzone.removeAllFiles(true)
   }
   // DropzoneJS Demo Code End
+
+ 
 </script>
 </body>
 </html>

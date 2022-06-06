@@ -8,7 +8,7 @@
           <div class="content-header">
             <div class="container-fluid">
       
-                     <!-- Info boxes -->
+                     {{-- <!-- Info boxes -->
        <div class="row">
         <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box">
@@ -69,17 +69,32 @@
         </div>
         <!-- /.col -->
       </div>
-      <!-- /.row -->
+      <!-- /.row --> --}}
 
 
               <div class="row mb-2">
                 <div class="col-sm-6">
                
-                  <h1 class="m-0 text-dark">Dashboard</h1>
+                  <h1 class="m-0 text-dark">Dashboard</h1><br><br>
+
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                 
                 </div><!-- /.col -->
+
+                <div class="row">
+                  <div class="col-sm-1">
+                
+                  </div><!-- /.col -->
+
+                  <div class="col-sm-10">
+                    <h5 class="text-warning"><b> {{ __('message.owner_adding_emplo_guide') }}</b></h5>
+                  </div><!-- /.col -->
+                 
+                  <div class="col-sm-1">
+                
+                  </div><!-- /.col -->
+                </div>
               </div><!-- /.row -->
             </div><!-- /.container-fluid -->
           </div>
@@ -96,17 +111,18 @@
               </div>
               @endif
                  
+
                 {{-- @include('admin.include') --}}
               @if(count((array)$data) > 0)
                       <div class="row">
                         <div class="col-md-12">
                           <div class="card">
                             <div class="card-header">
-                              <h5 class="card-title">Workers</h5>
+                              <h5 class="card-title">Employees</h5>
       
                               <div class="card-tools">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop" data-card-widget="collapse">
-                                    add
+                                    Add Employee
                                    </button>
 
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -150,12 +166,12 @@
                           
                               <td>
                             
-                              <a class="btn btn-info btn-sm" href="adminViewUser?id={{$value->id}}&&dhfjhdhgfjhgfjdhfhghguh@#gfdf$=5hj5hjg$3$$$$$#*^fg">
+                              <a class="btn btn-info btn-sm" href="owner-edit-employee?id={{$value->id}}&&dhfjhdhgfjhgfjdhfhghguh@#gfdf$=5hj5hjg$3$$$$$#*^fg">
                                 <i class="fas fa-edit">
-                                </i>
+                                </i> 
                             edit
                             </a>
-                              <a class="btn btn-danger btn-sm" href="adminDeleteUser?id={{$value->id}}">
+                              <a class="btn btn-danger btn-sm" href="owner-delete-employee?id={{$value->id}}">
                                   <i class="fas fa-trash">
                                   </i>
                                   Delete

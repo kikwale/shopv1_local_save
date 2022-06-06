@@ -36,9 +36,9 @@ class ProductsImport implements ToModel,WithStartRow
         'money_unit' => $row[8],
         'purchased_price' => $row[9],
         'sold_price' => $row[10],
-        // 'expire' => $row[11],
+        'expire' => \Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[11])),
         'location' => $row[12],
-        'description' => $row[13],
+      
         ]);
     }
 }

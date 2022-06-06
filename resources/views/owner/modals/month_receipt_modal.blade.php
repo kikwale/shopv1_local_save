@@ -23,20 +23,20 @@
                                     <div class="col-md-6">
                                         <label for="month" class="col-md- col-form-label text-md-right">{{ __('Month') }}</label>
                   
-                                        <select id="month" type="text" class="form-control @error('month') is-invalid @enderror" name="month" value="{{ old('month') }}"  autocomplete="month">
+                                        <select id="month" type="text" class="select2 form-control @error('month') is-invalid @enderror" name="month" value="{{ old('month') }}"  autocomplete="month">
                                           <option value=""></option>
-                                          <option value="Jan">1</option>
-                                          <option value="Feb">2</option>
-                                          <option value="Mar">3</option>
-                                          <option value="Apr">4</option>
-                                          <option value="May">5</option>
-                                          <option value="Jun">6</option>
-                                          <option value="Jul">7</option>
-                                          <option value="Aug">8</option>
-                                          <option value="Sep">9</option>
-                                          <option value="Oct">10</option>
-                                          <option value="Nov">11</option>
-                                          <option value="Des">12</option>
+                                          <option value="Jan">1 (Jan)</option>
+                                          <option value="Feb">2 (Feb)</option>
+                                          <option value="Mar">3 (Mar)</option>
+                                          <option value="Apr">4 (Apr)</option>
+                                          <option value="May">5 (May)</option>
+                                          <option value="Jun">6 (Jun)</option>
+                                          <option value="Jul">7 (Jul)</option>
+                                          <option value="Aug">8 (Aug)</option>
+                                          <option value="Sep">9  (Sep)</option>
+                                          <option value="Oct">10 (Oct)</option>
+                                          <option value="Nov">11 (Nov)</option>
+                                          <option value="Des">12 (Des)</option>
                                         </select>
                                         @error('month')
                                             <span class="invalid-feedback" role="alert">
@@ -49,7 +49,7 @@
                                     <div class="col-md-6">
                                         <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Year') }}</label>
                           
-                                        <select id="year" type="text" class="form-control @error('year') is-invalid @enderror" name="year" value="{{ old('year') }}"  autocomplete="year">
+                                        <select id="year" type="text" class=" select2 form-control @error('year') is-invalid @enderror" name="year" value="{{ old('year') }}"  autocomplete="year">
                                           <option value=""></option>
                                           <option value="2022">2022</option>
                                           <option value="2021">2021</option>

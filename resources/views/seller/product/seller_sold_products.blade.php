@@ -128,9 +128,9 @@
                 <div class="row">
                   <div class="col-md-4">
                     <a href="#" data-toggle="modal" data-target="#sold_annual">
-                          <div class="info-box bg-" style="background-color:#c6e7faf1">
+                          <div class="info-box bg-" style="background-color: #F15A24">
                               <div class="info-box-content">
-                                  <span class="info-box-text text-center text-info">Annual Sales</span>
+                                  <span class="info-box-text text-center text-light">Annual Sales</span>
                               </div>
                           </div>
                       </a>
@@ -138,9 +138,9 @@
 
                   <div class="col-md-4">
                       <a href="#" data-toggle="modal" data-target="#sold_month">
-                          <div class="info-box bg-" style="background-color:#c6e7faf1">
+                          <div class="info-box bg-" style="background-color: #F15A24">
                               <div class="info-box-content">
-                                  <span class="info-box-text text-center text-info">Monthly Sales</span>
+                                  <span class="info-box-text text-center text-light">Monthly Sales</span>
                               </div>
                           </div>
                       </a>
@@ -148,9 +148,9 @@
 
                   <div class="col-md-4">
                       <a href="#" data-toggle="modal" data-target="#sold_day">
-                          <div class="info-box bg- " style="background-color:#c6e7faf1">
+                          <div class="info-box bg- " style="background-color: #F15A24">
                               <div class="info-box-content">
-                                  <span class="info-box-text text-center text-info">Daily Sales</span>
+                                  <span class="info-box-text text-center text-light">Daily Sales</span>
                               </div>
                           </div>
                       </a>

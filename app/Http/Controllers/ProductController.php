@@ -250,7 +250,7 @@ class ProductController extends Controller
               $mauzo->quantity = $total_quantity->quantity;
               $mauzo->amount = $request->total_quantity+$request->subquantity;
               $mauzo->sold_price =  $total_quantity->sold_price;
-              $mauzo->true_price = $total_quantity->sold_price - $request->discount;
+              $mauzo->true_price = ($total_quantity->sold_price * $request->total_quantity + ($request->subquantity*$total_quantity->sold_price)) - $request->discount;
               $mauzo->profit = $request->total_quantity*$profit;
               $mauzo->customer_name = $request->customer_name;
               $mauzo->save();
@@ -451,9 +451,9 @@ class ProductController extends Controller
         return view('seller/product.seller_view_jumla_product')->with('data',$data);
     }
     
-    public function  seller_add_rejareja_product(Request $request){
+    public function  sellerAddRejarejaProduct(Request $request){
       
-        $data = DB::table('sellers')->where('owner_id', $request->owner_id)->where('shop_id',$request->shop_id)->orderBy('id','asc')->cursor();
+        $data = DB::table('sellers')->where('owner_id', Session::get('owner_id'))->where('shop_id',Session::get('shop_id'))->orderBy('id','asc')->cursor();
         return view('seller/product.seller_add_rejareja_product')
                ->with('owner_id',$request->id)->with('shop_id',$request->shop_id)->with('data',$data)->with('success','Successfully Seller registered......!');
    
@@ -512,10 +512,10 @@ class ProductController extends Controller
         return view('seller/product.seller_view_rejareja_product')->with('data',$data);
     }
 
-    public function seller_finished_product(Request $request){
+    public function sellerFinishedProduct(Request $request){
         $data = DB::table('products')->where('total','=',0)
-        ->where('owner_id',$request->id)->
-        where('shop_id',$request->shop_id)->orderBy('id','asc')->cursor();
+        ->where('owner_id',Session::get('owner_id'))->
+        where('shop_id',Session::get('shop_id'))->orderBy('id','asc')->cursor();
         return view('seller/product.seller_finished_product')->with('data',$data);
     }
     
@@ -535,16 +535,27 @@ class ProductController extends Controller
 
    }
    public function soldProductsMonth(Request $request){
+
+    $gross_profit = 0;
     $data = DB::table('mauzos')
     ->join('products', 'products.id', '=', 'mauzos.product_id')->where('products.shop_id', $request->shop_id)
     ->where('mauzos.month', $request->month)->where('mauzos.year', $request->year)
     ->cursor();
 
+    $grossProfit = Product::where('shop_id',Session::get('shop_id'))->where('owner_id',Session::get('owner_id'))
+    ->where('month', $request->month)->where('year', $request->year)->get();
+    
+   
+    foreach ($grossProfit as $value) {
+        $gross_profit = $gross_profit + ($value->total*$value->purchased_price);
+    }
+    return  $gross_profit;
     $month = $request->month;
     $year = $request->year;
 
    return view('seller/product.sold_products')
     ->with('data',$data)
+    ->with('grossprofit',$gross_profit)
     ->with('type',$request->type)
     ->with('year',$request->year)
     ->with('month',$request->month);
@@ -560,17 +571,17 @@ class ProductController extends Controller
 
    
 
-    public function seller_store(Request $request){
+    public function sellerStore(Request $request){
         $data = DB::table('products')->where('total','!=', 0)->where('expire','>=',date('Y-m-d'))
-        ->where('owner_id',$request->id)->
-        where('shop_id',$request->shop_id)->orderBy('id','asc')->cursor();
+        ->where('owner_id',Session::get('owner_id'))->
+        where('shop_id',Session::get('shop_id'))->orderBy('id','asc')->cursor();
         return view('seller/product.seller_store')->with('data',$data);
     }
     
     public function expiredProducts(Request $request){
         $data = DB::table('products')->where('expire','<=',date('Y-m-d'))
-        ->where('owner_id',$request->id)->
-        where('shop_id',$request->shop_id)->orderBy('id','asc')->cursor();
+        ->where('owner_id',Session::get('owner_id'))->
+        where('shop_id',Session::get('shop_id'))->orderBy('id','asc')->cursor();
         return view('seller/product.seller_expired_product')->with('data',$data);
     }
 
@@ -599,7 +610,17 @@ class ProductController extends Controller
             ->where('mauzos.year', $request->year)
             ->cursor();
     
-            return view('owner/products.sold_product_data')->with('data',$data)->with('type',$request->type)->with('val',$request->year);
+            $grossProfit = Product::where('shop_id',Session::get('shop_id'))->where('owner_id',Session::get('owner_id'))
+            ->where('year','<=', $request->year)->get();
+     
+    
+             $gross_profit = 0;
+             foreach ($grossProfit as $value) {
+                 $gross_profit = $gross_profit + ($value->total*$value->purchased_price);
+             }
+
+            return view('owner/products.sold_product_data')->with('data',$data)
+            ->with('gross_profit',$gross_profit)->with('type',$request->type)->with('val',$request->year);
             
         }
 
@@ -609,12 +630,23 @@ class ProductController extends Controller
             ->join('products', 'products.id', '=', 'mauzos.product_id')->where('products.shop_id', $request->shop_id)
             ->where('mauzos.month', $request->month)->where('mauzos.year', $request->year)
             ->cursor();
-        
+
+            $grossProfit = Product::where('shop_id',Session::get('shop_id'))->where('owner_id',Session::get('owner_id'))
+           ->where('month','<=', $request->month)->where('year','<=', $request->year)->get();
+    
+   
+            $gross_profit = 0;
+            foreach ($grossProfit as $value) {
+                $gross_profit = $gross_profit + ($value->total*$value->purchased_price);
+            }
+           
             $month = $request->month;
             $year = $request->year;
         
-           return view('owner/products.sold_product_data')
+         
+            return view('owner/products.sold_product_data')
             ->with('data',$data)
+            ->with('gross_profit',$gross_profit)
             ->with('type',$request->type)
             ->with('year',$request->year)
             ->with('month',$request->month);
@@ -626,8 +658,41 @@ class ProductController extends Controller
     ->join('products', 'products.id', '=', 'mauzos.product_id')->where('products.shop_id', $request->shop_id)
     ->where('mauzos.sales_date', $request->day)
     ->cursor();
+
+    $grossProfit = Product::where('shop_id',Session::get('shop_id'))->where('owner_id',Session::get('owner_id'))
+    ->where('date','<=', $request->day)->get();
+
+
+     $gross_profit = 0;
+     foreach ($grossProfit as $value) {
+         $gross_profit = $gross_profit + ($value->total*$value->purchased_price);
+     }
    return view('owner/products.sold_product_data')->with('data',$data)
-   ->with('type',$request->type)->with('date',$request->day)->with('success','ghghgj');
+   ->with('type',$request->type)->with('date',$request->day)
+   ->with('gross_profit',$gross_profit)->with('success','ghghgj');
             
+        }
+
+        public  function sellerAcceptExpired(Request $request){
+
+           
+            $product = Product::where('id',$request->pid)->where('shop_id',Session::get('shop_id'))->first();
+            $product->isExpired = 1;
+            $product->save();
+            return back();
+
+        }
+
+        public  function addProduct(Request $request){
+          
+            $product = Product::where('id',$request->product_id)->where('shop_id',Session::get('shop_id'))->first();
+            $product->total = $request['total_amount'];
+            $product->notification = $request['notification'];
+            $product->purchased_price = $request['purchased_price'];
+            $product->sold_price = $request['selling_price'];
+            $product->expire = $request['expire_date'];
+            $product->location = $request['location'];
+            $product->save();
+            return back();
         }
 }

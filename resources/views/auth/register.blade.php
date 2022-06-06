@@ -4,7 +4,30 @@ App::setLocale(Session::get('locale'));
 ?>
 </head>
 @section('content')
+
+<div id="banner-area" class="banner-area" style="background-image:url(dist/img/banner3.jpg)">
+    <div class="banner-text">
+      <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+                <div class="banner-heading">
+                  <h1 class="banner-title">Register as a Business Owner</h1>
+                  <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb justify-content-center">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Register</li>
+                      </ol>
+                  </nav>
+                </div>
+            </div><!-- Col end -->
+          </div><!-- Row end -->
+      </div><!-- Container end -->
+    </div><!-- Banner text end -->
+  </div><!-- Banner area end --> 
+<br>
 <div class="container">
+
+    
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

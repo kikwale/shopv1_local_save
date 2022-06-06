@@ -103,9 +103,9 @@
         <main class="py-4">
             <div class="container">
                 <div class="row ">
-                    <div class="col-md-10"></div>
-                    <div class="col-md-2">
-                        <a href="#" data-toggle="modal" data-target="#staticBackdrop{{Auth::id()}}" class="btn btn-primary btn-xlg" rel="noopener noreferrer">Create Shop</a><br><br>
+                    <div class="col-md-8"></div>
+                    <div class="col-md-4">
+                        <a href="#" data-toggle="modal" data-target="#staticBackdrop{{Auth::id()}}" class="btn btn-primary btn-xlg" rel="noopener noreferrer">Create Shop/Pharmacy</a><br><br>
                     </div>
                 </div>
                 <hr><br>

@@ -46,6 +46,7 @@ class MadukaController extends Controller
             'mname' => ['required', 'string', 'max:255'],
             'lname' => ['required', 'string', 'max:255'],
             'gender' => ['required', 'string', 'max:255'],
+            'leader' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         ]);
 
@@ -72,16 +73,51 @@ class MadukaController extends Controller
         $seller->phone = $request->phone; 
         $seller->email = $request->email; 
         $seller->save();
+        $seller_id = $seller->id;
+        
+        $contacts = Maduka::where('id',$request->shop_id)->where('seller_Phone','!=','')->where('seller_email','!=','')->first();
+        if ($contacts) {
 
-        $contacts = Maduka::where('id',$request->shop_id)->first();
-        if ($contacts->seller_Phone == '' ||  $contacts->seller_email == '') {
-            $contacts->seller_Phone = $request->phone; 
-            $contacts->seller_email = $request->email; 
-            $contacts->save();
-        }
-        $data = DB::table('sellers')->where('owner_id', $request->owner_id)->where('shop_id',$request->shop_id)->orderBy('id','asc')->cursor();
-        return view('owner.workers')
+            if ($request->leader == 1) {
+                $contacts->seller_email = $request->email;
+                $contacts->seller_Phone = $request->phone; 
+                $contacts->save();
+                 $data = DB::table('sellers')->where('owner_id', $request->owner_id)->where('shop_id',$request->shop_id)->orderBy('id','asc')->cursor();
+                return view('owner.workers')
                ->with('owner_id',$request->owner_id)->with('shop_id',$request->shop_id)->with('data',$data)->with('success','Successfully Seller registered......!');
+       
+            } elseif ($request->leader == 2) {
+               
+                 $data = DB::table('sellers')->where('owner_id', $request->owner_id)->where('shop_id',$request->shop_id)->orderBy('id','asc')->cursor();
+                return view('owner.workers')
+               ->with('owner_id',$request->owner_id)->with('shop_id',$request->shop_id)->with('data',$data)->with('success','Successfully Seller registered......!');
+       
+            }
+
+            
+        } else{
+
+            $contacts = Maduka::where('id',$request->shop_id)->first();
+            if ($request->leader == 1) {
+                $contacts->seller_email = $request->email;
+                $contacts->seller_Phone = $request->phone; 
+                $contacts->save();
+                 $data = DB::table('sellers')->where('owner_id', $request->owner_id)->where('shop_id',$request->shop_id)->orderBy('id','asc')->cursor();
+                return view('owner.workers')
+               ->with('owner_id',$request->owner_id)->with('shop_id',$request->shop_id)->with('data',$data)->with('success','Successfully Seller registered......!');
+       
+            } elseif ($request->leader == 2) {
+               
+                 $data = DB::table('sellers')->where('owner_id', $request->owner_id)->where('shop_id',$request->shop_id)->orderBy('id','asc')->cursor();
+                return view('owner.workers')
+               ->with('owner_id',$request->owner_id)->with('shop_id',$request->shop_id)->with('data',$data)->with('success','Successfully Seller registered......!');
+       
+            }
+
+
+        }
+
+
        
 
     }

@@ -27,13 +27,21 @@ App::setLocale(Session::get('locale'));
 
         @endif
 
+        <br>
+              <div class="row">
+                <iframe width="600" height="345" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/aO6_GwXrfVM?autoplay=1&mute=1">
+                </iframe>
+                
+              </div>
+
         <div class="row justify-content-center">
             <div class="col-md-12">
                 
                
                 <div class="car">
-                    <div class="card-header">{{ __('Products Registration') }} &nbsp; Shop Owner Id = &nbsp; 000{{ $owner_id }} &nbsp; Shop Id = &nbsp; 000{{ $shop_id }}<br>
-                    <a href="#" data-toggle="modal" data-target="#excel" class="btn btn-primary">Import Excel</a>
+                    <div class="card-header">{{ __('Products Registration') }} &nbsp; Shop Owner Id = &nbsp; 000{{ session()->get('owner_id') }} &nbsp; Shop Id = &nbsp; 000{{ session()->get('shop_id') }}<br>
+                        <a href="dist/shotram_products_importing_excel_templete.xlsx" class="btn btn-warning">Download Excel Templete</a>
+                        <a href="#" data-toggle="modal" data-target="#excel" class="btn btn-primary">Import Excel</a>
                     </div>
     
                     <div class="card-body">

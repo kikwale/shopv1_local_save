@@ -95,6 +95,46 @@ App::setLocale(Session::get('locale'));
           </div>
           <!-- /.content-header -->
       
+          <div class="row">
+            <div class="card-body">
+                
+              <a href="seller_shop_workers?ower_id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                {{-- <span class="badge bg-purple">891</span> --}}
+                <i class="fas fa-users"></i><br>  {{__('message.seller.workers')}}
+              </a>
+              <a href="seller_printed_receipt?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                <i class="fas fa-edit"></i><br>
+                <p>{{ __('message.receipt')}}</p>
+              </a>
+              
+              <a href="seller_expired_product?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                <i class="fas fa-save"></i> <br>
+                <p>{{__('message.seller.expired_products')}}</p>
+              </a>
+              <a href="seller-sold-product?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                {{-- <span class="badge bg-success">300</span> --}}
+                <i class="fas fa-barcode"></i> {{__('message.seller.sales')}}
+              </a>
+              <a href="seller-placed-order?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                {{-- <span class="badge bg-teal">67</span> --}}
+                <i class="fas fa-inbox"></i><br>
+                <p>{{__('message.seller.order')}}</p>
+
+              </a>
+              <a href="{{ route('seller.store') }}" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                {{-- <span class="badge bg-teal">67</span> --}}
+                <i class="fas fa-inbox"></i> <br>
+                <p>{{__('message.seller.store')}}</p>
+              </a>
+              <a href="seller-finished-product" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                {{-- <span class="badge bg-teal">67</span> --}}
+                <i class="fas fa-inbox"></i> <br>
+                <p>{{ __('message.seller.finished_products') }}</p>
+              </a>
+
+            </div>
+          </div>
+
           <!-- Main content -->
           <section class="content">
             <div class="container-fluid">
@@ -130,143 +170,8 @@ App::setLocale(Session::get('locale'));
                 {{-- @include('admin.include') --}}
                         
                 <div class="row">
-                <div class="col-md-4">
-                  <a href="seller_shop_workers?ower_id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}">
-                  <div class="card card-outline card-info">
-                    <div class="card-header">
-                      <h3 class="card-title"></h3>
-      
-                      <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                      </div>
-                      <!-- /.card-tools -->
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body text-secondary text-center">
-                    <i class="fas fa-users w-100" style="color: cadetblue"></i><br>
-                  <b>  {{__('message.seller.workers')}} </b>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </a>
-                </div>
+              
 
-                <div class="col-md-4">
-                  <a href="seller-sold-product?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}">
-                  <div class="card card-outline card-info">
-                    <div class="card-header">
-                      <h3 class="card-title"></h3>
-      
-                      <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                      </div>
-                      <!-- /.card-tools -->
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body text-secondary text-center">
-                      <i class="fas fa-shopping-bag" style="color: cadetblue"></i><br>
-                   <b>  {{__('message.seller.sales')}}</b>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </a>
-                </div>
-
-                <div class="col-md-4">
-                  <a href="seller_printed_receipt?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}">
-                  <div class="card card-outline card-info">
-                    <div class="card-header">
-                      <h3 class="card-title"></h3>
-      
-                      <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                      </div>
-                      <!-- /.card-tools -->
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body text-secondary text-center">
-                      <i class="fas fa-shopping-bag w-100" style="color: cadetblue"></i><br>
-                   <b>{{ __('message.receipt')}}</b>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </a>
-                </div>
-
-                <div class="col-md-4">
-                  <a href="seller_expired_product?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" >
-                  <div class="card card-outline card-info">
-                    <div class="card-header">
-                      <h3 class="card-title"></h3>
-      
-                      <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                      </div>
-                      <!-- /.card-tools -->
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body text-secondary text-center">
-                    
-                  <b>{{__('message.seller.expired_products')}}</b>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </a>
-                </div>
-
-                <div class="col-md-4">
-                  <a href="seller-placed-order?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
-                  <div class="card card-outline card-info">
-                    <div class="card-header">
-                      <h3 class="card-title"></h3>
-      
-                      <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                      </div>
-                      <!-- /.card-tools -->
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body text-secondary text-center">
-                    
-                    <b>{{__('message.seller.order')}}</b>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </a>
-                </div>
-
-                <div class="col-md-4">
-                  <a href="seller_store?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}">
-                  <div class="card card-outline card-info">
-                    <div class="card-header">
-                      <h3 class="card-title"></h3>
-      
-                      <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                      </div>
-                      <!-- /.card-tools -->
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body text-secondary text-center">
-                    
-                    <b>{{__('message.seller.store')}}</b>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </a>
-                </div>
 
                 {{-- <div class="col-md-4">
                   <a href="owner_shop">
@@ -312,31 +217,7 @@ App::setLocale(Session::get('locale'));
                 </a>
                 </div> --}}
 
-                <div class="col-md-4">
-                  <a href="seller_finished_product?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
-                  <div class="card card-outline card-info">
-                    <div class="card-header">
-                      <h3 class="card-title"></h3>
-      
-                      <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                      </div>
-                      <!-- /.card-tools -->
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body text-secondary text-center">
-                    
-                    <b>{{ __('message.seller.finished_products') }}</b>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </a>
-                </div>
-
-                
-
+           
            </div>
          
                 <br>

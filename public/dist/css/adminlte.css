@@ -32490,11 +32490,11 @@ html.maximized-card {
   background-color: #f8f9fa;
   border: 1px solid #ddd;
   color: #6c757d;
-  font-size: 12px;
+  font-size: 16px;
   height: 60px;
   margin: 0 0 10px 10px;
-  min-width: 80px;
-  padding: 15px 5px;
+  min-width: 100px;
+  padding: 20px 20px;
   position: relative;
   text-align: center;
 }
