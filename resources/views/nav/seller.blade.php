@@ -32,24 +32,34 @@
       <a class="nav-link" data-toggle="dropdown" href="#">
         <i class="far fa-bell text-warning"></i>
         
-          <?php $count = 0; ?>
-          @foreach (App\Models\Product::where('shop_id',Session::get('shop_id'))->where('expire','<=',date('Y-m-d'))
+          <?php 
+          use App\Models\Product;
+          $count = 0; ?>
+          @foreach (Product::where('shop_id',Session::get('shop_id'))->where('expire','<=',date('Y-m-d'))
           ->where('isExpired',0)->get() as $value)
-            <?php $count = $count+1; ?>
+            <?php $count = $count + 1; ?>
+          @endforeach
+
+          @foreach (Product::where('shop_id',Session::get('shop_id'))->where('expire','>=',date('Y-m-d'))
+          ->whereRaw('total <= notification')->get() as $value)
+
+            
+             <?php $count = $count + 1; ?>
+            
           @endforeach
 
           @if (App\Models\Order::where('ordered_shop_id',Session::get('shop_id'))->where('status','normal')->get() != "")
           @foreach (App\Models\Order::where('ordered_shop_id',Session::get('shop_id'))->where('status','normal')->get()
           as $value)
-           <?php $count = $count+1; ?>
-         @endforeach
+           <?php $count = $count + 1; ?>
+          @endforeach
           @endif
          
           @if ($count != 0)
-          <span class="badge badge-danger navbar-badge">
+           <span class="badge badge-danger navbar-badge">
           {{ $count }}
              
-        </span>
+           </span>
           @endif
        
       </a>
@@ -75,6 +85,30 @@
           </a>
           <div class="dropdown-divider"></div>
         @endforeach
+
+        @foreach (App\Models\Product::where('shop_id',Session::get('shop_id'))->where('expire','>=',date('Y-m-d'))
+        ->whereRaw('total <= notification')->get() as $value)
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="dist/img/warning-symbol-01.png" alt="Warning" class="mr-3 img-circle" height="40px;">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                 <b><p>{{ $value->name }}</p></b>
+                  Bidhaa inakaribia kuisha
+               
+                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                </h3>
+                {{-- <p class="text-sm text-muted">{{ $value->name }}</p>
+                <p class="text-sm text-muted">{{ $value->category }}</p> --}}
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+        @endforeach
+
 
         <?php  $i = 0;?><!-- TUTAONGEZA NOTIFIED WHERE CLOUSE -->
         @foreach (App\Models\Order::where('ordered_shop_id',Session::get('shop_id'))->where('status','normal')->get() as $value)
@@ -350,6 +384,13 @@
             </li> --}}
 
             <li class="nav-item">
+              <a href="seller-returned-products" class="nav-link">
+                <i class="far fa-circle nav-icon text-info"></i>
+                <p>   {{__('message.seller.returned_products')}}</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
               <a href="seller-finished-product" class="nav-link">
                 <i class="far fa-circle nav-icon text-info"></i>
                 <p>   {{__('message.seller.finished_products')}}</p>
@@ -359,7 +400,7 @@
             <li class="nav-item">
               <a href="seller-store" class="nav-link">
                 <i class="far fa-circle nav-icon text-info"></i>
-                <p>   {{__('message.seller.store')}}</p>
+                <p>   {{__('message.seller.stock')}}</p>
               </a>
             </li>
 
@@ -373,8 +414,7 @@
 
           </ul>
         </li>
-
-      
+       
 
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">

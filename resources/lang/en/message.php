@@ -93,6 +93,8 @@ return [
        'register_products' => 'Register Product(s)',
        'finished_products' => 'Finished Products',
        'store'             => 'Store',
+       'stock'             => 'Stock',
+       'returned_products' => 'Returned Products',
        'expired_products'  => 'Expired Products',
        'order'             => 'Order',
        'place_order'       => 'Place Order',

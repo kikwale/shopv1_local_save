@@ -134,6 +134,11 @@ Route::get('/seller-change-pwd','HomeController@sellerChangePwd')->name('seller.
 Route::post('/seller-save-newPwd','HomeController@sellerSaveNewPwd')->name('seller.save-newPwd');
 Route::get('/seller-accept-expired','ProductController@sellerAcceptExpired')->name('seller.accept-expired');
 Route::post('/add-product-form','ProductController@addProduct')->name('seller.product-form');
+Route::get('/seller-return-product','ReturnController@returnProduct')->name('seller.return-product');
+Route::get('/seller-show-product-sold-year','ProductController@sellerShowProducctsSoldYear')->name('seller.show-product-sold-year');
+Route::get('/seller-show-product-sold-month','ProductController@sellerShowProducctsSoldMonth')->name('seller.show-product-sold-month');
+Route::get('/seller-show-product-sold-day','ProductController@sellerShowProducctsSoldDay')->name('seller.show-product-sold-day');
+Route::get('/seller-returned-products','ReturnController@sellerShowReturnedProducts')->name('seller.returned-products');
 
 
 

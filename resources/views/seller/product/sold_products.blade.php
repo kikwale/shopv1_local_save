@@ -373,7 +373,18 @@ App::setLocale(Session::get('locale'));
         <section class="content">
             <div class="container-fluid">
 
-
+                @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Ok !! </strong> {{session('success')}}.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                @elseif(session('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Please !! </strong>Error has occured.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+        
+                @endif
 
                 {{-- @include('admin.include') --}}
                 @if (count((array) $data) > 0)
@@ -394,6 +405,7 @@ App::setLocale(Session::get('locale'));
                                         <th>Discount</th>
                                         <th>Final Price</th>
                                         <th>Customer Name</th>
+                                        <th>Action</th>
                                  
                                     </tr>
                                 </thead>
@@ -435,6 +447,7 @@ updated_at
                                             <td>{{ $value->discount }}</td>
                                             <td>{{ $value->true_price }}</td>
                                             <td>{{ $value->customer_name }}</td>
+                                            <td><a class="btn btn-warning" href="seller-return-product?kt={{ $value->id }}">Return</a></td>
                                             
 
                                         </tr>
@@ -454,7 +467,7 @@ updated_at
                                         <th>Discount</th>
                                         <th>Final Price</th>
                                         <th>Customer Name</th>
-                                       
+                                        <th>Action</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -498,6 +511,7 @@ updated_at
                                                 <th>Discount</th>
                                                 <th>Final Price</th>
                                                 <th>Customer Name</th>
+                                                <th>Action</th>
                                                 
                                             </tr>
                                         </thead>
@@ -518,6 +532,7 @@ updated_at
                                                 <th>Discount</th>
                                                 <th>Final Price</th>
                                                 <th>Customer Name</th>
+                                                <th>Action</th>
                                                 
                                             </tr>
                                         </tfoot>

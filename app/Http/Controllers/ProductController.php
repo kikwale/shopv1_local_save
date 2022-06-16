@@ -525,31 +525,47 @@ class ProductController extends Controller
 
    public function soldProductsYear(Request $request){
             
-        $data = DB::table('mauzos')
-        ->join('products', 'products.id', '=', 'mauzos.product_id')->where('products.shop_id', $request->shop_id)
-        ->where('mauzos.year', $request->year)
-        ->cursor();
-
-        return view('seller/product.sold_products')->with('data',$data)->with('type',$request->type)->with('val',$request->year);
-
+        Session::put('year',$request->year);
+        Session::put('type',$request->type);
+        return redirect()->to(route('seller.show-product-sold-year'));
+       
 
    }
+
+   public function sellerShowProducctsSoldYear(Request $request){
+
+    $data = DB::table('products')
+        ->join('mauzos', 'products.id', '=', 'mauzos.product_id')->where('products.shop_id',Session::get('shop_id'))
+        ->where('mauzos.year',Session::get('year'))
+        ->cursor();
+    return view('seller/product.sold_products')->with('data',$data)->with('type',Session::get('type'))->with('val',Session::get('year'));
+   }
+
    public function soldProductsMonth(Request $request){
 
+    Session::put('year',$request->year);
+    Session::put('month',$request->month);
+    Session::put('type',$request->type);
+    return redirect()->to(route('seller.show-product-sold-month'));
+
+   }
+
+   public function sellerShowProducctsSoldMonth(Request $request){
+
     $gross_profit = 0;
-    $data = DB::table('mauzos')
-    ->join('products', 'products.id', '=', 'mauzos.product_id')->where('products.shop_id', $request->shop_id)
-    ->where('mauzos.month', $request->month)->where('mauzos.year', $request->year)
+    $data = DB::table('products')
+    ->join('mauzos', 'products.id', '=', 'mauzos.product_id')->where('products.shop_id', Session::get('shop_id'))
+    ->where('mauzos.month', Session::get('month'))->where('mauzos.year', Session::get('year'))
     ->cursor();
 
     $grossProfit = Product::where('shop_id',Session::get('shop_id'))->where('owner_id',Session::get('owner_id'))
-    ->where('month', $request->month)->where('year', $request->year)->get();
+    ->where('month', Session::get('month'))->where('year', Session::get('year'))->get();
     
    
     foreach ($grossProfit as $value) {
         $gross_profit = $gross_profit + ($value->total*$value->purchased_price);
     }
-    return  $gross_profit;
+   
     $month = $request->month;
     $year = $request->year;
 
@@ -559,14 +575,25 @@ class ProductController extends Controller
     ->with('type',$request->type)
     ->with('year',$request->year)
     ->with('month',$request->month);
+
    }
+
+
    public function soldProductsDay(Request $request){
    
-    $data = DB::table('mauzos')
-    ->join('products', 'products.id', '=', 'mauzos.product_id')->where('products.shop_id', $request->shop_id)
-    ->where('mauzos.sales_date', $request->day)
+    
+    Session::put('day',$request->day);
+    Session::put('type',$request->type);
+    return redirect()->to(route('seller.show-product-sold-day'));
+   }
+
+   public function sellerShowProducctsSoldDay(Request $request){
+   
+    $data = DB::table('products')
+    ->join('mauzos', 'products.id', '=', 'mauzos.product_id')->where('products.shop_id', Session::get('shop_id'))
+    ->where('mauzos.sales_date', Session::get('day'))
     ->cursor();
-   return view('seller/product.sold_products')->with('data',$data)->with('type',$request->type)->with('date',$request->day);
+   return view('seller/product.sold_products')->with('data',$data)->with('type',Session::get('type'))->with('date',Session::get('day'));
    }
 
    
@@ -605,8 +632,8 @@ class ProductController extends Controller
 
         public function ownerProductAnnualSold(Request $request){
 
-            $data = DB::table('mauzos')
-            ->join('products', 'products.id', '=', 'mauzos.product_id')->where('products.shop_id', $request->shop_id)
+            $data = DB::table('products')
+            ->join('mauzos', 'products.id', '=', 'mauzos.product_id')->where('products.shop_id', $request->shop_id)
             ->where('mauzos.year', $request->year)
             ->cursor();
     
@@ -626,8 +653,8 @@ class ProductController extends Controller
 
         public function ownerMonthlyProductSold(Request $request){
 
-            $data = DB::table('mauzos')
-            ->join('products', 'products.id', '=', 'mauzos.product_id')->where('products.shop_id', $request->shop_id)
+            $data = DB::table('products')
+            ->join('mauzos', 'products.id', '=', 'mauzos.product_id')->where('products.shop_id', $request->shop_id)
             ->where('mauzos.month', $request->month)->where('mauzos.year', $request->year)
             ->cursor();
 
@@ -654,8 +681,8 @@ class ProductController extends Controller
 
         public function ownerDailyProductSold(Request $request){
 
-            $data = DB::table('mauzos')
-    ->join('products', 'products.id', '=', 'mauzos.product_id')->where('products.shop_id', $request->shop_id)
+            $data = DB::table('products')
+    ->join('mauzos', 'products.id', '=', 'mauzos.product_id')->where('products.shop_id', $request->shop_id)
     ->where('mauzos.sales_date', $request->day)
     ->cursor();
 

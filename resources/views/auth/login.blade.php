@@ -16,8 +16,8 @@ App::setLocale(Session::get('locale'));
                       <img src="dist/img/shotram.png" alt="" srcset=""><br>
                       <nav aria-label="breadcrumb">
                           <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a href="tel:+255782776467">Click to call</a></li>
-                            <li class="breadcrumb-item active" aria-current="page"><a href="mailto:info@shotram.com"> Mail Us</a></li>
+                            <li class="breadcrumb-item"><a href="tel:+255782776467">+255  782 776 467</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><a href="mailto:info@shotram.com">info@shotram.com</a></li>
                            
                           </ol>
                       </nav>

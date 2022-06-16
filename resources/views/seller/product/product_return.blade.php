@@ -80,7 +80,7 @@
               <div class="row mb-2">
                 <div class="col-sm-6">
                
-                  <h1 class="m-0 text-dark">Finished Products</h1>
+                  <h1 class="m-0 text-dark">Returned Products</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                 
@@ -139,13 +139,8 @@
                                                   <th>Product Name</th>
                                                   <th>Product Category</th>
                                                   <th>unit</th>
-                                                  <th>quantity</th>
-                                                  <th>Total</th>
-                                                  <th>purchased Price</th>
-                                                  <th>Price for Sale</th>
-                                                  <th>Expire Date</th>
-                                                  <th>Location</th>
-                                                  <th>Action</th>
+                                                  <th>quantity returned</th>
+                                                  <th>Created at</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -161,44 +156,10 @@
                                           <td>{{$value->category}}</td>
                                           <td>{{$value->unit}}</td>
                                           <td>{{$value->quantity}}</td>
-                                          @if ($value->category == "Jumla")
-                                          <td>{{$value->total}}
-                                          @if (session('unsold') == $value->id)
-                                            <small class="text-danger"> <span class="right badge badge-danger">Error</span></small>
-                                          @endif
-                                          @if (session('sold') == $value->id)
-                                            <small class="text-success"> <span class="right badge badge-success">Success</span></small>
-                                          @endif
-                                          </td>
-                                          @else
-                                          <td>{{$value->total}}{{$value->unit}}
-                                                @if (session('unsold') == $value->id)
-                                                <small class="text-danger"> <span class="right badge badge-danger">Error</span></small>
-                                              @endif
-                                              @if (session('sold') == $value->id)
-                                                <small class="text-success"> <span class="right badge badge-success">Success</span></small>
-                                              @endif
-                                          </td>
-                                          @endif
-                                          <td>{{$value->purchased_price}}</td>
-                                          <td>{{$value->sold_price}}</td>
-                                          <td>{{$value->expire}}</td>
-                                          <td>{{$value->location}}</td>
+                                          <td>{{$value->created_at}}</td>
                                         
-                                          <td>
-                                           
-                                            <a class="btn btn-primary btn-sm" href="#" data-toggle="modal" data-target="#staticBackdrop{{$value->id}}">
-                                            
-                                              Add
-                                              </a>
-                                           
-
-                                             
-                                          </td>
-
                                          
-                                        
-                          
+
                                                             <!-- Modal -->
                                                       <div class="modal fade" id="staticBackdrop{{$value->id}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -339,13 +300,8 @@
                                                   <th>Product Name</th>
                                                   <th>Category</th>
                                                   <th>Unit</th>
-                                                  <th>Quantity</th>
-                                                  <th>Product Sold</th>
-                                                  <th>Purchased Price</th>
-                                                  <th>Sold Price</th>
-                                                  <th>Expire Date</th>
-                                                  <th>Location</th>
-                                                  <th>Action</th>
+                                                  <th>quantity returned</th>
+                                                  <th>Created at</th>
                                                 </tr>
                                                 </tfoot>
                                               </table>
@@ -371,17 +327,11 @@
                                         <table id="example1" class="table table-bordered table-striped">
                                           <thead>
                                           <tr>
-                                              <th>Product Name</th>
-                                              <th>Product Category</th>
-                                              <th>unit</th>
-                                              <th>quantity</th>
-                                              <th>Product Sold</th>
-                                              <th>purchased Price</th>
-                                              <th>Price for Sale</th>
-                                              <th>Discount</th>
-                                              <th>Expire Date</th>
-                                              <th>Location</th>
-                                              <th>Action</th>
+                                            <th>Product Name</th>
+                                            <th>Product Category</th>
+                                            <th>unit</th>
+                                            <th>quantity returned</th>
+                                            <th>Created at</th>
                                           </tr>
                                           </thead>
                                           <tbody>
@@ -390,17 +340,11 @@
                                           </tbody>
                                           <tfoot>
                                           <tr>
-                                              <th>Product Name</th>
-                                              <th>Product Category</th>
-                                              <th>unit</th>
-                                              <th>quantity</th>
-                                              <th>Product Sold</th>
-                                              <th>purchased Price</th>
-                                              <th>Price for Sale</th>
-                                              <th>Discount</th>
-                                              <th>Expire Date</th>
-                                              <th>Location</th>
-                                              <th>Action</th>
+                                            <th>Product Name</th>
+                                            <th>Product Category</th>
+                                            <th>unit</th>
+                                            <th>quantity returned</th>
+                                            <th>Created at</th>
                                           </tr>
                                           </tfoot>
                                         </table>
