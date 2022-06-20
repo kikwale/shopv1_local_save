@@ -130,7 +130,7 @@ App::setLocale(Session::get('locale'));
                                           <span
                                               class="info-box-text text-center text-secondary">{{ __('message.seller.sales') }}</span>
                                           <span
-                                              class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('year', $val)->where('shop_id', Session::get('shop_id'))->sum('true_price') }}</span>
+                                              class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('year', $val)->where('shop_id', Session::get('shop_id'))->sum('true_price') }}{{ Session::get('money') }}</span>
                                       </div>
                                   </div>
                               </div>
@@ -140,7 +140,7 @@ App::setLocale(Session::get('locale'));
                                       <div class="info-box-content">
                                           <span class="info-box-text text-center text-secondary">Profit</span>
                                            <span
-                                                  class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('year', $val)->where('shop_id', Session::get('shop_id'))->sum('profit') }}</span></span>
+                                                  class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('year', $val)->where('shop_id', Session::get('shop_id'))->sum('profit') }}{{ Session::get('money') }}</span></span>
                                       </div>
                                   </div>
                               </div>
@@ -153,14 +153,14 @@ App::setLocale(Session::get('locale'));
                                         <span class="info-box-text text-center text-secondary">Gross Profit</span>
                                    
                                         <span
-                                        class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('year', $val)->where('shop_id', Session::get('shop_id'))->sum('true_price') - $gross_profit }}
+                                        class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('year', $val)->where('shop_id', Session::get('shop_id'))->sum('true_price') - $gross_profit }}{{ Session::get('money') }}
                                         </span>
 
                                         @else
                                         <span class="info-box-text text-center text-secondary">Gross Loss</span>
                                    
                                         <span
-                                        class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('year', $val)->where('shop_id', Session::get('shop_id'))->sum('true_price') - $gross_profit }}
+                                        class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('year', $val)->where('shop_id', Session::get('shop_id'))->sum('true_price') - $gross_profit }}{{ Session::get('money') }}
                                         </span>
                                         @endif
                                       </div>
@@ -231,7 +231,7 @@ App::setLocale(Session::get('locale'));
                                             <span
                                                 class="info-box-text text-center text-secondary">{{ __('message.seller.sales') }}</span>
                                             <span
-                                                class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('month', $month)->where('year', $year)->where('shop_id', Session::get('shop_id'))->sum('true_price') }}</span>
+                                                class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('month', $month)->where('year', $year)->where('shop_id', Session::get('shop_id'))->sum('true_price') }}{{ Session::get('money') }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -241,7 +241,7 @@ App::setLocale(Session::get('locale'));
                                         <div class="info-box-content">
                                             <span class="info-box-text text-center text-secondary">Profit</span>
                                              <span
-                                                    class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('month', $month)->where('year', $year)->where('shop_id', Session::get('shop_id'))->sum('profit') }}
+                                                    class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('month', $month)->where('year', $year)->where('shop_id', Session::get('shop_id'))->sum('profit') }}{{ Session::get('money') }}
                                             </span>
                                         
                                         </div>
@@ -256,14 +256,14 @@ App::setLocale(Session::get('locale'));
                                             <span class="info-box-text text-center text-secondary">Gross Profit</span>
                                        
                                             <span
-                                            class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('month', $month)->where('year', $year)->where('shop_id', Session::get('shop_id'))->sum('true_price') - $gross_profit }}
+                                            class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('month', $month)->where('year', $year)->where('shop_id', Session::get('shop_id'))->sum('true_price') - $gross_profit }}{{ Session::get('money') }}
                                             </span>
 
                                             @else
                                             <span class="info-box-text text-center text-secondary">Gross Loss</span>
                                        
                                             <span
-                                            class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('month', $month)->where('year', $year)->where('shop_id', Session::get('shop_id'))->sum('true_price') - $gross_profit }}
+                                            class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('month', $month)->where('year', $year)->where('shop_id', Session::get('shop_id'))->sum('true_price') - $gross_profit }}{{ Session::get('money') }}
                                             </span>
                                             @endif
                                            
@@ -365,7 +365,7 @@ App::setLocale(Session::get('locale'));
                                           <span
                                               class="info-box-text text-center text-secondary">{{ __('message.seller.sales') }}</span>
                                           <span
-                                              class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('sales_date', $date)->where('shop_id', Session::get('shop_id'))->sum('true_price') }}</span>
+                                              class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('sales_date', $date)->where('shop_id', Session::get('shop_id'))->sum('true_price') }}{{ Session::get('money') }}</span>
                                       </div>
                                   </div>
                               </div>
@@ -375,7 +375,7 @@ App::setLocale(Session::get('locale'));
                                       <div class="info-box-content">
                                           <span class="info-box-text text-center text-secondary">Profit</span>
                                            <span
-                                                  class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('sales_date', $date)->where('shop_id', Session::get('shop_id'))->sum('profit') }}</span></span>
+                                                  class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('sales_date', $date)->where('shop_id', Session::get('shop_id'))->sum('profit') }}{{ Session::get('money') }}</span></span>
                                       </div>
                                   </div>
                               </div>
@@ -383,19 +383,19 @@ App::setLocale(Session::get('locale'));
                               <div class="col-md-4">
                                   <div class="info-box bg-white">
                                       <div class="info-box-content">
-                                        @if ((App\Models\Mauzo::where('sales_date', $date)->where('shop_id', Session::get('shop_id'))->sum('true_price')) - $gross_profit > 0)
+                                        @if ((App\Models\Mauzo::where('sales_date', $date)->where('shop_id', Session::get('shop_id'))->sum('true_price')) - $gross_profit > 0){{ Session::get('money') }}
                                                 
                                         <span class="info-box-text text-center text-secondary">Gross Profit</span>
                                    
                                         <span
-                                        class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('sales_date', $date)->where('shop_id', Session::get('shop_id'))->sum('true_price') - $gross_profit }}
+                                        class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('sales_date', $date)->where('shop_id', Session::get('shop_id'))->sum('true_price') - $gross_profit }}{{ Session::get('money') }}
                                         </span>
 
                                         @else
                                         <span class="info-box-text text-center text-secondary">Gross Loss</span>
                                    
                                         <span
-                                        class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('sales_date', $date)->where('shop_id', Session::get('shop_id'))->sum('true_price') - $gross_profit }}
+                                        class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('sales_date', $date)->where('shop_id', Session::get('shop_id'))->sum('true_price') - $gross_profit }}{{ Session::get('money') }}
                                         </span>
                                         @endif
                                       </div>

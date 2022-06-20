@@ -273,8 +273,8 @@
                                               @endif
                                           </td>
                                           @endif
-                                          <td>{{$value->purchased_price}}</td>
-                                          <td>{{$value->sold_price}}</td>
+                                          <td>{{$value->purchased_price}}{{ Session::get('money') }}</td>
+                                          <td>{{$value->sold_price}}{{ Session::get('money') }}</td>
                                           <td>{{$value->expire}}</td>
                                           <td>{{$value->location}}</td>
                                         

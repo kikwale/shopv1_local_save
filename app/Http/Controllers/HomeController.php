@@ -81,8 +81,11 @@ created_at*/
             $sales = DB::table('mauzos')->where('owner_id',$seller->owner_id)->where('shop_id',$seller->shop_id)->cursor();
             $data = DB::table('products')->where('owner_id',$seller->owner_id)->where('shop_id',$seller->shop_id)
             ->where('total','!=',0)->orderBy('id','desc')->cursor();
+            $moneys = DB::table('madukas')->where('id',$seller->shop_id)->first();
             Session::put('owner_id',$seller->owner_id);
             Session::put('shop_id',$seller->shop_id);
+            Session::put('money',$moneys->money);
+
             return view('seller.index')->with('data',$data)->with('sales',$sales)
             ->with('daySales',DB::table('mauzos')->where('sales_date', $date1)->where('shop_id',$seller->shop_id)->sum('true_price'))
             ->with('dayProfit',DB::table('mauzos')->where('sales_date', $date1)->where('shop_id',$seller->shop_id)->sum('profit'))
@@ -145,6 +148,8 @@ created_at*/
         $duka->ward =$request->ward; 
         $duka->street = $request->street;
         $duka->tin =$request->tin; 
+        $duka->money =$request->money_symbol; 
+        
         $duka->save();
       return redirect()->to('admin_register_shop')->with('success','Successfuly Shop Created...!');
 
@@ -174,7 +179,9 @@ created_at*/
         $duka->district =$request->district; 
         $duka->ward =$request->ward; 
         $duka->street = $request->street;
-        $duka->tin =$request->tin; 
+        $duka->tin =$request->tin;
+        $duka->money =$request->money_symbol;
+         
         $duka->save();
 
         return back();

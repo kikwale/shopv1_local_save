@@ -44,7 +44,7 @@ class ProductController extends Controller
         $date1=date_create(date('Y-m-d'));
         $date2=date_create($total_quantity->expire);
         $diff=date_diff($date1,$date2);
-        Session::put('money',$total_quantity->money_unit);
+        
         // %a outputs the total number of days
        $diff->format("%a");
     //  $a=floatval($request->subquantity);
@@ -101,8 +101,8 @@ class ProductController extends Controller
             return  back()->with('unsold',"Sold")->with('sold',$request->product_id)
             ->with('daySales',DB::table('mauzos')->where('sales_date', $date1)->where('shop_id',$request->shop_id)->sum('true_price'))
             ->with('dayProfit',DB::table('mauzos')->where('sales_date', $date1)->where('shop_id',$request->shop_id)->sum('profit'))
-            ->with('month_profit',DB::table('mauzos')->where('month', $nameOfMonth)->where('shop_id',$request->shop_id)->sum('profit'))
-            ->with('month_sales',DB::table('mauzos')->where('month', $nameOfMonth)->where('shop_id',$request->shop_id)->sum('true_price'));
+            ->with('month_profit',DB::table('mauzos')->where('month', $nameOfMonth)->where('year',date('Y'))->where('shop_id',$request->shop_id)->sum('profit'))
+            ->with('month_sales',DB::table('mauzos')->where('month', $nameOfMonth)->where('year',date('Y'))->where('shop_id',$request->shop_id)->sum('true_price'));
 
          } elseif($request->discount == "" && $request->subquantity != '') {
          
@@ -274,7 +274,7 @@ class ProductController extends Controller
 
     public function jumlaForm(Request $request){
          $total_quantity = DB::table('products')->where('id',$request->product_id)->first();
-         Session::put('money',$total_quantity->money_unit);
+         
          $date1=date_create(date('Y-m-d'));
         $date2=date_create($total_quantity->expire);
         $diff=date_diff($date1,$date2);
@@ -713,7 +713,7 @@ class ProductController extends Controller
         public  function addProduct(Request $request){
           
             $product = Product::where('id',$request->product_id)->where('shop_id',Session::get('shop_id'))->first();
-            $product->total = $request['total_amount'];
+            $product->total = $product->total +  $request['total_amount'];
             $product->notification = $request['notification'];
             $product->purchased_price = $request['purchased_price'];
             $product->sold_price = $request['selling_price'];
@@ -721,5 +721,59 @@ class ProductController extends Controller
             $product->location = $request['location'];
             $product->save();
             return back();
+        }
+
+        public function sellerUpdateProduct(Request $request){
+
+            
+            return view('seller.product.update_product')->with('product', Product::where('id',$request->id)->first());
+           
+        }
+
+        public function sellerUpdateProductSave(Request $request){
+
+            
+            if ( empty($request->subquantity)) {
+                $amount = $request->amount*$request->quantity;
+                $product = Product::where('id',$request->product_id)->where('shop_id',$request->shop_id)->first();
+                $product->name = $request->name;
+                $product->owner_id = $request->owner_id;
+                $product->shop_id  = $request->shop_id;
+                $product->category = $request->category;
+                $product->unit = $request->unit;
+                $product->notification = $request->notification;
+                $product->purchased_price = $request->purchased_price;
+                $product->sold_price = $request->sold_price;
+                $product->expire = $request->expire;
+                $product->location = $request->location;
+                $product->save();
+         
+                return back()->with('success','Successfully Product(s) Updated......!!');
+            } elseif(!empty($request->subquantity)){
+                $amount = ($request->quantity+$request->subquantity)*$request->amount;
+                $product = new Product();
+                $product->name = $request->name;
+                $product->owner_id = $request->owner_id;
+                $product->shop_id  = $request->shop_id;
+                $product->category = $request->category;
+                $product->unit = $request->unit;
+                
+                $product->notification = $request->notification;
+                $product->money_unit = $request->money_unit; 
+                $product->purchased_price = $request->purchased_price;
+                $product->sold_price = $request->sold_price;
+                $product->expire = $request->expire;
+                $product->location = $request->location;
+                $product->save();
+         
+                return back()->with('success','Successfully Product(s) Updated......!!');
+            }
+
+        }
+
+        public function sellerDeleteProduct(Request $request){
+
+            Product::where('id',$request->id)->where('shop_id',Session::get('shop_id'))->delete();
+            return back()->with('success','Successfully Product(s) Deleted......!!');
         }
 }

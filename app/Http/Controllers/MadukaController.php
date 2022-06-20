@@ -27,6 +27,9 @@ class MadukaController extends Controller
     public function owner_shop(Request $request){
         Session::put('owner_id',$request->owner_id);
         Session::put('shop_id',$request->shop_id);
+        $moneys =  Maduka::where('id',$request->shop_id)->first();
+        Session::put('money',$moneys->money);
+        
         $data = DB::table('products')->where('owner_id',$request->owner_id)->where('shop_id',$request->shop_id)->orderBy('id','desc')->cursor();
         return view('owner.shop')->with('data',$data);
     }

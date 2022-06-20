@@ -30,8 +30,18 @@ App::setLocale(Session::get('locale'));
       
 @section('content')
 <div class="container" >
-    
-    
+     
+  <div class="row">
+    <h3>ACCOUNT FOR DEMOSTRATION (Demo)</h3>
+    <ol>
+      <li>Business Owner (Trader)</li>
+      <p><b>Email:</b> owner@gmail.com</p>
+      <p><b>Password:</b> 123456789</p>
+      <li>Seller/Employee</li>
+      <p><b>Email:</b> shotramtest@gmail.com</p>
+      <p><b>Password:</b>SHOTRAM</p>
+    </ol>
+  </div>
    
     <div class="row justify-content-center">
         <div class="col-md-8">

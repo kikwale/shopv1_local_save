@@ -139,6 +139,11 @@ Route::get('/seller-show-product-sold-year','ProductController@sellerShowProducc
 Route::get('/seller-show-product-sold-month','ProductController@sellerShowProducctsSoldMonth')->name('seller.show-product-sold-month');
 Route::get('/seller-show-product-sold-day','ProductController@sellerShowProducctsSoldDay')->name('seller.show-product-sold-day');
 Route::get('/seller-returned-products','ReturnController@sellerShowReturnedProducts')->name('seller.returned-products');
+Route::get('/seller_update_product','ProductController@sellerUpdateProduct')->name('seller.update-product');
+Route::post('/seller-update-product','ProductController@sellerUpdateProductSave')->name('seller.update-product-save');
+Route::get('/seller-delete-product','ProductController@sellerDeleteProduct')->name('seller.delete-product');
+
+
 
 
 

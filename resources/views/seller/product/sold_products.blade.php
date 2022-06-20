@@ -309,7 +309,7 @@ App::setLocale(Session::get('locale'));
                                           <span
                                               class="info-box-text text-center text-secondary">{{ __('message.seller.sales') }}</span>
                                           <span
-                                              class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('sales_date', $date)->where('shop_id', Session::get('shop_id'))->sum('true_price') }}</span>
+                                              class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('sales_date', $date)->where('shop_id', Session::get('shop_id'))->sum('true_price') }}{{ Session::get('money') }}</span>
                                       </div>
                                   </div>
                               </div>
@@ -319,7 +319,7 @@ App::setLocale(Session::get('locale'));
                                       <div class="info-box-content">
                                           <span class="info-box-text text-center text-secondary">Profit</span>
                                            <span
-                                                  class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('sales_date', $date)->where('shop_id', Session::get('shop_id'))->sum('profit') }}</span></span>
+                                                  class="info-box-number text-center text-secondary mb-0">{{ App\Models\Mauzo::where('sales_date', $date)->where('shop_id', Session::get('shop_id'))->sum('profit') }}{{ Session::get('money') }}</span></span>
                                       </div>
                                   </div>
                               </div>
@@ -442,10 +442,10 @@ updated_at
 
                                             <td>{{ $value->amount }}
                                             </td>
-                                            <td>{{ $value->purchased_price }}</td>
-                                            <td>{{ $value->sold_price }}</td>
-                                            <td>{{ $value->discount }}</td>
-                                            <td>{{ $value->true_price }}</td>
+                                            <td>{{ $value->purchased_price }} {{ Session::get('money') }}</td>
+                                            <td>{{ $value->sold_price }} {{ Session::get('money') }}</td>
+                                            <td>{{ $value->discount }} {{ Session::get('money') }}</td>
+                                            <td>{{ $value->true_price }} {{ Session::get('money') }}</td>
                                             <td>{{ $value->customer_name }}</td>
                                             <td><a class="btn btn-warning" href="seller-return-product?kt={{ $value->id }}">Return</a></td>
                                             

@@ -2,7 +2,7 @@
 <?php
 App::setLocale(Session::get('locale'));
 ?>
-</head>
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

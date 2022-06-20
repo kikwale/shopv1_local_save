@@ -114,7 +114,23 @@
                                                                     </div>
                                                                 </div>
                         
+                                                                <div class="form-group row">
+                                                                    <label for="money_symbol" class="col-md-4 col-form-label text-md-right">{{ __('Money Symbol') }}</label>
                                         
+                                                                    <div class="col-md-6">
+                                                                        <select id="money_symbol" type="text" class="form-control select2 @error('money_symbol') is-invalid @enderror" name="money_symbol" value="{{ old('money_symbol') }}" autocomplete="money_symbol" required autofocus>
+                                                                            <option value=""></option>
+                                                                               @foreach (App\Models\Money::all() as $value)
+                                                                               <option value="{{ $value->name }}">{{ $value->name }}</option>
+                                                                               @endforeach
+                                                                        </select>
+                                                                        @error('money_symbol')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
                         
                                                                 <div class="form-group row mb-0">
                                                                     <div class="col-md-6 offset-md-4">

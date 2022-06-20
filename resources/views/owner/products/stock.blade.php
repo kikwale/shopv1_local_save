@@ -151,7 +151,6 @@
                                                   <th>Price for Sale</th>
                                                   <th>Expire Date</th>
                                                   <th>Location</th>
-                                                  <th>Action</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -191,21 +190,16 @@
                                           <td>{{$value->expire}}</td>
                                           <td>{{$value->location}}</td>
                                         
-                                          <td>
+                                          {{-- <td>
                                             @if ($value->category == "Jumla")
                                             <a class="btn btn-success btn-sm" href="seller_update_jum?id={{$value->id}}&&dhfjhdhgfjhgfjdhfhghguh@#gfdf$=5hj5hjg$3$$$$$#*^fg">
                                             
                                              Update
                                             </a>
-                                            @else 
-                                            <a class="btn btn-success btn-sm" href="seller_update_rej?id={{$value->id}}&&dhfjhdhgfjhgfjdhfhghguh@#gfdf$=5hj5hjg$3$$$$$#*^fg">
-                                            
-                                              Update
-                                            </a>
-                                            @endif
+                                           
 
                                              
-                                          </td>
+                                          </td> --}}
 
                                           @if ($value->category == "Jumla")
                                                                 
@@ -409,7 +403,6 @@
                                                   <th>Sold Price</th>
                                                   <th>Expire Date</th>
                                                   <th>Location</th>
-                                                  <th>Action</th>
                                                 </tr>
                                                 </tfoot>
                                               </table>
@@ -457,7 +450,6 @@
                                               <th>Discount</th>
                                               <th>Expire Date</th>
                                               <th>Location</th>
-                                              <th>Action</th>
                                           </tr>
                                           </thead>
                                           <tbody>
@@ -476,7 +468,6 @@
                                               <th>Discount</th>
                                               <th>Expire Date</th>
                                               <th>Location</th>
-                                              <th>Action</th>
                                           </tr>
                                           </tfoot>
                                         </table>

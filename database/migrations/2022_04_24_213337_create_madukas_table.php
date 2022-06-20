@@ -23,6 +23,7 @@ class CreateMadukasTable extends Migration
             $table->string('ward')->nullable();
             $table->string('street');
             $table->string('tin')->nullable();
+            $table->string('money')->default('Tsh');
             $table->string('seller_email')->nullable();
             $table->string('seller_Phone')->nullable();
             $table->timestamps();

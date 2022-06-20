@@ -72,7 +72,7 @@ App::setLocale(Session::get('locale'));
                                 <label for="category" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
     
                                 <div class="col-md-6">
-                                    <select id="category" type="text" class="form-control select2 @error('category') is-invalid @enderror" name="category" value="{{ old('category') }}" autocomplete="category" autofocus>
+                                    <select id="category" type="text" required class="form-control select2 @error('category') is-invalid @enderror" name="category" value="{{ old('category') }}" autocomplete="category" autofocus>
                                         <option value=""></option>
                                           
                                            <option value="{{ __('message.wholesale') }}">{{ __('message.wholesale') }}</option>
@@ -92,7 +92,7 @@ App::setLocale(Session::get('locale'));
                                 <label for="unit" class="col-md-4 col-form-label text-md-right">{{ __('Units') }}</label>
     
                                 <div class="col-md-6">
-                                    <select id="unit" type="text" class="form-control select2 @error('unit') is-invalid @enderror" name="unit" value="{{ old('unit') }}" autocomplete="unit" autofocus>
+                                    <select id="unit" type="text"  required class="form-control select2 @error('unit') is-invalid @enderror" name="unit" value="{{ old('unit') }}" autocomplete="unit" autofocus>
                                         <option value=""></option>
                                            @foreach (App\Models\UnitTable::all() as $value)
                                            <option value="{{ $value->name }}">{{ $value->name }}</option>
@@ -162,24 +162,7 @@ App::setLocale(Session::get('locale'));
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="money_symbol" class="col-md-4 col-form-label text-md-right">{{ __('Money Symbol') }}</label>
-    
-                                <div class="col-md-6">
-                                    <select id="money_symbol" type="text" class="form-control select2 @error('money_symbol') is-invalid @enderror" name="money_symbol" value="{{ old('money_symbol') }}" autocomplete="money_symbol" required autofocus>
-                                        <option value=""></option>
-                                           @foreach (App\Models\Money::all() as $value)
-                                           <option value="{{ $value->name }}">{{ $value->name }}</option>
-                                           @endforeach
-                                    </select>
-                                    @error('money_symbol')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
+                         
                             <div class="form-group row">
                                 <label for="purchased_price" class="col-md-4 col-form-label text-md-right">{{ __('Purchased Price per Unit (Ex: 1kg)') }}</label>
     
