@@ -77,7 +77,7 @@ App::setLocale(Session::get('locale'));
                             @endif --}}
                            
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="user-guid">{{ __('User Guid') }}</a>
+                                <a class="nav-link text-white" href="user-guid">{{ __('User Guide') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="#">{{ __('message.about') }}</a>

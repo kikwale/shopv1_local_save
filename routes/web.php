@@ -86,10 +86,27 @@ Route::group(['middleware'=>'auth'], function () {
   Route::post('/owner-save-newPwd','HomeController@ownerSaveNewPwd')->name('owner.save-newPwd');
   Route::get('/owner-expenditure','ExpenditureController@index')->name('owner.expenditure');
   Route::post('/owner-expenditure','ExpenditureController@saveExpenditure')->name('save-expenditure');
-
+  Route::get('/Loan-from','LoanController@ownerLoanFrom')->name('owner.Loan-from');
+  Route::get('/Loan-to','LoanController@ownerLoanTo')->name('owner.Loan-to');
+  Route::get('/payments','PaymentController@index')->name('owner.payments');
+  Route::post('/payroll','PayrollController@index')->name('owner.payroll');
+  Route::post('/owner-loan-from-modal','LoanController@ownerLoanFromModal')->name('owner.loan-from-modal');
+  Route::post('/owner-loan-return-modal','LoanController@ownerLoanReturnModal')->name('owner.loan-return-modal');
+  Route::post('/owner-loan-to-modal','LoanController@ownerLoanToModal')->name('owner.loan-to-modal');
+  Route::get('/loan-to-info',function(){
+    return view('owner.loan.loan_to_info');
+  })->name('owner.loan-to-info');
+  Route::post('/owner-employee-loan-return','LoanController@ownerEmployeeLoanReturn')->name('owner.employee-loan-return');
+  Route::post('/owner-employee-salary','PaymentController@ownerEmployeeSalary')->name('owner.employee-salary');
+  Route::get('/owner-monthly-payroll','PayrollController@index')->name('owner.month_payroll');
+  Route::get('/owner-allowances','AllowanceController@index')->name('owner.allowance');
+  Route::get('/assign-allowance','AllowanceController@assignAllowance')->name('assign-allowance');
+  Route::post('/owner-assign-allowance','AllowanceController@ownerAssignAllowance')->name('owner.assign-allowance');
+  Route::post('/owner-monthly-payroll','PayrollController@ownerMonthlyPayroll')->name('owner.monthly-payroll');
+  
   
 
-
+  
 });
 
 
@@ -142,6 +159,7 @@ Route::get('/seller-returned-products','ReturnController@sellerShowReturnedProdu
 Route::get('/seller_update_product','ProductController@sellerUpdateProduct')->name('seller.update-product');
 Route::post('/seller-update-product','ProductController@sellerUpdateProductSave')->name('seller.update-product-save');
 Route::get('/seller-delete-product','ProductController@sellerDeleteProduct')->name('seller.delete-product');
+Route::get('/seller-invoice','InvoiceController@index')->name('seller.invoice');
 
 
 

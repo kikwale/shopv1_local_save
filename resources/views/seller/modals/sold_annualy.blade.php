@@ -5,7 +5,7 @@
                     <div class="modal-dialog modal-l modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Select Year</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">{{ __('message.seller.select_year') }}</h5>
                         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -21,7 +21,7 @@
                   
 
                                         <div class="form-group row">
-                                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Year') }}</label>
+                                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('message.seller.year') }}</label>
                           
                                             <div class="col-md-6">
                                                 <select id="year" type="text" class="form-control select2 @error('year') is-invalid @enderror" name="year" value="{{ old('year') }}"  autocomplete="year">
@@ -48,7 +48,7 @@
                                 <div class="form-group row mb-0">
                                     <div class="col-md-6 offset-md-4">
                                         <button type="submit" class="btn btn-primary btn-sm">
-                                            {{ __('Continue..') }}
+                                            {{ __('message.seller.continue') }}
                                         </button>
                                     </div>
                                 </div>

@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class seller extends Model
 {
+    protected $fillable = [
+        'shop_id',
+    ];
     use HasFactory;
 }

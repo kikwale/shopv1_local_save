@@ -3,7 +3,7 @@
 return [
 
     //Home page Navigation
- 'title' => 'SalesBook',
+ 'title' => 'SHOTRAM',
  'language' =>'Language',
   'language_name' => 'English',
  'about' => 'About',
@@ -82,10 +82,15 @@ return [
   'seller' => [
 
      //sidebar
+       'search' => 'Search',
+       
+       'change_psw' => 'Change Password',
+       'logout'     => 'Logout',
        'dashboard' => 'Dashboard',
        'name'   => 'Seller',
-       'workers' => 'Employees',
-       'sales' => 'Sales',
+       'sales' => 'Cash Sales',
+       'credit_sales' => 'Credit Sales',
+       'profit' => 'Profit',
        'product' => 'Product',
        'start_selling' => 'Start Selling',
        'print_receipts' => 'Print Receipt',
@@ -110,6 +115,57 @@ return [
        'annual_sales'   => 'Annual Sales',
        'wholesale_products' => 'Wholesale Products',
        'retail_products'    => 'Retail Products',
+
+        // Employee
+        'workers' => 'Employees',
+        'shop_worker' => 'Shop Worker(s)',
+        'first_name' => 'First Name',
+        'middle_name' => 'Middle Name',
+        'last_name' => 'Last Name',
+        'gender' => 'Gender',
+        'email' => 'Email',
+        'phone' => 'Phone',
+
+        //sales
+        'selling_dashboard' => 'Selling Dashboard',
+        'today_sales' => 'Todays Sales:',
+        'today_profit'  => 'Todays Profit',
+       'monthly_profit'    => 'Monthly Profit',
+       'sell' => 'Sell',
+
+       //selling model
+       'sell_product' => 'Sell Product',
+       'total_quantity_sold' => 'Total Quantity Sold (whole number)',
+       'sub_quantity' => 'Sub-Quantity',
+       'discount' => 'Discount',
+       'customer_fully_name' => 'Customer Full Name',
+
+       // selling table
+       'product_name' => 'Product Name',
+       'product_category' => 'Product Category',
+       'unit' => 'Unit',
+       'quantity' => 'Quantity',
+       'total' => 'Total',
+       'purchased_price' => 'Purchased Price',
+       'selling_price' => 'Selling Price',
+       'expire_date' => 'Expire Date',
+       'location'  => 'Location',
+       'action' => 'Action',
+
+       //sales modals
+       'select_year' => 'Select Year',
+       'year'   => 'Year',
+       'continue' => 'Continue..',
+       'select_month' => 'Select Month & Year',
+       'month' => 'Month',
+       'select_date' => 'Select Date',
+       'date' => 'Date',
+
+       //sold date
+       'sales_on' => 'Sales on',
+       'invoice' => 'Invoice',
+       'quotation' => 'Quotation',
+
   ],
   
 ];

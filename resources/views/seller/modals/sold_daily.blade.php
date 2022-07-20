@@ -5,7 +5,7 @@
                     <div class="modal-dialog modal-l modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Create User</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">{{ __('message.seller.select_date') }}</h5>
                         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -19,7 +19,7 @@
                                 <input id="type" type="text" class="form-control @error('type') is-invalid @enderror" name="type" value="Day" hidden autocomplete="type">
           
                                 <div class="form-group row">
-                                    <label for="day" class="col-md-4 col-form-label text-md-right">{{ __('Date') }}</label>
+                                    <label for="day" class="col-md-4 col-form-label text-md-right">{{ __('message.seller.date') }}</label>
                   
                                     <div class="col-md-6">
                                         <input id="day" type="date" class="form-control @error('day') is-invalid @enderror" name="day" value="{{ old('day') }}" required autocomplete="day" autofocus>
@@ -39,7 +39,7 @@
                                 <div class="form-group row mb-0">
                                     <div class="col-md-6 offset-md-4">
                                         <button type="submit" class="btn btn-primary btn-sm">
-                                            {{ __('Continue..') }}
+                                            {{ __('message.seller.continue') }}
                                         </button>
                                     </div>
                                 </div>

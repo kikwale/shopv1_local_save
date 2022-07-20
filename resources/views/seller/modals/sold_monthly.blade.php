@@ -5,7 +5,7 @@
                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Create User</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">{{ __('message.seller.select_month') }}</h5>
                         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -21,7 +21,7 @@
                                 <div class="form-group row">
                                   
                                     <div class="col-md-6">
-                                        <label for="month" class="col-md- col-form-label text-md-right">{{ __('Month') }}</label>
+                                        <label for="month" class="col-md- col-form-label text-md-right">{{ __('message.seller.month') }}</label>
                   
                                         <select id="month" type="text" class="form-control select2 @error('month') is-invalid @enderror" name="month" value="{{ old('month') }}"  autocomplete="month">
                                           <option value=""></option>
@@ -47,7 +47,7 @@
 
                     
                                     <div class="col-md-6">
-                                        <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Year') }}</label>
+                                        <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('message.seller.year') }}</label>
                           
                                         <select id="year" type="text" class="form-control select2 @error('year') is-invalid @enderror" name="year" value="{{ old('year') }}"  autocomplete="year">
                                           <option value=""></option>
@@ -74,7 +74,7 @@
                                 <div class="form-group row mb-0">
                                     <div class="col-md-6 offset-md-0">
                                         <button type="submit" class="btn btn-primary btn-sm">
-                                            {{ __('Continue..') }}
+                                            {{ __('message.seller.continue') }}
                                         </button>
                                     </div>
                                 </div>

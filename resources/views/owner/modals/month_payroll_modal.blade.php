@@ -1,17 +1,18 @@
  
            
                    <!-- Modal -->
-                   <div class="modal fade" id="month_receipt" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                   <div class="modal fade" id="month_payroll" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Monthly Receipts</h5>
+                        <div class="modal-header bg-info">
+                        <h5 class="modal-title" id="staticBackdropLabel">Monthly Payroll</h5>
                         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" action="owner-monthly-receipt">
+                            {{-- owner-monthly-payroll --}}
+                            <form method="POST" action="#">
                                 @csrf
                   
                                 <input id="shop_id" type="text" class="form-control @error('shop_id') is-invalid @enderror" name="shop_id" value="{{Session::get('shop_id') }}" hidden autocomplete="shop_id">

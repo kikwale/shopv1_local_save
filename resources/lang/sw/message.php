@@ -2,7 +2,7 @@
 
 return [
 
-    'title' => 'SalesBook',
+    'title' => 'SHOTRAM',
     'language' =>'Lugha',
     'language_name' => 'Swahili',
     'about' => 'Kuhusu',
@@ -83,14 +83,20 @@ return [
 ],
       // seller dashboard
   'seller' => [
+    'search' => 'Tafuta',
+    'change_psw' => 'Badili Nenosiri',
+    'logout'     => 'Ondoka',
     'dashboard' => 'Dashboard',
     'name'   => 'Muuzaji',
     'workers' => 'Wafanyakazi',
-    'sales' => 'Mauzo',
+    'sales' => 'Mauzo ya Keshi',
+    'credit_sales' => 'Mauzo ya Madeni',
+    'profit' => 'Faida',
     'product' => 'Bidhaa',
     'start_selling' => 'Anza Kuuza',
     'print_receipts' => 'Chapa Risiti',
     'printed_receipts' => 'Risiti Zilizochapishwa',
+    'returned_products' => 'Bidhaa zilizorudishwa',
     'register_products' => 'Sajili Bidhaa',
     'finished_products' => 'Bidhaa Zilizoisha',
     'store'             => 'Store',
@@ -109,6 +115,54 @@ return [
      'annual_sales'   => 'Mauzo Kwa Mwaka',
      'wholesale_products' => 'Bidhaa Za Jumla',
      'retail_products'    => 'Bidhaa Za Rejareja',
+
+      // Employee
+      'workers' => 'Mfanyakazi',
+      'shop_worker' => 'Wafanyakazi wa Dukani',
+      'first_name' => 'Jina la Kwanza',
+      'middle_name' => 'Jina la Kati',
+      'last_name' => 'Jina la Mwisho',
+      'gender' => 'Jinsia',
+      'email' => 'Baruapepe',
+      'phone' => 'Simu',
+
+      //sales
+      'selling_dashboard' => 'Dashboard ya Kuuzia',
+      'today_sales' => 'Mauzo ya Leo:',
+      'today_profit'  => 'Faida ya Leo',
+     'monthly_profit'    => 'Faida ya Mwezi',
+     'sell' => 'Uza',
+
+      //selling model
+      'sell_product' => 'Uza Bidhaa',
+      'total_quantity_sold' => 'Jumla ya Kiasi Kilichouzwa (Namba Nzima)',
+      'sub_quantity' => 'Kiasi cha chini',
+      'discount' => 'Punguzo',
+      'customer_fully_name' => 'Jina Kamili La Mteja',
+
+      // selling table
+      'product_name' => 'Jina la Bidhaa',
+      'product_category' => 'Aina ya Bidhaa',
+      'unit' => 'Unit',
+      'quantity' => 'Kiasi',
+      'total' => 'Jumla',
+      'purchased_price' => 'Bei ya Kununulia',
+      'selling_price' => 'Bei ya Kuuzia',
+      'expire_date' => 'Tarehe ya Expire',
+      'location'  => 'Location',
+      'action' => 'Action',
+
+       //sales modals
+       'select_year' => 'Chagua Mwaka',
+       'year'   => 'Mwaka',
+       'continue' => 'Endelea..',
+       'select_month' => 'Chagua Mwezi na Mwaka',
+       'month' => 'Mwezi',
+       'select_date' => 'Chagua Tarehe',
+       'date' => 'Tarehe',
+
+      //sold date
+      'sales_on' => 'Mauzo yaliyofanyika',
 ],
      
 ];

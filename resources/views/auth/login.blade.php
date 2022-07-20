@@ -32,15 +32,21 @@ App::setLocale(Session::get('locale'));
 <div class="container" >
      
   <div class="row">
-    <h3>ACCOUNT FOR DEMOSTRATION (Demo)</h3>
-    <ol>
-      <li>Business Owner (Trader)</li>
-      <p><b>Email:</b> owner@gmail.com</p>
-      <p><b>Password:</b> 123456789</p>
-      <li>Seller/Employee</li>
-      <p><b>Email:</b> shotramtest@gmail.com</p>
-      <p><b>Password:</b>SHOTRAM</p>
-    </ol>
+
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <h4>ACCOUNT FOR DEMOSTRATION (Demo)</h4>
+      <ol>
+        <li>Business Owner (Trader)</li>
+        <p><b>Email:</b> owner@gmail.com</p>
+        <p><b>Password:</b> 123456789</p>
+        <li>Seller/Employee</li>
+        <p><b>Email:</b> shotramtest@gmail.com</p>
+        <p><b>Password:</b>SHOTRAM</p>
+      </ol>
+    </div>
+    <div class="col-md-2"></div>
+   
   </div>
    
     <div class="row justify-content-center">

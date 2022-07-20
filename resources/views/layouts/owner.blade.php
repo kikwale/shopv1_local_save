@@ -55,12 +55,12 @@ App::setLocale(Session::get('locale'));
 
   <!-- /.content-wrapper -->
   @include('nav.owner')
-  
+  @include('owner/modals.month_payroll_modal')
  @yield('content')
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy;2021 <a href="#">Shop</a>.</strong>
+    <strong>Copyright &copy;2022 <a href="#">ShoTram</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.0.4
@@ -111,6 +111,7 @@ App::setLocale(Session::get('locale'));
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script src="dist/js/jspdf.min.js"></script>
 
 <script>
   $(function () {

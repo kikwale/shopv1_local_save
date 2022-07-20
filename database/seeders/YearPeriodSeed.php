@@ -15,12 +15,10 @@ class YearPeriodSeed extends Seeder
     public function run()
     {
         $userInputs = [
+            
             ['year' => '2022'],
-
             ['year' => '2021'],
-
               ['year' => '2020'],
-
               ['year' => '2018'],
               ['year' => '2017'],
               ['year' => '2016'],

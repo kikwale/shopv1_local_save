@@ -79,7 +79,7 @@
               <div class="row mb-2">
                 <div class="col-sm-6">
                
-                  <h1 class="m-0 text-dark">Sales</h1>
+                  <h1 class="m-0 text-dark">{{ __('message.seller.sales') }}</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                 
@@ -130,7 +130,7 @@
                     <a href="#" data-toggle="modal" data-target="#sold_annual">
                           <div class="info-box bg-" style="background-color: #F15A24">
                               <div class="info-box-content">
-                                  <span class="info-box-text text-center text-light">Annual Sales</span>
+                                  <span class="info-box-text text-center text-light">{{ __('message.seller.annual_sales') }}</span>
                               </div>
                           </div>
                       </a>
@@ -140,7 +140,7 @@
                       <a href="#" data-toggle="modal" data-target="#sold_month">
                           <div class="info-box bg-" style="background-color: #F15A24">
                               <div class="info-box-content">
-                                  <span class="info-box-text text-center text-light">Monthly Sales</span>
+                                  <span class="info-box-text text-center text-light">{{ __('message.seller.monthly_sales') }}</span>
                               </div>
                           </div>
                       </a>
@@ -150,7 +150,7 @@
                       <a href="#" data-toggle="modal" data-target="#sold_day">
                           <div class="info-box bg- " style="background-color: #F15A24">
                               <div class="info-box-content">
-                                  <span class="info-box-text text-center text-light">Daily Sales</span>
+                                  <span class="info-box-text text-center text-light">{{ __('message.seller.daily_sales') }}</span>
                               </div>
                           </div>
                       </a>

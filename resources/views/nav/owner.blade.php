@@ -207,47 +207,98 @@
           <li class="nav-item">
             <a href="home" class="nav-link">
               <img src="dist/img/shop-icon-01.png" idth="40px" height="30px" alt="" srcset="">
-              <p>
+              <p style="font-size: 14px">
                 {{__('Shops Panell')}}
               </p>
             </a>
           <li class="nav-item">
             <a href="shop_worker?ower_id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
               <img src="dist/img/people-01.png" width="40px" height="30px" alt="" srcset="">
-              <p>
+              <p style="font-size: 14px">
                 {{__('message.seller.workers')}}
               </p>
             </a>
 
 
           </li>
+          <li class="nav-item">
+            <a href="owner-allowances" class="nav-link">
+              <img src="dist/img/allowance.png" width="30px" height="30px" alt="" srcset="">
+              <p style="font-size: 14px">
+                {{__('Allowances')}}
+              </p>
+            </a>
+
+
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <img src="dist/img/loan.png" width="30px" height="30px" alt="" srcset="">
+              {{-- <i class="nav-icon fas fa-circle"></i> --}}
+              <p style="font-size: 14px">
+                Loan
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            
+              
+  
+              <li class="nav-item">
+                <a href="Loan-from" class="nav-link">
+                    <i class="far fa-circle nav-icon text-info"></i>
+                  Loan from
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="Loan-to" class="nav-link">
+                  <i class="far fa-circle nav-icon text-info"></i>
+                  <p>Loan to</p>
+                </a>
+              </li>
+  
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="payments" class="nav-link">
+              <img src="dist/img/payments.png" width="30px" height="30px" alt="" srcset="">
+              <p style="font-size: 14px">
+                Payments
+              </p>
+            </a>
+        
+          </li>
+
+          <li class="nav-item">
+            <a href="owner-monthly-payroll" class="nav-link">
+              <img src="dist/img/payroll.png" width="30px" height="30px" alt="" srcset="">
+              <p style="font-size: 14px">
+                Payroll
+              </p>
+            </a>
+        
+          </li>
 
           <li class="nav-item">
             <a href="owner-sold-product?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
               <img src="dist/img/sales-icon-01.png" width="30px" height="30px" alt="" srcset="">
-              <p>
+              <p style="font-size: 14px">
                 Sales
               </p>
             </a>
         
           </li>
 
-          <li class="nav-item">
-            <a href="owner-receipt" class="nav-link">
-              <img src="dist/img/receipt-icon-01.png" width="30px" height="30px" alt="" srcset="">
-              <p>
-                Receipts
-              </p>
-            </a>
-        
-          </li>
+         
 
     
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <img src="dist/img/product-icon.png" width="30px" height="30px" alt="" srcset="">
             {{-- <i class="nav-icon fas fa-circle"></i> --}}
-            <p>
+            <p style="font-size: 14px">
                 Products
               <i class="right fas fa-angle-left"></i>
             </p>
@@ -274,9 +325,9 @@
 
         <li class="nav-item has-treeview">
           <a href="owner-expenditure" class="nav-link">
-            <img src="dist/img/product-icon.png" width="30px" height="30px" alt="" srcset="">
+            <img src="dist/img/expenditures.png" width="30px" height="30px" alt="" srcset="">
             {{-- <i class="nav-icon fas fa-circle"></i> --}}
-            <p>
+            <p style="font-size: 14px">
           Expenditure
        
             </p>
@@ -286,19 +337,19 @@
         </li>
 
         <li class="nav-item has-treeview">
-          {{-- <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
-            <p>
-            Profit
+           <a href="#" class="nav-link">
+            <img src="dist/img/profits & loss.png" width="30px" height="30px" alt="" srcset="">
+            <p style="font-size: 14px">
+            Profit/Loss
               <i class="fas fa-angle-left right"></i>
-              {{-- <span class="badge badge-info right">6</span> 
+             
             </p>
-          </a> --}}
+          </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="owner-net-profit" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Net Profit/Loss</p>
+                <p>Gross Profit/Loss</p>
               </a>
             </li>
            
@@ -306,7 +357,7 @@
             <li class="nav-item">
               <a href="owner-expenses" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                 Expenses
+                  <p>Net Profit/Loss</p>
               </a>
             </li>
           </ul>
@@ -315,7 +366,7 @@
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <img src="dist/img/order-icon-01.png" idth="40px" height="30px" alt="" srcset="">
-            <p>
+            <p style="font-size: 14px">
             Orders
               <i class="fas fa-angle-left right"></i>
               {{-- <span class="badge badge-info right">6</span> --}}

@@ -29,6 +29,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'role',
     ];
 
+  //php artisan migrate --path=/database/migrations/2022_07_08_131027_create_loan_to_details_table.php
   
     /**
      * The attributes that should be hidden for serialization.

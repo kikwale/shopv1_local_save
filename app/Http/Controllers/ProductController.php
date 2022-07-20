@@ -572,9 +572,9 @@ class ProductController extends Controller
    return view('seller/product.sold_products')
     ->with('data',$data)
     ->with('grossprofit',$gross_profit)
-    ->with('type',$request->type)
-    ->with('year',$request->year)
-    ->with('month',$request->month);
+    ->with('type',Session::get('type'))
+    ->with('year',Session::get('year'))
+    ->with('month',Session::get('month'));
 
    }
 

@@ -17,7 +17,7 @@ App::setLocale(Session::get('locale'));
         <div class="row mb-2">
           <div class="col-sm-6">
          
-            <h1 class="m-0 text-dark">Shop Worker(s)</h1>
+            <h1 class="m-0 text-dark">{{ __('message.seller.shop_worker') }}</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
           
@@ -38,7 +38,7 @@ App::setLocale(Session::get('locale'));
                   <div class="col-md-12">
                     <div class="car">
                       <div class="card-header">
-                        <h5 class="card-title">Shop Worker(s)</h5>
+                        <h5 class="card-title">{{ __('message.seller.shop_worker') }}</h5>
 
                         {{-- <div class="card-tools">
                           <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -55,12 +55,12 @@ App::setLocale(Session::get('locale'));
                           <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                              <th>First Name</th>
-                              <th>Middle Name</th>
-                              <th>Last Name</th>
-                              <th>Gender</th>
-                              <th>Phone</th>
-                              <th>email</th>
+                              <th>{{ __('message.seller.first_name') }}</th>
+                              <th>{{ __('message.seller.middle_name') }}</th>
+                              <th>{{ __('message.seller.last_name') }}</th>
+                              <th>{{ __('message.seller.gender') }}</th>
+                              <th>{{ __('message.seller.email') }}</th>
+                              <th>{{ __('message.seller.phone') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -88,8 +88,8 @@ upd
                                       <td>{{$value->mname}}</td>
                                       <td>{{$value->lname}}</td>
                                       <td>{{$value->gender}}</td>
-                                      <td>{{$value->phone}}</td>
                                       <td>{{$value->email}}</td>
+                                      <td>{{$value->phone}}</td>
                                      
                                     </tr>
                                 @endforeach
@@ -97,12 +97,12 @@ upd
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th>First Name</th>
-                                <th>Middle Name</th>
-                                <th>Last Name</th>
-                                <th>Gender</th>
-                                <th>Phone</th>
-                                <th>email</th>
+                              <th>{{ __('message.seller.first_name') }}</th>
+                              <th>{{ __('message.seller.middle_name') }}</th>
+                              <th>{{ __('message.seller.last_name') }}</th>
+                              <th>{{ __('message.seller.gender') }}</th>
+                              <th>{{ __('message.seller.email') }}</th>
+                              <th>{{ __('message.seller.phone') }}</th>
                             </tr>
                             </tfoot>
                           </table>
@@ -137,12 +137,12 @@ upd
                     <table id="example1" class="table table-bordered table-striped">
                       <thead>
                       <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Middle Name</th>
-                        <th>Gender</th>
-                        <th>Phone</th>
-                        <th>email</th>
+                        <th>{{ __('message.seller.first_name') }}</th>
+                        <th>{{ __('message.seller.middle_name') }}</th>
+                        <th>{{ __('message.seller.last_name') }}</th>
+                        <th>{{ __('message.seller.gender') }}</th>
+                        <th>{{ __('message.seller.email') }}</th>
+                        <th>{{ __('message.seller.phone') }}</th>
                       </tr>
                       </thead>
                       <tbody>
@@ -151,12 +151,12 @@ upd
                       </tbody>
                       <tfoot>
                       <tr>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Middle Name</th>
-                          <th>Gender</th>
-                          <th>Phone</th>
-                          <th>email</th>
+                        <th>{{ __('message.seller.first_name') }}</th>
+                        <th>{{ __('message.seller.middle_name') }}</th>
+                        <th>{{ __('message.seller.last_name') }}</th>
+                        <th>{{ __('message.seller.gender') }}</th>
+                        <th>{{ __('message.seller.email') }}</th>
+                        <th>{{ __('message.seller.phone') }}</th>
                       </tr>
                       </tfoot>
                     </table>

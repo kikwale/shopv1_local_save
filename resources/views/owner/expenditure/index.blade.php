@@ -90,14 +90,14 @@
               <div class="row">
 
                 <div class="col-md-2"></div>
-                <div class="card-body">
+                {{-- <div class="card-body">
                 
                   <a class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
                     <i class="fas fa-save"></i><br>
                     <p>Net Profit/Loss</p>
                   </a>
                  
-                </div>
+                </div> --}}
               </div>
               <br>
               

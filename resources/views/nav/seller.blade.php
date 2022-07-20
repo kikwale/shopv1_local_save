@@ -174,14 +174,14 @@
         </a>
         <div class="dropdown-divider"></div>
         <a href="seller-change-pwd" class="dropdown-item">
-          <i class="fas fa-lock mr-2"></i>Change Password
+          <i class="fas fa-lock mr-2"></i>{{ __('message.seller.change_psw') }}
           {{-- <span class="float-right text-muted text-sm">12 hours</span> --}}
         </a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="{{ route('logout') }}"
                                      onclick="event.preventDefault();
                                                    document.getElementById('logout-form').submit();">
-                               <i class="fa fa-sign-out" aria-hidden="true"></i>    {{ __('Logout') }}
+                               <i class="fa fa-sign-out" aria-hidden="true"></i>    {{ __('message.seller.logout') }}
           </a>
 
           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -224,7 +224,7 @@
     <!-- SidebarSearch Form -->
     <div class="form-inline">
       <div class="input-group" data-widget="sidebar-search">
-        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search" style="background-color:#024263f1">
+        <input class="form-control form-control-sidebar" type="search" placeholder="{{ __('message.seller.search') }}" aria-label="Search" style="background-color:#024263f1">
         <div class="input-group-append">
           <button class="btn btn-sidebar"  style="background-color:#024263f1">
             <i class="fas fa-search fa-fw"></i>
@@ -281,38 +281,19 @@
                 <p> {{__('message.seller.sales')}}</p>
               </a>
             </li>
+            <li class="nav-item">
+              {{-- seller-credit-sales --}}
+              <a href="#" class="nav-link">
+                <i class="far fa-circle nav-icon  text-info"></i>
+                <p> {{__('message.seller.credit_sales')}}</p>
+              </a>
+            </li>
             
 
           </ul>
         </li>
 
 
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            {{-- <i class="nav-icon fas fa-shopping-bag" aria-hidden="true"></i> --}}
-            <img src="dist/img/receipt-icon-01.png" alt="" srcset="">
-            <p>
-               {{__('message.receipt')}}
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-          
-            <li class="nav-item">
-              <a href="seller-receipt-data?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon  text-info"></i>
-                  {{__('message.seller.print_receipts')}}
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="seller_printed_receipt?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
-                <i class="far fa-circle nav-icon text-info"></i>
-                <p>   {{__('message.seller.printed_receipts')}}</p>
-              </a>
-            </li>
-
-          </ul>
-        </li>
 
         
         <li class="nav-item has-treeview">
@@ -415,6 +396,27 @@
           </ul>
         </li>
        
+        <li class="nav-item has-treeview">
+          <a href="{{ route('seller.invoice') }}" class="nav-link">
+            {{-- <i class="nav-icon fas fa-users"></i> --}}
+            <img src="dist/img/people-01.png" width="40px" height="30px" alt="" srcset="">
+            <p>
+            {{__('message.seller.invoice')}}
+              {{-- <span class="badge badge-info right">6</span> --}}
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item has-treeview">
+          <a href="seller-quotation" class="nav-link">
+            {{-- <i class="nav-icon fas fa-users"></i> --}}
+            <img src="dist/img/people-01.png" width="40px" height="30px" alt="" srcset="">
+            <p>
+            {{__('message.seller.quotation')}}
+              {{-- <span class="badge badge-info right">6</span> --}}
+            </p>
+          </a>
+        </li>
 
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">

@@ -80,7 +80,7 @@
               <div class="row mb-2">
                 <div class="col-sm-6">
                
-                  <h1 class="m-0 text-dark">Selling Dashboard</h1>
+                  <h1 class="m-0 text-dark">{{ __('message.seller.selling_dashboard') }}</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                 
@@ -135,7 +135,7 @@
                                                <div class="col-md-3">
                                                 <div class="card card-outline card-primary">
                                                   <div class="card-header bg-" style="background-color: #fc8803">
-                                                    <h3 class="card-title text-white">Today's Sales: </h3>
+                                                    <h3 class="card-title text-white">{{ __('message.seller.today_sales') }} </h3>
                                     
                                                     <div class="card-tools">
                                                       <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
@@ -154,7 +154,7 @@
                                                <div class="col-md-3">
                                                   <div class="card card-outline card-primary">
                                                 <div class="card-header" style="background-color: #fc8803">
-                                                   <h3 class="card-title text-white">  Today's Profit   </h3>
+                                                   <h3 class="card-title text-white"> {{ __('message.seller.today_profit') }} </h3>
                                   
                                                   <div class="card-tools">
                                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
@@ -173,7 +173,7 @@
                                                <div class="col-md-3">
                                                 <div class="card card-outline card-primary">
                                                   <div class="card-header bg-inf" style="background-color: #fc8803">
-                                                    <h3 class="card-title text-white">Month Sales: </h3>
+                                                    <h3 class="card-title text-white">{{ __('message.seller.monthly_sales') }}</h3>
                                     
                                                     <div class="card-tools">
                                                       <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
@@ -193,7 +193,7 @@
                                                <div class="col-md-3">
                                                 <div class="card card-outline card-primary">
                                                   <div class="card-header bg-inf" style="background-color: #fc8803">
-                                                    <h3 class="card-title text-white">Month Profit: </h3>
+                                                    <h3 class="card-title text-white">{{ __('message.seller.monthly_profit') }} </h3>
                                     
                                                     <div class="card-tools">
                                                       <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
@@ -229,16 +229,16 @@
                                               <table id="example1" class="table table-bordered table-striped">
                                                 <thead>
                                                 <tr>
-                                                  <th>Product Name</th>
-                                                  <th>Product Category</th>
-                                                  <th>unit</th>
-                                                  <th>quantity</th>
-                                                  <th>Total</th>
-                                                  <th>purchased Price</th>
-                                                  <th>Price for Sale</th>
-                                                  <th>Expire Date</th>
-                                                  <th>Location</th>
-                                                  <th>Action</th>
+                                                  <th>{{ __('message.seller.product_name') }}</th>
+                                                  <th>{{ __('message.seller.product_category') }}</th>
+                                                  <th>{{ __('message.seller.unit') }}</th>
+                                                  <th>{{ __('message.seller.quantity') }}</th>
+                                                  <th>{{ __('message.seller.total') }}</th>
+                                                  <th>{{ __('message.seller.purchased_price') }}</th>
+                                                  <th>{{ __('message.seller.selling_price') }}</th>
+                                                  <th>{{ __('message.seller.expire_date') }}</th>
+                                                  <th>{{ __('message.seller.location') }}</th>
+                                                  <th>{{ __('message.seller.action') }}</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -281,7 +281,7 @@
                                           <td>
                                               <a class="btn btn-info btn-sm" href="?id={{$value->id}}&&dhfjhdhgfjhgfjdhfhghguh@#gfdf$=5hj5hjg$3$$$$$#*^fg" data-toggle="modal" data-target="#staticBackdrop{{$value->id}}">
                                             
-                                                  Sell
+                                               {{ __('message.seller.sell') }}
                                                   </a>
                                           </td>
 
@@ -384,7 +384,7 @@
                                                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                            <h5 class="modal-title" id="staticBackdropLabel">Sell Product</h5>
+                                                            <h5 class="modal-title" id="staticBackdropLabel">{{ __('message.seller.sell_product') }}</h5>
                                                             <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
@@ -394,7 +394,7 @@
                                                                     @csrf
 
                                                                     <div class="form-group row">
-                                                                      <label for="total_quantity" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('Total Quantity Sold') }}</label>
+                                                                      <label for="total_quantity" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('message.seller.total_quantity_sold') }}</label>
                                           
                                                                       <div class="col-md-6">
                                                                           <input id="total_quantity" type="number" class="form-control @error('total_quantity') is-invalid @enderror" name="total_quantity" value="{{ old('total_quantity') }}" autocomplete="total_quantity" autofocus>
@@ -417,7 +417,7 @@
 
 
                                                                     <div class="form-group row">
-                                                                        <label for="subquantity" class="col-md-4 col-form-label text-md-right">{{ __('Sub-Quantity') }}</label>
+                                                                        <label for="subquantity" class="col-md-4 col-form-label text-md-right">{{ __('message.seller.sub_quantity') }}</label>
 
                                                                         <div class="col-md-6">
                                                                             <select id="subquantity" type="text" class="form-control @error('subquantity') is-invalid @enderror" name="subquantity" value="{{ old('subquantity') }}"  autocomplete="subquantity" autofocus>
@@ -436,7 +436,7 @@
 
 
                                                                     <div class="form-group row">
-                                                                      <label for="discount" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('discount') }}</label>
+                                                                      <label for="discount" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('message.seller.discount') }}</label>
                                           
                                                                       <div class="col-md-6">
                                                                           <input id="discount" type="number" class="form-control @error('discount') is-invalid @enderror" name="discount" value="{{ old('discount') }}" placeholder="Option" autocomplete="discount" autofocus>
@@ -451,7 +451,7 @@
                                                                   </div>
 
                                                                   <div class="form-group row">
-                                                                    <label for="customer_name" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('Customer Full Name') }}</label>
+                                                                    <label for="customer_name" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('message.seller.customer_fully_name') }}</label>
                                         
                                                                     <div class="col-md-6">
                                                                         <input id="customer_name" type="text" class="form-control @error('customer_name') is-invalid @enderror" name="customer_name" value="{{ old('customer_name') }}" placeholder="Option" autocomplete="customer_name" autofocus>
@@ -468,7 +468,7 @@
                                                                     <div class="form-group row mb-0">
                                                                         <div class="col-md-6 offset-md-4">
                                                                             <button type="submit" class="btn btn-primary">
-                                                                                {{ __('Sell') }}
+                                                                                {{ __('message.seller.sell') }}
                                                                             </button>
                                                                         </div>
                                                                     </div>
@@ -493,16 +493,16 @@
                                                 </tbody>
                                                 <tfoot>
                                                 <tr>
-                                                  <th>Product Name</th>
-                                                  <th>Category</th>
-                                                  <th>Unit</th>
-                                                  <th>Quantity</th>
-                                                  <th>Product Sold</th>
-                                                  <th>Purchased Price</th>
-                                                  <th>Sold Price</th>
-                                                  <th>Expire Date</th>
-                                                  <th>Location</th>
-                                                  <th>Action</th>
+                                                  <th>{{ __('message.seller.product_name') }}</th>
+                                                  <th>{{ __('message.seller.product_category') }}</th>
+                                                  <th>{{ __('message.seller.unit') }}</th>
+                                                  <th>{{ __('message.seller.quantity') }}</th>
+                                                  <th>{{ __('message.seller.total') }}</th>
+                                                  <th>{{ __('message.seller.purchased_price') }}</th>
+                                                  <th>{{ __('message.seller.selling_price') }}</th>
+                                                  <th>{{ __('message.seller.expire_date') }}</th>
+                                                  <th>{{ __('message.seller.location') }}</th>
+                                                  <th>{{ __('message.seller.action') }}</th>
                                                 </tr>
                                                 </tfoot>
                                               </table>
@@ -541,17 +541,16 @@
                                         <table id="example1" class="table table-bordered table-striped">
                                           <thead>
                                           <tr>
-                                              <th>Product Name</th>
-                                              <th>Product Category</th>
-                                              <th>unit</th>
-                                              <th>quantity</th>
-                                              <th>Product Sold</th>
-                                              <th>purchased Price</th>
-                                              <th>Price for Sale</th>
-                                              <th>Discount</th>
-                                              <th>Expire Date</th>
-                                              <th>Location</th>
-                                              <th>Action</th>
+                                            <th>{{ __('message.seller.product_name') }}</th>
+                                                  <th>{{ __('message.seller.product_category') }}</th>
+                                                  <th>{{ __('message.seller.unit') }}</th>
+                                                  <th>{{ __('message.seller.quantity') }}</th>
+                                                  <th>{{ __('message.seller.total') }}</th>
+                                                  <th>{{ __('message.seller.purchased_price') }}</th>
+                                                  <th>{{ __('message.seller.selling_price') }}</th>
+                                                  <th>{{ __('message.seller.expire_date') }}</th>
+                                                  <th>{{ __('message.seller.location') }}</th>
+                                                  <th>{{ __('message.seller.action') }}</th>
                                           </tr>
                                           </thead>
                                           <tbody>
@@ -560,17 +559,16 @@
                                           </tbody>
                                           <tfoot>
                                           <tr>
-                                              <th>Product Name</th>
-                                              <th>Product Category</th>
-                                              <th>unit</th>
-                                              <th>quantity</th>
-                                              <th>Product Sold</th>
-                                              <th>purchased Price</th>
-                                              <th>Price for Sale</th>
-                                              <th>Discount</th>
-                                              <th>Expire Date</th>
-                                              <th>Location</th>
-                                              <th>Action</th>
+                                            <th>{{ __('message.seller.product_name') }}</th>
+                                            <th>{{ __('message.seller.product_category') }}</th>
+                                            <th>{{ __('message.seller.unit') }}</th>
+                                            <th>{{ __('message.seller.quantity') }}</th>
+                                            <th>{{ __('message.seller.total') }}</th>
+                                            <th>{{ __('message.seller.purchased_price') }}</th>
+                                            <th>{{ __('message.seller.selling_price') }}</th>
+                                            <th>{{ __('message.seller.expire_date') }}</th>
+                                            <th>{{ __('message.seller.location') }}</th>
+                                            <th>{{ __('message.seller.action') }}</th>
                                           </tr>
                                           </tfoot>
                                         </table>
