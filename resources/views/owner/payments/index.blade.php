@@ -1,6 +1,4 @@
 
-
-
       @extends('layouts.owner')
 
       <?php
@@ -96,7 +94,34 @@
             <div class="container-fluid">
             
          
-                 
+              @if (session('success'))
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Waoo!</strong> {{session('success')}}
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+              </div>
+              @endif
+
+              @if (session('unsold') == "Sold")
+             <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <strong>Ok !! </strong> Successfuly Product(s) Sold.
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              @endif
+
+              @if (session('error'))
+             <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  {{ session('error') }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              @endif
+
+              @if (session('duplicate'))
+             <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  {{session('duplicate')}}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              @endif
+
                 {{-- @include('admin.include') --}}
                             @if(count((array)$data) > 0)
                                     <div class="row">
@@ -220,9 +245,9 @@ updated_at
                                                                           autocomplete="payment_method"
                                                                           onchange="paymentMethod(this.id)">
                                                                           <option value=""></option>
-                                                                          <option value="Bank{{ $value->id }}">Bank</option>
-                                                                          <option value="Phone{{ $value->id }}">Phone</option>
-                                                                          <option value="Cash{{ $value->id }}">Cash</option>
+                                                                          <option value="Bank">Bank</option>
+                                                                          <option value="Phone">Phone</option>
+                                                                          <option value="Cash">Cash</option>
                                                                       </select>
                                                                       @error('payment_method')
                                                                           <span class="invalid-feedback"
@@ -232,89 +257,37 @@ updated_at
                                                                       @enderror
                                                                   </div>
                                                               </div>
-  
-                                                              <div id="Bank{{ $value->id }}" style="display: none;"
-                                                                  >
-                                                                  <div class="row">
-                                                                      <div class="col-md-6">
-                                                                          <label for="method_name"
-                                                                              class="col-md- col-form-label text-md-right">Method
-                                                                              Name</label>
-  
-                                                                          <select id="method_name"
-                                                                              class="form-control select2 "
-                                                                              name="method_name"
-                                                                              autocomplete="method_name">
-                                                                              <option value=""></option>
-                                                                              <option value="CRDB">CRDB
-                                                                              </option>
-                                                                              <option value="NMB">NMB</option>
-                                                                              <option value="KBC">KBC</option>
-                                                                              <option value="AMANA BANK">AMANA
-                                                                                  BANK</option>
-                                                                          </select>
-  
-  
-  
-                                                                      </div>
-                                                                      <div class="col-md-6" id="Phone2">
-                                                                          <label for="number"
-                                                                              class="col-md- col-form-label text-md-right">
-                                                                              Account Number Paid</label>
-  
-                                                                          <input id="number"
-                                                                              type="text"
-                                                                              class="form-control "
-                                                                              name="number"
-                                                                              autocomplete="number">
-  
-  
-  
-                                                                      </div>
-                                                                  </div>
-                                                              </div>
-  
-                                                              <div id="Phone{{ $value->id }}"
-                                                                  style="display: none;">
-                                                              <div class="row">
-                                                                  <div class="col-md-6">
-                                                                      <label for="method_name1"
-                                                                          class="col-md- col-form-label text-md-right">Method
-                                                                          Name</label>
-  
-                                                                      <select id="method_name1"
-                                                                          class="form-control select2 "
-                                                                          name="method_name1"
-                                                                          autocomplete="method_name1">
-                                                                          <option value=""></option>
-                                                                          <option value="TIGO PESA">TIGO PESA
-                                                                          </option>
-                                                                          <option value="M-PESA">M-PESA</option>
-                                                                          <option value="T-PESA">T-PESA</option>
-                                                                          <option value="AIRTEL MONEY">ZBC
-                                                                          </option>
-                                                                          <option value="EZY PESA">EZY PESA
-                                                                          </option>
-                                                                          <option value="Selcom">Selcom</option>
-                                                                      </select>
-  
-  
-  
-                                                                  </div>
-                                                                  <div class="col-md-6" id="Phone2">
-                                                                      <label for="number1"
-                                                                          class="col-md- col-form-label text-md-right">
-                                                                          Phone Number</label>
-  
-                                                                      <input id="number1"
-                                                                          type="text" class="form-control "
-                                                                          name="number1" autocomplete="number1">
-  
-  
-  
-                                                                  </div>
-                                                              </div>
-                                                              </div>
+                                                              <div id="Phone{{ $value->id }}" style="display: none;">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label for="method_name"
+                                                                            class="col-md- col-form-label text-md-right">Method
+                                                                            Name</label>
+      
+                                                                        <select id="method_name{{ $value->id }}"
+                                                                            class="form-control select2 "
+                                                                            name="method_name"
+                                                                            autocomplete="method_name">
+                                                                           
+                                                                        </select>
+      
+      
+      
+                                                                    </div>
+                                                                    <div class="col-md-6" id="Phone">
+                                                                        <label for="number"
+                                                                            class="col-md- col-form-label text-md-right">
+                                                                            Number</label>
+      
+                                                                        <input id="number"
+                                                                            type="text" class="form-control "
+                                                                            name="number" autocomplete="number">
+      
+      
+      
+                                                                    </div>
+                                                                </div>
+                                                                </div>
   
                                                               <div class="row">
   
@@ -449,28 +422,49 @@ updated_at
           <!-- /.content -->
           
         </div>
-        <script>
-          function paymentMethod(id) {
-              
-              var name = $('#'+id).val();
-         
-            
-              if (name == 'Bank'+id) {
-                
-                $('#Phone'+id).css('display', 'none');
-                  $('#Bank'+id).css('display', 'block');
-              }
-              else if (name == 'Phone'+id) {
-                  $('#Phone'+id).css('display', 'block');
-                  $('#Bank'+id).css('display', 'none');
-             
-              } else if (name == "Cash"+id) {
-                  $('#Bank'+id).css('display', 'none');
-                  $('#Phone'+id).css('display', 'none');
-              }
-      
-          }
-      </script>
+    
       @endsection
-      
+      <script>
+        function paymentMethod(id) {
+          var valu = document.getElementById(id).value;
+          if (valu == "Bank") {
+            $('#method_name'+id+'').append(''+
+                  +'<option id="emty'+id+'" value=""></option>'
+                    +'<option id="crdb'+id+'" value="CRDB">CRDB</option>'
+                    +'<option id="nmb'+id+'" value="NMB">NMB</option>'
+                    +'<option id="kbc'+id+'" value="KBC">KBC</option>'
+                    +'<option id="amana'+id+'" value="AMANA BANK">AMANA BANK</option>'
+            );
+            $('#emty'+id+'').remove();
+            $('#tigo'+id+'').remove();
+            $('#voda'+id+'').remove();
+            $('#tpesa'+id+'').remove();
+            $('#airtel'+id+'').remove();
+            $('#ezy'+id+'').remove();
+            $('#selcome'+id+'').remove();
+            $('#Phone'+id+'').css('display', 'block');
+            }
+            else if (valu == "Phone") {
+                $('#method_name'+id+'').append(''+
+                +'<option id="emty'+id+'" value=""></option>'
+                  +'<option id="tigo'+id+'" value="TIGO PESA">TIGO PESA</option>'
+                    +'<option id="voda'+id+'" value="M-PESA">M-PESA</option>'
+                    +'<option id="tpesa'+id+'" value="T-PESA">T-PESA</option>'
+                    +'<option id="airtel'+id+'" value="AIRTEL MONEY">ZBC</option>'
+                    +'<option id="ezy'+id+'" value="EZY PESA">EZY PESA</option>'
+                    +'<option id="selcome'+id+'" value="Selcom">Selcom</option>'
+            );
+            $('#emty'+id+'').remove();
+            $('#crdb'+id+'').remove();
+            $('#nmb'+id+'').remove();
+            $('#kbc'+id+'').remove();
+            $('#amana'+id+'').remove();
+            $('#Phone'+id+'').css('display', 'block');
+            } else if (valu == "Cash") {
+                $('#Bank'+id+'').css('display', 'none');
+                $('#Phone'+id+'').css('display', 'none');
+            }
+    
+        }
+    </script>
       

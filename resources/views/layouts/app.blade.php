@@ -40,7 +40,7 @@ App::setLocale(Session::get('locale'));
     <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 
  
-<body style="background-color: #e9eff7">
+<body style="background-image:linear-gradient(#e9eff7, #ffff">
        
 
     <div id="app">

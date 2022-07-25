@@ -40,6 +40,7 @@ class ProductController extends Controller
     
     public function rejarejaForm(Request $request){
 
+        
         $total_quantity = DB::table('products')->where('id',$request->product_id)->first();
         $date1=date_create(date('Y-m-d'));
         $date2=date_create($total_quantity->expire);
@@ -78,8 +79,8 @@ class ProductController extends Controller
               $mauzo = new Mauzo;
               $mauzo->product_id = $request->product_id;
               $mauzo->seller_id = Auth::id(); 
-              $mauzo->owner_id = $request->owner_id;
-              $mauzo->shop_id = $request->shop_id;
+              $mauzo->owner_id = Session::get('owner_id');
+              $mauzo->shop_id = Session::get('shop_id');
               $mauzo->day = $nameOfDay;
               $mauzo->month = $nameOfMonth;
               $mauzo->year = $nameOfYear;
@@ -119,8 +120,8 @@ class ProductController extends Controller
               $mauzo = new Mauzo;
               $mauzo->product_id = $request->product_id;
               $mauzo->seller_id = Auth::id();
-              $mauzo->owner_id = $request->owner_id;
-              $mauzo->shop_id = $request->shop_id;
+              $mauzo->owner_id = Session::get('owner_id');
+              $mauzo->shop_id = Session::get('shop_id');
               $mauzo->day = $nameOfDay;
               $mauzo->month = $nameOfMonth;
               $mauzo->year = $nameOfYear;
@@ -162,8 +163,8 @@ class ProductController extends Controller
               $mauzo = new Mauzo;
               $mauzo->product_id = $request->product_id;
               $mauzo->seller_id = Auth::id();
-              $mauzo->owner_id = $request->owner_id;
-              $mauzo->shop_id = $request->shop_id;
+              $mauzo->owner_id = Session::get('owner_id');
+              $mauzo->shop_id = Session::get('shop_id');
               $mauzo->day = $nameOfDay;
               $mauzo->month = $nameOfMonth;
               $mauzo->year = $nameOfYear;
@@ -203,8 +204,8 @@ class ProductController extends Controller
               $mauzo = new Mauzo;
               $mauzo->product_id = $request->product_id;
               $mauzo->seller_id = Auth::id();
-              $mauzo->owner_id = $request->owner_id;
-              $mauzo->shop_id = $request->shop_id;
+              $mauzo->owner_id = Session::get('owner_id');
+              $mauzo->shop_id = Session::get('shop_id');
               $mauzo->day = $nameOfDay;
               $mauzo->month = $nameOfMonth;
               $mauzo->year = $nameOfYear;
@@ -241,8 +242,8 @@ class ProductController extends Controller
               $mauzo = new Mauzo;
               $mauzo->product_id = $request->product_id;
               $mauzo->seller_id = Auth::id();
-              $mauzo->owner_id = $request->owner_id;
-              $mauzo->shop_id = $request->shop_id;
+              $mauzo->owner_id = Session::get('owner_id');
+              $mauzo->shop_id = Session::get('shop_id');
               $mauzo->day = $nameOfDay;
               $mauzo->month = $nameOfMonth;
               $mauzo->year = $nameOfYear;

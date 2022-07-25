@@ -233,12 +233,14 @@
                                                   <th>{{ __('message.seller.product_category') }}</th>
                                                   <th>{{ __('message.seller.unit') }}</th>
                                                   <th>{{ __('message.seller.quantity') }}</th>
+                                                  <th>{{ __('message.seller.sub_quantity') }}</th>
+                                                  <th>{{ __('message.seller.discount') }}</th>
+                                                  <th>{{ __('Selling Status') }}</th>
+                                                  <th>{{ __('message.seller.customer_fully_name') }}</th>
                                                   <th>{{ __('message.seller.total') }}</th>
-                                                  <th>{{ __('message.seller.purchased_price') }}</th>
-                                                  <th>{{ __('message.seller.selling_price') }}</th>
-                                                  <th>{{ __('message.seller.expire_date') }}</th>
-                                                  <th>{{ __('message.seller.location') }}</th>
                                                   <th>{{ __('message.seller.action') }}</th>
+                                                  <th>{{ __('message.seller.location') }}</th>
+                                                  
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -250,10 +252,31 @@
                                           @foreach($data as $value)
                                       
                                         <tr>
+                                          <form method="POST" action="/rejarejaForm">
+                                            @csrf
+
                                           <td>{{$value->name}}</td>
                                           <td>{{$value->category}}</td>
                                           <td>{{$value->unit}}</td>
-                                          <td>{{$value->quantity}}</td>
+                                          <td> <input id="total_quantity" type="number" class="form-control @error('total_quantity') is-invalid @enderror" name="total_quantity" value="{{ old('total_quantity') }}" autocomplete="total_quantity" autofocus>
+                                            <input id="product_id" value="{{ $value->id }}" hidden type="number" class="form-control @error('product_id') is-invalid @enderror" name="product_id" value="{{ old('product_id') }}" autocomplete="product_id" autofocus>
+                                             <input type="number" hidden name="owner_id" value="{{ Session::get('owner_id') }}">
+                                            <input type="number" hidden name="shop_id" value="{{ Session::get('shop_id') }}">
+                                            </td>
+                                          <td> <select id="subquantity" type="text" class="select2 form-control @error('subquantity') is-invalid @enderror" name="subquantity" value="{{ old('subquantity') }}"  autocomplete="subquantity" autofocus>
+                                            <option value=""></option>
+                                            <option value="0.5">1/2</option>
+                                            <option value="0.25">1/4</option>
+                                            <option value="0.75">3/4</option>
+                                           </select>
+                                          </td>
+                                          <td><input id="discount" type="number" class="form-control @error('discount') is-invalid @enderror" name="discount" value="{{ old('discount') }}" placeholder="Option" autocomplete="discount" autofocus>
+                                          </td>
+                                          <td><input type="radio" name="sale_status" required value="Cash">&nbsp; Cash <br>
+                                              <input  type="radio" name="sale_status" required value="Credit">&nbsp; Credit
+                                          </td>
+                                          <td><input id="customer_name" type="text" class="form-control @error('customer_name') is-invalid @enderror" name="customer_name" value="{{ old('customer_name') }}" placeholder="Option" autocomplete="customer_name" autofocus>
+                                          </td>
                                           @if ($value->category == "Jumla")
                                           <td>{{$value->total}}
                                           @if (session('unsold') == $value->id)
@@ -273,217 +296,17 @@
                                               @endif
                                           </td>
                                           @endif
-                                          <td>{{$value->purchased_price}}{{ Session::get('money') }}</td>
-                                          <td>{{$value->sold_price}}{{ Session::get('money') }}</td>
-                                          <td>{{$value->expire}}</td>
+                                          <td>
+                                            <button type="submit" class="btn btn-info btn-sm">
+                                          
+                                             {{ __('message.seller.sell') }}
+                                            </button>
+                                          </td>
                                           <td>{{$value->location}}</td>
                                         
-                                          <td>
-                                              <a class="btn btn-info btn-sm" href="?id={{$value->id}}&&dhfjhdhgfjhgfjdhfhghguh@#gfdf$=5hj5hjg$3$$$$$#*^fg" data-toggle="modal" data-target="#staticBackdrop{{$value->id}}">
-                                            
-                                               {{ __('message.seller.sell') }}
-                                                  </a>
-                                          </td>
+                                         
 
-                                          {{-- @if ($value->category == "Jumla")
-                                                                
-                                          
-                                        <!-- Modal -->
-                                                <div class="modal fade" id="staticBackdrop{{$value->id}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                                  <div class="modal-content">
-                                                      <div class="modal-header">
-                                                      <h5 class="modal-title" id="staticBackdropLabel">Create User</h5>
-                                                      <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
-                                                          <span aria-hidden="true">&times;</span>
-                                                      </button>
-                                                      </div>
-                                                      <div class="modal-body">
-                                                          <form method="POST" action="/jumlaForm">
-                                                              @csrf
-
-                                                            
-
-                                                            <div class="form-group row">
-                                                              <label for="total_quantity" class="col-md-4 col-form-label text-md-right"><sup class="text-danger">*</sup>{{ __('Total Goods Sold') }}</label>
-
-                                                              <div class="col-md-6">
-                                                                  <input id="total_quantity" type="number" class="form-control @error('total_quantity') is-invalid @enderror" name="total_quantity" value="{{ old('total_quantity') }}" required autocomplete="total_quantity" autofocus>
-
-                                                                  <input id="owner_id" type="text" class="form-control @error('owner_id') is-invalid @enderror" name="owner_id" hidden value="{{ Session::get('owner_id') }}" required autocomplete="owner_id" autofocus>
-
-                                                                  <input id="shop_id" type="text" class="form-control @error('shop_id') is-invalid @enderror" name="shop_id" hidden value="{{Session::get('shop_id') }}" required autocomplete="shop_id" autofocus>
-
-                                                                  @error('total_quantity')
-                                                                      <span class="invalid-feedback" role="alert">
-                                                                          <strong>{{ $message }}</strong>
-                                                                      </span>
-                                                                  @enderror
-                                                              </div>
-                                                          </div>
-
-                                                            <div class="form-group row">
-                                                              <label for="discount" class="col-md-4 col-form-label text-md-right"><sup></sup>{{ __('Discount') }}</label>
-
-                                                              <div class="col-md-6">
-                                                                  <input id="discount" type="number" placeholder="Option" class="form-control @error('discount') is-invalid @enderror" name="discount" value="{{ old('discount') }}" autocomplete="discount" autofocus>
-                                                                  <input id="product_id" type="text" class="form-control @error('product_id') is-invalid @enderror" name="product_id" value="{{ $value->id }}" hidden required autocomplete="product_id" autofocus>
-                                                              
-                                                                  @error('discount')
-                                                                      <span class="invalid-feedback" role="alert">
-                                                                          <strong>{{ $message }}</strong>
-                                                                      </span>
-                                                                  @enderror
-                                                              </div>
-                                                          </div>
-
-                                                        
-
-                                                              {{-- <div class="form-group row">
-                                                                  <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Select Role') }}</label>
-
-                                                                  <div class="col-md-6">
-                                                                      <select id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role" autofocus>
-                                                                          <option value=""></option>
-                                                                          <option value="Admin">Admin</option>
-                                                                          <option value="Farmer">Farmer</option>
-                                                                          <option value="Trader">Trader</option>
-                                                                      </select>
-                                                                      @error('role')
-                                                                          <span class="invalid-feedback" role="alert">
-                                                                              <strong>{{ $message }}</strong>
-                                                                          </span>
-                                                                      @enderror
-                                                                  </div>
-                                                              </div> 
-
-                                                              <div class="form-group row mb-0">
-                                                                  <div class="col-md-6 offset-md-4">
-                                                                      <button type="submit" class="btn btn-primary">
-                                                                          {{ __('Sell') }}
-                                                                      </button>
-                                                                  </div>
-                                                              </div>
-                                                          </form>
-                                                      </div>
-                                                      <div class="modal-footer">
-                                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                      </div>
-                                                  </div>
-
-
-                                                  </div>
-                                                </div>
-
-
-                                 @else
-                                        
-                           --}}
-                                                            <!-- Modal -->
-                                                      <div class="modal fade" id="staticBackdrop{{$value->id}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                            <h5 class="modal-title" id="staticBackdropLabel">{{ __('message.seller.sell_product') }}</h5>
-                                                            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form method="POST" action="/rejarejaForm">
-                                                                    @csrf
-
-                                                                    <div class="form-group row">
-                                                                      <label for="total_quantity" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('message.seller.total_quantity_sold') }}</label>
-                                          
-                                                                      <div class="col-md-6">
-                                                                          <input id="total_quantity" type="number" class="form-control @error('total_quantity') is-invalid @enderror" name="total_quantity" value="{{ old('total_quantity') }}" autocomplete="total_quantity" autofocus>
-                                                                          
-                                                                          <input id="product_id" type="text" class="form-control @error('product_id') is-invalid @enderror" name="product_id" hidden value="{{ $value->id }}" required autocomplete="owner_id" autofocus>
-                                                                          <input id="owner_id" type="text" class="form-control @error('owner_id') is-invalid @enderror" name="owner_id" hidden value="{{ Session::get('owner_id') }}" required autocomplete="owner_id" autofocus>
-                                          
-                                                                          <input id="shop_id" type="text" class="form-control @error('shop_id') is-invalid @enderror" name="shop_id" hidden value="{{Session::get('shop_id') }}" required autocomplete="shop_id" autofocus>
-                                          
-                                                                          @error('total_quantity')
-                                                                              <span class="invalid-feedback" role="alert">
-                                                                                  <strong>{{ $message }}</strong>
-                                                                              </span>
-                                                                          @enderror
-                                                                      </div>
-                                                                  </div>
-
-                                                                  
-                                      {{-- id	product_id	seller_id	owner_id	shop_id	day	month	year	quantity	amount	profit	created_at	updated_at	 --}}
-
-
-                                                                    <div class="form-group row">
-                                                                        <label for="subquantity" class="col-md-4 col-form-label text-md-right">{{ __('message.seller.sub_quantity') }}</label>
-
-                                                                        <div class="col-md-6">
-                                                                            <select id="subquantity" type="text" class="form-control @error('subquantity') is-invalid @enderror" name="subquantity" value="{{ old('subquantity') }}"  autocomplete="subquantity" autofocus>
-                                                                                <option value=""></option>
-                                                                                <option value="0.5">1/2</option>
-                                                                                <option value="0.25">1/4</option>
-                                                                                <option value="0.75">3/4</option>
-                                                                            </select>
-                                                                            @error('subquantity')
-                                                                                <span class="invalid-feedback" role="alert">
-                                                                                    <strong>{{ $message }}</strong>
-                                                                                </span>
-                                                                            @enderror
-                                                                        </div>
-                                                                    </div>
-
-
-                                                                    <div class="form-group row">
-                                                                      <label for="discount" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('message.seller.discount') }}</label>
-                                          
-                                                                      <div class="col-md-6">
-                                                                          <input id="discount" type="number" class="form-control @error('discount') is-invalid @enderror" name="discount" value="{{ old('discount') }}" placeholder="Option" autocomplete="discount" autofocus>
-                                                                          
-                                                                      
-                                                                          @error('discount')
-                                                                              <span class="invalid-feedback" role="alert">
-                                                                                  <strong>{{ $message }}</strong>
-                                                                              </span>
-                                                                          @enderror
-                                                                      </div>
-                                                                  </div>
-
-                                                                  <div class="form-group row">
-                                                                    <label for="customer_name" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('message.seller.customer_fully_name') }}</label>
-                                        
-                                                                    <div class="col-md-6">
-                                                                        <input id="customer_name" type="text" class="form-control @error('customer_name') is-invalid @enderror" name="customer_name" value="{{ old('customer_name') }}" placeholder="Option" autocomplete="customer_name" autofocus>
-                                                                        
-                                                                    
-                                                                        @error('customer_name')
-                                                                            <span class="invalid-feedback" role="alert">
-                                                                                <strong>{{ $message }}</strong>
-                                                                            </span>
-                                                                        @enderror
-                                                                    </div>
-                                                                </div>
-
-                                                                    <div class="form-group row mb-0">
-                                                                        <div class="col-md-6 offset-md-4">
-                                                                            <button type="submit" class="btn btn-primary">
-                                                                                {{ __('message.seller.sell') }}
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                            </div>
-                                                        </div>
-
-
-                                                        </div>
-                                                      </div>
-{{-- 
-                                        @endif --}}
+                                          </form>
 
                                         </tr> 
                                       
@@ -491,20 +314,21 @@
                                       @endforeach
                                               
                                                 </tbody>
-                                                <tfoot>
+                                                {{-- <tfoot>
                                                 <tr>
                                                   <th>{{ __('message.seller.product_name') }}</th>
                                                   <th>{{ __('message.seller.product_category') }}</th>
                                                   <th>{{ __('message.seller.unit') }}</th>
                                                   <th>{{ __('message.seller.quantity') }}</th>
+                                                  <th>{{ __('message.seller.sub_quantity') }}</th>
+                                                  <th>{{ __('message.seller.discount') }}</th>
+                                                  <th>{{ __('Selling Status') }}</th>
+                                                  <th>{{ __('message.seller.customer_fully_name') }}</th>
                                                   <th>{{ __('message.seller.total') }}</th>
-                                                  <th>{{ __('message.seller.purchased_price') }}</th>
-                                                  <th>{{ __('message.seller.selling_price') }}</th>
-                                                  <th>{{ __('message.seller.expire_date') }}</th>
                                                   <th>{{ __('message.seller.location') }}</th>
                                                   <th>{{ __('message.seller.action') }}</th>
                                                 </tr>
-                                                </tfoot>
+                                                </tfoot> --}}
                                               </table>
                                             </div>
                                             <!-- /.card-body -->
@@ -545,10 +369,11 @@
                                                   <th>{{ __('message.seller.product_category') }}</th>
                                                   <th>{{ __('message.seller.unit') }}</th>
                                                   <th>{{ __('message.seller.quantity') }}</th>
+                                                  <th>{{ __('message.seller.sub_quantity') }}</th>
+                                                  <th>{{ __('message.seller.discount') }}</th>
+                                                  <th>{{ __('Selling Status') }}</th>
+                                                  <th>{{ __('message.seller.customer_fully_name') }}</th>
                                                   <th>{{ __('message.seller.total') }}</th>
-                                                  <th>{{ __('message.seller.purchased_price') }}</th>
-                                                  <th>{{ __('message.seller.selling_price') }}</th>
-                                                  <th>{{ __('message.seller.expire_date') }}</th>
                                                   <th>{{ __('message.seller.location') }}</th>
                                                   <th>{{ __('message.seller.action') }}</th>
                                           </tr>
@@ -563,10 +388,11 @@
                                             <th>{{ __('message.seller.product_category') }}</th>
                                             <th>{{ __('message.seller.unit') }}</th>
                                             <th>{{ __('message.seller.quantity') }}</th>
+                                            <th>{{ __('message.seller.sub_quantity') }}</th>
+                                            <th>{{ __('message.seller.discount') }}</th>
+                                            <th>{{ __('Selling Status') }}</th>
+                                            <th>{{ __('message.seller.customer_fully_name') }}</th>
                                             <th>{{ __('message.seller.total') }}</th>
-                                            <th>{{ __('message.seller.purchased_price') }}</th>
-                                            <th>{{ __('message.seller.selling_price') }}</th>
-                                            <th>{{ __('message.seller.expire_date') }}</th>
                                             <th>{{ __('message.seller.location') }}</th>
                                             <th>{{ __('message.seller.action') }}</th>
                                           </tr>

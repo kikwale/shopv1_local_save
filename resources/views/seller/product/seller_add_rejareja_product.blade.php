@@ -230,7 +230,7 @@ App::setLocale(Session::get('locale'));
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> 
                
               @include('seller/modals.export_excel')
             </div>

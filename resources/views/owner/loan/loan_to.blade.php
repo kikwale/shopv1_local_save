@@ -200,197 +200,148 @@ updated_at
                                                   <div class="modal-content">
                                                       <div class="modal-header bg-info">
                                                           <h5 class="modal-title" id="staticBackdropLabel">Return
-                                                              Loan To Bos</h5>
+                                                              Loan To Boss </h5>
                                                           <button type="button" class="btn-close"
                                                               data-dismiss="modal" aria-label="Close">
                                                               <span aria-hidden="true">&times;</span>
                                                           </button>
                                                       </div>
                                                       <div class="modal-body">
-                                                          <form method="POST" action="owner-employee-loan-return">
-                                                              @csrf
+                                                        <form method="POST" action="owner-employee-loan-return">
+                                                          @csrf
 
-                                                              <input id="shop_id" type="text"
-                                                                  class="form-control @error('shop_id') is-invalid @enderror"
-                                                                  name="shop_id"
-                                                                  value="{{ Session::get('shop_id') }}" hidden
-                                                                  autocomplete="shop_id">
-                                                              <input id="owner_id" type="text"
-                                                                  class="form-control @error('owner_id') is-invalid @enderror"
-                                                                  name="owner_id"
-                                                                  value="{{ Session::get('owner_id') }}" hidden
-                                                                  autocomplete="owner_id">
-                                                              <input id="loan_id" type="text"
-                                                                  class="form-control @error('loan_id') is-invalid @enderror"
-                                                                  name="loan_id" value="{{ $value->id }}"
-                                                                  hidden autocomplete="loan_id">
+                                                          <input id="shop_id" type="text"
+                                                              class="form-control @error('shop_id') is-invalid @enderror"
+                                                              name="shop_id"
+                                                              value="{{ Session::get('shop_id') }}" hidden
+                                                              autocomplete="shop_id">
+                                                          <input id="owner_id" type="text"
+                                                              class="form-control @error('owner_id') is-invalid @enderror"
+                                                              name="owner_id"
+                                                              value="{{ Session::get('owner_id') }}" hidden
+                                                              autocomplete="owner_id">
+                                                          <input id="loan_id" type="text"
+                                                              class="form-control @error('loan_id') is-invalid @enderror"
+                                                              name="loan_id" value="{{ $value->id }}"
+                                                              hidden autocomplete="loan_id">
 
 
 
-                                                              <div class="form-group row">
+                                                          <div class="form-group row">
 
-                                                                  <div class="col-md-6">
-                                                                      <label for="amount"
-                                                                          class="col-md- col-form-label text-md-right">{{ __('Amount Paid') }}</label>
+                                                              <div class="col-md-6">
+                                                                  <label for="amount"
+                                                                      class="col-md- col-form-label text-md-right">{{ __('Amount Paid') }}</label>
 
-                                                                      <input required id="amount"
-                                                                          type="number"
-                                                                          class="form-control @error('amount') is-invalid @enderror"
-                                                                          name="amount"
-                                                                          value="{{ old('amount') }}"
-                                                                          autocomplete="amount">
+                                                                  <input required id="amount"
+                                                                      type="number"
+                                                                      class="form-control @error('amount') is-invalid @enderror"
+                                                                      name="amount"
+                                                                      value="{{ old('amount') }}"
+                                                                      autocomplete="amount">
 
-                                                                      @error('amount')
-                                                                          <span class="invalid-feedback"
-                                                                              role="alert">
-                                                                              <strong>{{ $message }}</strong>
-                                                                          </span>
-                                                                      @enderror
-                                                                  </div>
-                                                                  <div class="col-md-6">
-                                                                      <label for="payment_method"
-                                                                          class="col-md- col-form-label text-md-right">{{ __('Payment Method') }}</label>
-
-                                                                      <select id="payment_method"
-                                                                          class="form-control select2 @error('payment_method') is-invalid @enderror"
-                                                                          name="payment_method"
-                                                                          value="{{ old('payment_method') }}"
-                                                                          autocomplete="payment_method"
-                                                                          onchange="paymentMethod(this.value)">
-                                                                          <option value=""></option>
-                                                                          <option value="Bank">Bank</option>
-                                                                          <option value="Phone">Phone</option>
-                                                                          <option value="Cash">Cash</option>
-                                                                      </select>
-                                                                      @error('payment_method')
-                                                                          <span class="invalid-feedback"
-                                                                              role="alert">
-                                                                              <strong>{{ $message }}</strong>
-                                                                          </span>
-                                                                      @enderror
-                                                                  </div>
+                                                                  @error('amount')
+                                                                      <span class="invalid-feedback"
+                                                                          role="alert">
+                                                                          <strong>{{ $message }}</strong>
+                                                                      </span>
+                                                                  @enderror
                                                               </div>
+                                                              <div class="col-md-6">
+                                                                  <label for="payment_method"
+                                                                      class="col-md- col-form-label text-md-right">{{ __('Payment Method') }}</label>
 
-                                                              <div id="Bank" style="display: none;"
-                                                                  >
-                                                                  <div class="row">
-                                                                      <div class="col-md-6">
-                                                                          <label for="method_name"
-                                                                              class="col-md- col-form-label text-md-right">Method
-                                                                              Name</label>
-
-                                                                          <select id="method_name"
-                                                                              class="form-control select2 "
-                                                                              name="method_name"
-                                                                              autocomplete="method_name">
-                                                                              <option value=""></option>
-                                                                              <option value="CRDB">CRDB
-                                                                              </option>
-                                                                              <option value="NMB">NMB</option>
-                                                                              <option value="KBC">KBC</option>
-                                                                              <option value="AMANA BANK">AMANA
-                                                                                  BANK</option>
-                                                                          </select>
-
-
-
-                                                                      </div>
-                                                                      <div class="col-md-6" id="Phone2">
-                                                                          <label for="number"
-                                                                              class="col-md- col-form-label text-md-right">
-                                                                              Account Number Paid</label>
-
-                                                                          <input id="number"
-                                                                              type="text"
-                                                                              class="form-control "
-                                                                              name="number"
-                                                                              autocomplete="number">
-
-
-
-                                                                      </div>
-                                                                  </div>
+                                                                  <select id="{{ $value->id }}"
+                                                                      class="form-control select2 @error('payment_method') is-invalid @enderror"
+                                                                      name="payment_method"
+                                                                      value="{{ old('payment_method') }}"
+                                                                      autocomplete="payment_method"
+                                                                      onchange="paymentMethod(this.id)">
+                                                                      <option value=""></option>
+                                                                      <option value="Bank">Bank</option>
+                                                                      <option value="Phone">Phone</option>
+                                                                      <option value="Cash">Cash</option>
+                                                                  </select>
+                                                                  @error('payment_method')
+                                                                      <span class="invalid-feedback"
+                                                                          role="alert">
+                                                                          <strong>{{ $message }}</strong>
+                                                                      </span>
+                                                                  @enderror
                                                               </div>
+                                                          </div>
 
-                                                              <div id="Phone"
-                                                                  style="display: none;">
-                                                              <div class="row">
-                                                                  <div class="col-md-6">
-                                                                      <label for="method_name1"
-                                                                          class="col-md- col-form-label text-md-right">Method
-                                                                          Name</label>
 
-                                                                      <select id="method_name1"
-                                                                          class="form-control select2 "
-                                                                          name="method_name1"
-                                                                          autocomplete="method_name1">
-                                                                          <option value=""></option>
-                                                                          <option value="TIGO PESA">TIGO PESA
-                                                                          </option>
-                                                                          <option value="M-PESA">M-PESA</option>
-                                                                          <option value="T-PESA">T-PESA</option>
-                                                                          <option value="AIRTEL MONEY">ZBC
-                                                                          </option>
-                                                                          <option value="EZY PESA">EZY PESA
-                                                                          </option>
-                                                                          <option value="Selcom">Selcom</option>
-                                                                      </select>
+                                                          <div id="Phone{{ $value->id }}" style="display: none;">
+                                                          <div class="row">
+                                                              <div class="col-md-6">
+                                                                  <label for="method_name"
+                                                                      class="col-md- col-form-label text-md-right">Method
+                                                                      Name</label>
+
+                                                                  <select id="method_name{{ $value->id }}"
+                                                                      class="form-control select2 "
+                                                                      name="method_name"
+                                                                      autocomplete="method_name">
+                                                                     
+                                                                  </select>
 
 
 
-                                                                  </div>
-                                                                  <div class="col-md-6" id="Phone2">
-                                                                      <label for="number1"
-                                                                          class="col-md- col-form-label text-md-right">
-                                                                          Phone Number</label>
-
-                                                                      <input id="number1"
-                                                                          type="text" class="form-control "
-                                                                          name="number1" autocomplete="number1">
-
-
-
-                                                                  </div>
                                                               </div>
+                                                              <div class="col-md-6" id="Phone">
+                                                                  <label for="number"
+                                                                      class="col-md- col-form-label text-md-right">
+                                                                      Number</label>
+
+                                                                  <input id="number"
+                                                                      type="text" class="form-control "
+                                                                      name="number" autocomplete="number">
+
+
+
                                                               </div>
+                                                          </div>
+                                                          </div>
 
-                                                              <div class="row">
+                                                          <div class="row">
 
 
-                                                                  <div class="col-md-6" id="21">
-                                                                      <label for="date1"
-                                                                          class="col-md- col-form-label text-md-right">{{ __('Date of Payment') }}</label>
+                                                              <div class="col-md-6" id="21">
+                                                                  <label for="date"
+                                                                      class="col-md- col-form-label text-md-right">{{ __('Date of Payment') }}</label>
 
                                                                       <input required id="date"
-                                                                          type="date"
-                                                                          class="form-control @error('date') is-invalid @enderror"
-                                                                          name="date"
-                                                                          value="{{ old('date') }}"
-                                                                          autocomplete="date">
+                                                                      type="date"
+                                                                      class="form-control @error('date') is-invalid @enderror"
+                                                                      name="date"
+                                                                      value="{{ old('date') }}"
+                                                                      autocomplete="date">
 
-                                                                      @error('date')
-                                                                          <span class="invalid-feedback"
-                                                                              role="alert">
-                                                                              <strong>{{ $message }}</strong>
-                                                                          </span>
-                                                                      @enderror
-                                                                  </div>
-
+                                                                  @error('date')
+                                                                      <span class="invalid-feedback"
+                                                                          role="alert">
+                                                                          <strong>{{ $message }}</strong>
+                                                                      </span>
+                                                                  @enderror
                                                               </div>
 
+                                                          </div>
 
-                                                              <div class="form-group row mb-0">
-                                                                  <div class="col-md-10 ">
 
-                                                                  </div>
-                                                                  <div class="col-md-2 modal-footer">
-                                                                      <button type="submit"
-                                                                          class="btn btn-primary btn-sm">
-                                                                          {{ __('Save') }}
-                                                                      </button>
-                                                                  </div>
+                                                          <div class="form-group row mb-0">
+                                                              <div class="col-md-10 ">
+
                                                               </div>
-                                                          </form>
+                                                              <div class="col-md-2 modal-footer">
+                                                                  <button type="submit"
+                                                                      class="btn btn-primary btn-sm">
+                                                                      {{ __('Save') }}
+                                                                  </button>
+                                                              </div>
+                                                          </div>
+                                                      </form>
+
                                                       </div>
                                                       <div class="modal-footer">
                                                           <button type="button" class="btn btn-secondary"
@@ -502,17 +453,44 @@ updated_at
 
       @endsection
       <script>
-        function paymentMethod(payment_method) {
-          if (payment_method == "Bank") {
-              $('#Phone').css('display', 'none');
-                $('#Bank').css('display', 'block');
+        function paymentMethod(id) {
+          var valu = document.getElementById(id).value;
+          if (valu == "Bank") {
+            $('#method_name'+id+'').append(''+
+                  +'<option id="emty'+id+'" value=""></option>'
+                    +'<option id="crdb'+id+'" value="CRDB">CRDB</option>'
+                    +'<option id="nmb'+id+'" value="NMB">NMB</option>'
+                    +'<option id="kbc'+id+'" value="KBC">KBC</option>'
+                    +'<option id="amana'+id+'" value="AMANA BANK">AMANA BANK</option>'
+            );
+            $('#emty'+id+'').remove();
+            $('#tigo'+id+'').remove();
+            $('#voda'+id+'').remove();
+            $('#tpesa'+id+'').remove();
+            $('#airtel'+id+'').remove();
+            $('#ezy'+id+'').remove();
+            $('#selcome'+id+'').remove();
+            $('#Phone'+id+'').css('display', 'block');
             }
-            else if (payment_method == "Phone") {
-                $('#Bank').css('display', 'none');
-                $('#Phone').css('display', 'block');
-            } else if (payment_method == "Cash") {
-                $('#Bank').css('display', 'none');
-                $('#Phone').css('display', 'none');
+            else if (valu == "Phone") {
+                $('#method_name'+id+'').append(''+
+                +'<option id="emty'+id+'" value=""></option>'
+                  +'<option id="tigo'+id+'" value="TIGO PESA">TIGO PESA</option>'
+                    +'<option id="voda'+id+'" value="M-PESA">M-PESA</option>'
+                    +'<option id="tpesa'+id+'" value="T-PESA">T-PESA</option>'
+                    +'<option id="airtel'+id+'" value="AIRTEL MONEY">ZBC</option>'
+                    +'<option id="ezy'+id+'" value="EZY PESA">EZY PESA</option>'
+                    +'<option id="selcome'+id+'" value="Selcom">Selcom</option>'
+            );
+            $('#emty'+id+'').remove();
+            $('#crdb'+id+'').remove();
+            $('#nmb'+id+'').remove();
+            $('#kbc'+id+'').remove();
+            $('#amana'+id+'').remove();
+            $('#Phone'+id+'').css('display', 'block');
+            } else if (valu == "Cash") {
+                $('#Bank'+id+'').css('display', 'none');
+                $('#Phone'+id+'').css('display', 'none');
             }
     
         }

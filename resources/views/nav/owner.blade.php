@@ -158,7 +158,7 @@
 
 
 <!-- Main Sidebar Container --> 
-<aside class="main-sidebar sidebar-dark- elevation-4" style="background-color:#024263f1">
+<aside class="main-sidebar sidebar-dark- elevation-4" style="background-image:linear-gradient(rgba(3, 57, 88, 0.87), rgba(255, 123, 0, 0.404))">
   <!-- Brand Logo -->
   <a href="#" class="brand-link">
     <img src="dist/img/shotram.png" alt="ShoTram Logo" class="brand-image img-circle elevation-3"
@@ -261,6 +261,17 @@
             </ul>
           </li>
 
+          
+          <li class="nav-item">
+            <a href="owner-monthly-payroll" class="nav-link">
+              <img src="dist/img/payroll.png" width="30px" height="30px" alt="" srcset="">
+              <p style="font-size: 14px">
+                Payroll
+              </p>
+            </a>
+        
+          </li>
+
           <li class="nav-item">
             <a href="payments" class="nav-link">
               <img src="dist/img/payments.png" width="30px" height="30px" alt="" srcset="">
@@ -271,15 +282,6 @@
         
           </li>
 
-          <li class="nav-item">
-            <a href="owner-monthly-payroll" class="nav-link">
-              <img src="dist/img/payroll.png" width="30px" height="30px" alt="" srcset="">
-              <p style="font-size: 14px">
-                Payroll
-              </p>
-            </a>
-        
-          </li>
 
           <li class="nav-item">
             <a href="owner-sold-product?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
@@ -347,7 +349,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="owner-net-profit" class="nav-link">
+              <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Gross Profit/Loss</p>
               </a>
@@ -355,7 +357,7 @@
            
            
             <li class="nav-item">
-              <a href="owner-expenses" class="nav-link">
+              <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Net Profit/Loss</p>
               </a>

@@ -201,7 +201,7 @@
 <!-- /.navbar -->
 
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-prima elevation-4" style="background-color:#024263f1">
+<aside class="main-sidebar sidebar-dark-prima elevation-4" style="background-image:linear-gradient(rgba(3, 57, 88, 0.87), rgba(255, 123, 0, 0.404))">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       <img src="dist/img/shotram.png" alt="ShoTram Logo" class="brand-image img-circle elevation-3"
@@ -281,13 +281,7 @@
                 <p> {{__('message.seller.sales')}}</p>
               </a>
             </li>
-            <li class="nav-item">
-              {{-- seller-credit-sales --}}
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon  text-info"></i>
-                <p> {{__('message.seller.credit_sales')}}</p>
-              </a>
-            </li>
+          
             
 
           </ul>

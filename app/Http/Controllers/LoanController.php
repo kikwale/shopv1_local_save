@@ -18,13 +18,19 @@ use Illuminate\Support\Facades\Session;
 class LoanController extends Controller
 {
    public function ownerLoanFrom(){
-    $data = LoanFom::where('shop_id',Session::get('shop_id'))->get();
-    return view('owner/loan.loan_from')->with('data',$data);
+    $data = LoanFom::where('shop_id',Session::get('shop_id'))->where('balance','>',0)->get();
+    LoanFom::where('shop_id',Session::get('shop_id'))->where('balance','<',0)->update(
+      ['balance'=>0]
+    );
+    return view('owner.loan.loan_from')->with('data',$data);
    }
 
    public function ownerLoanTo(){
     $data = seller::join('loan_tos','sellers.id','=','loan_tos.seller_id')->where('loan_tos.shop_id',Session::get('shop_id'))
     ->where('loan_tos.balance','>',0)->get();
+    LoanTo::where('shop_id',Session::get('shop_id'))->where('balance','<',0)->update(
+      ['balance'=>0]
+    );
     return view('owner/loan.loan_to')->with('data',$data);
    }
 
@@ -52,11 +58,11 @@ class LoanController extends Controller
    }
    
    public function ownerLoanReturnModal(Request $request){
+
       $date = $request['loan_date'];
       $nameOfYear = date('Y', strtotime($date));
       $nameOfMonth = date('M', strtotime($date));
       
-      if ($request->method_name1 == '' || $request->number1 == '') {
       $laon = new LoanFom();
       $laon = LoanFom::where('shop_id',Session::get('shop_id'))->where('id',$request->loan_id)->first();
       $lbalance  = $laon->balance - $request->amount;
@@ -78,31 +84,7 @@ class LoanController extends Controller
          'paid_amount' => $request->amount, 
           ]);
           return back()->with('success','Successfull...');
-      } else {
-      $laon = new LoanFom();
-      $laon = LoanFom::where('shop_id',Session::get('shop_id'))->where('id',$request->loan_id)->first();
-      $lbalance  = $laon->balance - $request->amount;
-      $laon->balance = $lbalance;
-      $laon->save();
-         // LoanFom::where('shop_id',Session::get('shop_id'))->where('id',$request->loan_id)->update(['balance'=>$laon]);
-         // //id	loan_foms_id	owner_id	shop_id	seller_id	year	month	date	Payment_method	paid_amount	created_at	updated_at	
-   
-         DB::table('loan_from_details')->insert([
-            'loan_foms_id' => $request->loan_id,
-            'owner_id' => Session::get('owner_id'),
-            'shop_id' => Session::get('shop_id'), 
-            'year' => $nameOfYear, 
-            'month' => $nameOfMonth,
-            'date' => $request['date'], 
-            'payment_method' => $request['payment_method'],
-            'method_name' => $request->method_name1, 
-            'number' => $request->number1, 
-            'paid_amount' => $request->amount, 
-             ]);
-
-             return back()->with('success','Successfull...');
-      }
-      
+    
       
    }
 
@@ -147,35 +129,9 @@ class LoanController extends Controller
       $date = $request['loan_date'];
       $nameOfYear = date('Y', strtotime($date));
       $nameOfMonth = date('M', strtotime($date));
-      
-      if ($request->method_name1 == '' || $request->number1 == '') {
+    
       $laon = new LoanTo();
       $laon = LoanTo::where('shop_id',Session::get('shop_id'))->where('id',$request->loan_id)->first();
-      $lbalance  = $laon->balance - $request->amount;
-      $laon->balance = $lbalance;
-      $laon->save();
-      if ($laon->balance <= 0) {
-         LoanTo::where('shop_id',Session::get('shop_id'))->where('id',$request->loan_id)->delete();
-      }
-      // LoanFom::where('shop_id',Session::get('shop_id'))->where('id',$request->loan_id)->update(['balance'=>$laon]);
-      // //id	loan_foms_id	owner_id	shop_id	seller_id	year	month	date	Payment_method	paid_amount	created_at	updated_at	
-
-      DB::table('loan_to_details')->insert([
-         'loan_tos_id' => $request->loan_id,
-         'owner_id' => Session::get('owner_id'),
-         'shop_id' => Session::get('shop_id'), 
-         'year' => $nameOfYear, 
-         'month' => $nameOfMonth,
-         'date' => $request['date'], 
-         'payment_method' => $request['payment_method'],
-         'method_name' => $request->method_name, 
-         'number' => $request->number, 
-         'paid_amount' => $request->amount, 
-          ]);
-          return back()->with('success','Successfull...');
-      } else {
-      $laon = new LoanFom();
-      $laon = LoanFom::where('shop_id',Session::get('shop_id'))->where('id',$request->loan_id)->first();
       $lbalance  = $laon->balance - $request->amount;
       $laon->balance = $lbalance;
       $laon->save();
@@ -193,13 +149,13 @@ class LoanController extends Controller
             'month' => $nameOfMonth,
             'date' => $request['date'], 
             'payment_method' => $request['payment_method'],
-            'method_name' => $request->method_name1, 
-            'number' => $request->number1, 
+            'method_name' => $request->method_name, 
+            'number' => $request->number, 
             'paid_amount' => $request->amount, 
              ]);
 
              return back()->with('success','Successfull...');
-      }
+   
       
       
    }

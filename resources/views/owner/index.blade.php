@@ -33,7 +33,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
 </head>
-<body style="background-color: #e9eff7">
+<body style="background-image:linear-gradient(rgba(3, 57, 88, 0.87), rgba(255, 123, 0, 0.404))" >
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color:#27AAE1">
             <div class="container">
