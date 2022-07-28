@@ -31,13 +31,13 @@ class ProductsImport implements ToModel,WithStartRow
         'category' => $row[3],
         'unit' => $row[4],
         'quantity' => $row[5],
-        'total' => $row[6],
-        'notification' => $row[7],
-        'money_unit' => $row[8],
-        'purchased_price' => $row[9],
-        'sold_price' => $row[10],
-        'expire' => \Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[11])),
-        'location' => $row[12],
+        'total' => $row[5],
+        'notification' => $row[6],
+        'money_unit' => $row[7],
+        'purchased_price' => $row[8],
+        'sold_price' => $row[9],
+        'expire' => \Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[10])),
+        'location' => $row[11],
       
         ]);
     }

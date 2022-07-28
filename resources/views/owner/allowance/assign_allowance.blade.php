@@ -136,8 +136,9 @@
                             <label for="name" class="col-md- col-form-label text-md-right">{{ __('Employee Name') }}</label>
       
                             <select required id="name" type="text" class="select2 form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"  autocomplete="name">
-                                @foreach (App\Models\seller::where('shop_id',Session::get('shop_id'))->get() as $employee)
-                                <option value=""></option>
+                              <option value=""></option>  
+                              @foreach (App\Models\seller::where('shop_id',Session::get('shop_id'))->get() as $employee)
+                                
                                 <option value="{{$employee->id  }}">{{ $employee->fname }} &nbsp; &nbsp; {{ $employee->lname }}</option>
                                 @endforeach
                               

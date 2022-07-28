@@ -102,11 +102,19 @@
                                       <div class="col-md-12">
                                         <div class="car">
                                           <div class="card-header">
-
+                                     
+                
+                                            <div class="card-tools">
                                              
-                                            
-                                            {{-- <h5 class="card-title">Sales Book</h5> --}}
-                                            <a href="#">gjhgjfhjhg</a>
+                                              <a class="btn btn-primary" href="seller-new-invoice">New Invoice</a>
+                                              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                <i class="fas fa-minus"></i>
+                                              </button>
+                                              
+                                              {{-- <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                                <i class="fas fa-times"></i>
+                                              </button> --}}
+                                            </div>
                                           </div>
                                         
                                             <div class="card-body">
@@ -215,7 +223,7 @@ updated_at
                 
                                       <div class="card-tools">
                                        
-                                        <a class="btn btn-primary" href="#">New Invoice</a>
+                                        <a class="btn btn-primary" href="seller-new-invoice">New Invoice</a>
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                           <i class="fas fa-minus"></i>
                                         </button>

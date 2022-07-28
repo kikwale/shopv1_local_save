@@ -137,7 +137,7 @@ return [
       'total_quantity_sold' => 'Jumla ya Kiasi Kilichouzwa (Namba Nzima)',
       'sub_quantity' => 'Kiasi cha chini',
       'discount' => 'Punguzo',
-      'customer_fully_name' => 'Jina Kamili La Mteja',
+      'customer_fully_name' => 'Namba/Address',
 
       // selling table
       'product_name' => 'Jina la Bidhaa',

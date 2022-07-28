@@ -275,7 +275,7 @@
                                           <td><input type="radio" name="sale_status" required value="Cash">&nbsp; Cash <br>
                                               <input  type="radio" name="sale_status" required value="Credit">&nbsp; Credit
                                           </td>
-                                          <td><input id="customer_name" type="text" class="form-control @error('customer_name') is-invalid @enderror" name="customer_name" value="{{ old('customer_name') }}" placeholder="Option" autocomplete="customer_name" autofocus>
+                                          <td><input id="customer_name" placeholder="Phone/Address" type="text" class="form-control @error('customer_name') is-invalid @enderror" name="customer_name" value="{{ old('customer_name') }}" placeholder="Option" autocomplete="customer_name" autofocus>
                                           </td>
                                           @if ($value->category == "Jumla")
                                           <td>{{$value->total}}

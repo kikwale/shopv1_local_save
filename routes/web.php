@@ -160,6 +160,7 @@ Route::get('/seller_update_product','ProductController@sellerUpdateProduct')->na
 Route::post('/seller-update-product','ProductController@sellerUpdateProductSave')->name('seller.update-product-save');
 Route::get('/seller-delete-product','ProductController@sellerDeleteProduct')->name('seller.delete-product');
 Route::get('/seller-invoice','InvoiceController@index')->name('seller.invoice');
+Route::get('/seller-new-invoice','InvoiceController@newInvoice')->name('seller.new-invoice');
 
 
 

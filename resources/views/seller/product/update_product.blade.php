@@ -45,7 +45,7 @@ App::setLocale(Session::get('locale'));
                 
                
                 <div class="car">
-                
+                   
     
                     <div class="card-body">
                         <form method="POST" action="/seller-update-product">
@@ -214,13 +214,8 @@ App::setLocale(Session::get('locale'));
                                 <label for="location" class="col-md-4 col-form-label text-md-right">{{ __('Location/Shelf') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="location" type="text" class="form-control @error('location') is-invalid @enderror" name="location"  value="{{ $product->location }}" autocomplete="location">
+                                    <input id="location" type="text" class="form-control" name="location"  value="{{ $product->location }}" autocomplete="location">
     
-                                    @error('location')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
     

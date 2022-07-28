@@ -76,6 +76,7 @@ App::setLocale(Session::get('locale'));
 <script src="plugins/jquery/jquery.min.js"></script>
 
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)

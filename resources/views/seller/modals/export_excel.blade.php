@@ -26,7 +26,7 @@
                                             <label for="exampleInputFile">Select File</label>
                                             <div class="input-group">
                                               <div class="custom-file">
-                                                <input type="file" class="form-control" name="file">
+                                                <input required type="file" class="form-control" name="file">
                                               </div>
                                               <div class="input-group-append">
                                                 <span class="input-group-text">  

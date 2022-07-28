@@ -92,6 +92,7 @@ class ProductController extends Controller
               $mauzo->discount = $request->discount;
               $mauzo->profit = (($total_quantity->sold_price * $request->total_quantity + ($request->subquantity*$total_quantity->sold_price)) - $request->discount) - (($total_quantity->purchased_price*$request->total_quantity) + ($request->subquantity*$total_quantity->purchased_price));
               $mauzo->customer_name = $request->customer_name;
+              $mauzo->sale_status = $request->sale_status;
               
               $mauzo->save();
         
@@ -133,6 +134,7 @@ class ProductController extends Controller
               $mauzo->discount = $request->discount;
               $mauzo->profit = (($total_quantity->sold_price * $request->total_quantity + ($request->subquantity*$total_quantity->sold_price)) - $request->discount) - (($total_quantity->purchased_price*$request->total_quantity) + ($request->subquantity*$total_quantity->purchased_price));
               $mauzo->customer_name = $request->customer_name;
+              $mauzo->sale_status = $request->sale_status;
               $mauzo->save();
         
               
@@ -176,6 +178,7 @@ class ProductController extends Controller
               $mauzo->discount = $request->discount;
               $mauzo->profit =(($total_quantity->sold_price * $request->total_quantity + ($request->subquantity*$total_quantity->sold_price)) - $request->discount) - (($total_quantity->purchased_price*$request->total_quantity) + ($request->subquantity*$total_quantity->purchased_price));
               $mauzo->customer_name = $request->customer_name;
+              $mauzo->sale_status = $request->sale_status;
               $mauzo->save();
         
               $daySales = 0;
@@ -217,6 +220,7 @@ class ProductController extends Controller
               $mauzo->true_price = $total_quantity->sold_price + ($request->subquantity*$total_quantity->sold_price);
               $mauzo->profit = (($request->subquantity/0.25))*$sub_price;
               $mauzo->customer_name = $request->customer_name;
+              $mauzo->sale_status = $request->sale_status;
               $mauzo->save();
         
               $daySales = 0;
@@ -254,6 +258,7 @@ class ProductController extends Controller
               $mauzo->true_price = ($total_quantity->sold_price * $request->total_quantity + ($request->subquantity*$total_quantity->sold_price)) - $request->discount;
               $mauzo->profit = $request->total_quantity*$profit;
               $mauzo->customer_name = $request->customer_name;
+              $mauzo->sale_status = $request->sale_status;
               $mauzo->save();
         
               $date1=date('Y-m-d');
@@ -435,7 +440,7 @@ class ProductController extends Controller
         $product->quantity = $request->quantity;
         $product->total = $request->amount;
         $product->notification = $request->notification;
-        $product->money_unit = $request->money_symbol; 
+        $product->money_unit = Session::get('money'); 
         $product->purchased_price = $request->purchased_price;
         $product->sold_price = $request->sold_price;
         $product->expire = $request->expire;
@@ -473,7 +478,7 @@ class ProductController extends Controller
             $product->quantity = $request->quantity;
             $product->total = $amount;
             $product->notification = $request->notification;
-            $product->money_unit = $request->money_symbol; 
+            $product->money_unit = Session::get('money'); 
             $product->purchased_price = $request->purchased_price;
             $product->sold_price = $request->sold_price;
             $product->expire = $request->expire;
@@ -492,7 +497,7 @@ class ProductController extends Controller
             $product->quantity = $request->quantity;
             $product->total = $amount;
             $product->notification = $request->notification;
-            $product->money_unit = $request->money_unit; 
+            $product->money_unit = Session::get('money'); 
             $product->purchased_price = $request->purchased_price;
             $product->sold_price = $request->sold_price;
             $product->expire = $request->expire;
@@ -760,7 +765,7 @@ class ProductController extends Controller
                 $product->unit = $request->unit;
                 
                 $product->notification = $request->notification;
-                $product->money_unit = $request->money_unit; 
+                $product->money_unit = Session::get('money'); 
                 $product->purchased_price = $request->purchased_price;
                 $product->sold_price = $request->sold_price;
                 $product->expire = $request->expire;

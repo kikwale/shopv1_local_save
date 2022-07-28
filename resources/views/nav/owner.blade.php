@@ -158,7 +158,7 @@
 
 
 <!-- Main Sidebar Container --> 
-<aside class="main-sidebar sidebar-dark- elevation-4" style="background-image:linear-gradient(rgba(3, 57, 88, 0.87), rgba(255, 123, 0, 0.404))">
+<aside class="main-sidebar sidebar-dark- elevation-4" style="background-image:linear-gradient(rgba(3, 57, 88, 0.87), rgba(31, 2, 65, 0.404))">
   <!-- Brand Logo -->
   <a href="#" class="brand-link">
     <img src="dist/img/shotram.png" alt="ShoTram Logo" class="brand-image img-circle elevation-3"

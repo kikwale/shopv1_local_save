@@ -10,4 +10,8 @@ class InvoiceController extends Controller
         $data = [];
         return view('seller/invoice.index')->with('data',$data);
     }
+
+    public function newInvoice(){
+        return view('seller.invoice.invoice');
+    }
 }

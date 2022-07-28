@@ -308,11 +308,11 @@ App::setLocale(Session::get('locale'));
                         style="margin-right: 5px;">
                         <i class="fas fa-download"></i> Generate PDF
                     </button> --}}
-                    <button type="button" id="printPayroll" class="btn btn-primary float-right"
+                    <button type="button" id="cc" onclick="printPayroll()" class="btn btn-primary float-right"
                         style="margin-right: 5px;">
                         <i class="fas fa-print"></i> Print Payroll
                     </button>
-                    <button type="button" id="previewPayroll" class="btn btn-primary float-right"
+                    <button type="button" onclick="previewPayroll()" class="btn btn-primary float-right"
                         style="margin-right: 5px;">
                         <i class="fas fa-preview"></i> Priview
                     </button><br><br>
@@ -341,17 +341,15 @@ App::setLocale(Session::get('locale'));
             .save();
         });
 
-        $('#printPayroll').click(function(){
+        function printPayroll(){
             var count = parseInt(document.getElementById('count').value);
             for (var i = 1; i <= count; i++) {
                 $('#basic_salary_input'+i+'').remove();
                 $('#allowance_input'+i+'').remove();
                 $('#loan_input'+i+'').remove();
-                $('#img'+i+'').remove();
+                $('#img').remove();
             }
        
-            
-            
             var divContents = document.getElementById("htmlContent").innerHTML;
             
             var a = window.open();
@@ -361,15 +359,17 @@ App::setLocale(Session::get('locale'));
             a.document.write('</body></html>');
             a.document.close();
             a.print();
-        });
-
-        $('#previewPayroll').click(function(){
+        }
+       
+        function previewPayroll(){
             var count = parseInt(document.getElementById('count').value);
             for (var i = 1; i <= count; i++) {
                 $('#basic_salary_input'+i+'').remove();
                 $('#allowance_input'+i+'').remove();
                 $('#loan_input'+i+'').remove();
-            }});
+            }
+        }
+
 
         function getAllownce(allowance1) {
             var allowance = parseInt(document.getElementById(allowance1).value)

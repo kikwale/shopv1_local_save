@@ -138,7 +138,7 @@ return [
        'total_quantity_sold' => 'Total Quantity Sold (whole number)',
        'sub_quantity' => 'Sub-Quantity',
        'discount' => 'Discount',
-       'customer_fully_name' => 'Customer Full Name',
+       'customer_fully_name' => 'Phone/Address',
 
        // selling table
        'product_name' => 'Product Name',

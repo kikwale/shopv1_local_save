@@ -201,7 +201,7 @@
 <!-- /.navbar -->
 
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-prima elevation-4" style="background-image:linear-gradient(rgba(3, 57, 88, 0.87), rgba(255, 123, 0, 0.404))">
+<aside class="main-sidebar sidebar-dark-prima elevation-4" style="background-image:linear-gradient(rgba(3, 57, 88, 0.87), rgba(31, 2, 65, 0.404))">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       <img src="dist/img/shotram.png" alt="ShoTram Logo" class="brand-image img-circle elevation-3"
@@ -391,9 +391,9 @@
         </li>
        
         <li class="nav-item has-treeview">
-          <a href="{{ route('seller.invoice') }}" class="nav-link">
-            {{-- <i class="nav-icon fas fa-users"></i> --}}
-            <img src="dist/img/people-01.png" width="40px" height="30px" alt="" srcset="">
+          <a href="#" class="nav-link">
+            {{-- <i class="nav-icon fas fa-users"></i> {{ route('seller.invoice') }} --}}
+            <img src="dist/img/invoice.png" width="40px" height="30px" alt="" srcset="">
             <p>
             {{__('message.seller.invoice')}}
               {{-- <span class="badge badge-info right">6</span> --}}
@@ -402,9 +402,9 @@
         </li>
 
         <li class="nav-item has-treeview">
-          <a href="seller-quotation" class="nav-link">
-            {{-- <i class="nav-icon fas fa-users"></i> --}}
-            <img src="dist/img/people-01.png" width="40px" height="30px" alt="" srcset="">
+          <a href="#" class="nav-link">
+            {{-- <i class="nav-icon fas fa-users"></i>  seller-quotation --}}
+            <img src="dist/img/quotation.png" width="40px" height="30px" alt="" srcset="">
             <p>
             {{__('message.seller.quotation')}}
               {{-- <span class="badge badge-info right">6</span> --}}
