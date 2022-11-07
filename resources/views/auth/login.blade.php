@@ -3,9 +3,9 @@
 App::setLocale(Session::get('locale'));
 ?>
      <!-- Preloader -->
-     <div class="preloader flex-column justify-content-center align-items-center">
+     {{-- <div class="preloader flex-column justify-content-center align-items-center">
         <img class="animation__wobble" src="dist/img/shotram.png" alt="SHOTRAM" height="60" width="60">
-      </div>
+      </div> --}}
 
       <div id="banner-area" class="banner-area" style="background-image:url(dist/img/banner3.jpg)">
         <div class="banner-text">
@@ -13,7 +13,7 @@ App::setLocale(Session::get('locale'));
               <div class="row">
                 <div class="col-lg-12">
                     <div class="banner-heading">
-                      <img src="dist/img/shotram.png" alt="" srcset=""><br>
+                      
                       <nav aria-label="breadcrumb">
                           <ol class="breadcrumb justify-content-center">
                             <li class="breadcrumb-item"><a href="tel:+255782776467">+255  782 776 467</a></li>
@@ -57,7 +57,7 @@ App::setLocale(Session::get('locale'));
                 <div class="card-header" style="background-color:#006699">{{ __('message.login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('auth') }}">
                         @csrf
                      <?php /* $date = '15-12-2016';
                     $nameOfDay = date('l', strtotime($date));

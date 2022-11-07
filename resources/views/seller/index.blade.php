@@ -4,136 +4,256 @@
 App::setLocale(Session::get('locale'));
 ?>
       @section('content')
-          <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-          <!-- Content Header (Page header) -->
-          <div class="content-header">
-            <div class="container-fluid">
-      
-                 <!-- Preloader -->
-            <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__wobble" src="dist/img/shotram.png" alt="ShoTramLogo" height="60" width="60">
-          </div>
-  
-   
-         {{-- <!-- Info boxes -->
-       <div class="row">
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="info-box">
-            <span class="info-box-icon bg-i elevation-1" style="background-color:#006699" ><i class="fas fa-users text-white"></i></span>
-    
-            <div class="info-box-content">
-              <span class="info-box-text">Total O-level {{Session::get('owner_id')}} {{Session::get('shop_id')}}</span>
-              <span class="info-box-number">
-              3546
-              </span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="info-box mb-3">
-            <span class="info-box-icon bg- elevation-1" style="background-color:#006699"><i class="fas fa-users text-white"></i></span>
-    
-            <div class="info-box-content">
-              <span class="info-box-text">Total A-level</span>
-              <span class="info-box-number">4354</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-    
-        <!-- fix for small devices only -->
-        <div class="clearfix hidden-md-up"></div>
-    
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="info-box mb-3">
-            <span class="info-box-icon bg-in elevation-1" style="background-color:#006699"><i class="fas fa-users text-white"></i></span>
-    
-            <div class="info-box-content">
-              <span class="info-box-text">Undergraduates</span>
-              <span class="info-box-number">2242</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="info-box mb-3">
-            <span class="info-box-icon bg-inf elevation-1" style="background-color:#006699"><i class="fas fa-users text-white"></i></span>
-    
-            <div class="info-box-content">
-              <span class="info-box-text">Graduates</span>
-              <span class="info-box-number">443</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row --> --}}
-
-
-              <div class="row mb-2">
-                <div class="col-sm-6">
-               
-                  <h1 class="m-0 text-dark">{{__('message.seller.dashboard')}}</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                  <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  </ol>
-                </div><!-- /.col -->
-              </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-          </div>
+        
+      <div class="xs-pd-20-10 pd-ltr-20">
           <!-- /.content-header -->
-      
-          <div class="row">
-            <div class="card-body">
-                
-              <a href="seller_shop_workers?ower_id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
-                {{-- <span class="badge bg-purple">891</span> --}}
-                <i class="fas fa-users"></i><br>  {{__('message.seller.workers')}}
-              </a>
-              <a href="seller_printed_receipt?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
-                <i class="fas fa-edit"></i><br>
-                <p>{{ __('message.receipt')}}</p>
-              </a>
-              
-              <a href="seller_expired_product?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
-                <i class="fas fa-save"></i> <br>
-                <p>{{__('message.seller.expired_products')}}</p>
-              </a>
-              <a href="seller-sold-product?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
-                {{-- <span class="badge bg-success">300</span> --}}
-                <i class="fas fa-barcode"></i> {{__('message.seller.sales')}}
-              </a>
-              <a href="seller-placed-order?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
-                {{-- <span class="badge bg-teal">67</span> --}}
-                <i class="fas fa-inbox"></i><br>
-                <p>{{__('message.seller.order')}}</p>
+          <div class="title pb-20">
+            <h2 class="h3 mb-0">Overview</h2>
+          </div>
+          <div class="row pb-10">
+            <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+              <div class="card-box height-100-p widget-style3">
+                <div class="d-flex flex-wrap">
+                  <div class="widget-data">
+                    <div class="weight-700 font-24 text-dark"> {{number_format(App\Models\Mauzo::where('shop_id',Session::get('shop_id'))->where('sales_date',date('Y-m-d'))->sum('true_price')) }}{{ Session::get('money') }} </div>
+                    <div class="font-14 text-secondary weight-500">
+                  Today Sales
+                    </div>
+                  </div>
+                  <div class="widget-icon">
+                    <div class="icon" data-color="#00eccf">
+                      <i class="icon-copy dw dw-calendar1"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+              <div class="card-box height-100-p widget-style3">
+                <div class="d-flex flex-wrap">
+                  <div class="widget-data">
+                    <div class="weight-700 font-24 text-dark"> {{number_format(App\Models\Mauzo::where('shop_id',Session::get('shop_id'))->where('sales_date',date('Y-m-d'))->sum('profit')) }}{{ Session::get('money') }}</div>
+                    <div class="font-14 text-secondary weight-500">
+                      Today Profits
+                    </div>
+                  </div>
+                  <div class="widget-icon">
+                    <div class="icon" data-color="#ff5b5b">
+                      <span class="icon-copy ti-heart"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+              <div class="card-box height-100-p widget-style3">
+                <div class="d-flex flex-wrap">
+                  <div class="widget-data">
+                    <div class="weight-700 font-24 text-dark">{{number_format(App\Models\Mauzo::where('shop_id',Session::get('shop_id'))->where('month',date('M', strtotime(date('Y-m-d'))))->where('year',date('Y'))->sum('true_price')) }}{{ Session::get('money') }}</div>
+                    <div class="font-14 text-secondary weight-500">
+                     This Month Sales
+                    </div>
+                  </div>
+                  <div class="widget-icon">
+                    <div class="icon">
+                      <i
+                        class="icon-copy fa fa-stethoscope"
+                        aria-hidden="true"
+                      ></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+              <div class="card-box height-100-p widget-style3">
+                <div class="d-flex flex-wrap">
+                  <div class="widget-data">
+                    <div class="weight-700 font-24 text-dark"> {{number_format(App\Models\Mauzo::where('shop_id',Session::get('shop_id'))->where('month',date('M', strtotime(date('Y-m-d'))))->where('year',date('Y'))->sum('profit'))}}{{ Session::get('money') }}</div>
+                    <div class="font-14 text-secondary weight-500">This Month Profits</div>
+                  </div>
+                  <div class="widget-icon">
+                    <div class="icon" data-color="#09cc06">
+                      <i class="icon-copy fa fa-money" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-              </a>
-              <a href="{{ route('seller.store') }}" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
-                {{-- <span class="badge bg-teal">67</span> --}}
-                <i class="fas fa-inbox"></i> <br>
-                <p>{{__('message.seller.store')}}</p>
-              </a>
-              <a href="seller-finished-product" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
-                {{-- <span class="badge bg-teal">67</span> --}}
-                <i class="fas fa-inbox"></i> <br>
-                <p>{{ __('message.seller.finished_products') }}</p>
-              </a>
+            <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+              <div class="card-box height-100-p widget-style3">
+                <div class="d-flex flex-wrap">
+                  <div class="widget-data">
+                    <div class="weight-700 font-24 text-dark">             {{number_format(App\Models\Mauzo::where('shop_id',Session::get('shop_id'))->where('year',date('Y'))->sum('true_price'))}}{{ Session::get('money') }}</div>
+                    <div class="font-14 text-secondary weight-500">This Year Sales</div>
+                  </div>
+                  <div class="widget-icon">
+                    <div class="icon" data-color="#09cc06">
+                      <i class="icon-copy fa fa-money" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
+            <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+              <div class="card-box height-100-p widget-style3">
+                <div class="d-flex flex-wrap">
+                  <div class="widget-data">
+                    <div class="weight-700 font-24 text-dark"> {{number_format(App\Models\Mauzo::where('shop_id',Session::get('shop_id'))->where('year',date('Y'))->sum('profit'))}}{{ Session::get('money') }}</div>
+                    <div class="font-14 text-secondary weight-500">This Year Profit</div>
+                  </div>
+                  <div class="widget-icon">
+                    <div class="icon" data-color="#09cc06">
+                      <i class="icon-copy fa fa-money" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+              <div class="card-box height-100-p widget-style3">
+                <div class="d-flex flex-wrap">
+                  <div class="widget-data">
+                    <div class="weight-700 font-24 text-dark">{{ number_format(App\Models\Product::all()->sum(function($sale) {
+                      return $sale->total * $sale->purchased_price;
+                  })) }}{{ Session::get('money') }}</div>
+                    <div class="font-14 text-secondary weight-500">Stock</div>
+                  </div>
+                  <div class="widget-icon">
+                    <div class="icon" data-color="#09cc06">
+                      <i class="icon-copy fa fa-money" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+
+          
+            <div class="title pb-20">
+              <h2 class="h3 mb-0">Quick Details</h2>
+            </div>
+          
+         <div class="row">
+          <div class="row">
+
+            <div class="col-md-2">
+              <div class="card-body" >
+                
+          
+                <a href="seller-sold-product" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                  <span class="micon icon-copy fa fa-signal"></span
+                    ><br>
+                  <p>{{__('message.seller.sales')}}</p>
+                </a>
+                
+              </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+              <div class="card-body">
+                
+          
+                <a href="seller-finished-product" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                  <span class="micon bi bi-archive"></span
+                    ><br>
+                  <p>{{__('message.seller.finished_products')}}</p>
+                </a>
+                
+              </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+              <div class="card-body">
+                
+          
+                <a href="seller-store" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                  <span class="micon bi bi-archive"></span
+                    ><br>
+                  <p>{{__('message.seller.stock')}}</p>
+                </a>
+                
+              </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+              <div class="card-body">
+                
+          
+                <a href="seller_expired_product" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                  <span class="micon bi bi-archive"></span
+                    ><br>
+                  <p>{{__('message.seller.expired_products')}}</p>
+                </a>
+                
+              </div>
+            </div>
+          
+          </div>
+
+        
+          <div class="row">
+
+            <div class="col-md-2">
+              <div class="card-body">
+                
+          
+                <a href="seller-invoice" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                  <span class="micon bi bi-receipt-cutoff"></span
+                    ><br>
+                  <p>{{__('message.seller.invoice')}}</p>
+                </a>
+                
+              </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+              <div class="card-body">
+                
+          
+                <a href="seller-quotaions" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                  <span class="micon bi bi-back"></span
+                    ><br>
+                  <p>{{__('message.seller.quotation')}}</p>
+                </a>
+                
+              </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+              <div class="card-body">
+                
+          
+                <a href="customers" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                  <span class="micon fa fa-users"></span
+                    ><br>
+                  <p>{{ __('message.seller.customers') }}</p>
+                </a>
+                
+              </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+              <div class="card-body">
+                
+          
+                <a href="credit-purchase" class="btn btn-app bg-white" style="width: 200px; height:150px"><br>
+                  <span class="micon icon-copy fa fa-diamond"></span
+                    ><br>
+                  <p>{{ __('message.seller.credit_purchases') }}</p>
+                </a>
+                
+              </div>
+            </div>
+          
+          </div>
+
+       
+
+         </div>
 
           <!-- Main content -->
           <section class="content">
@@ -169,6 +289,7 @@ App::setLocale(Session::get('locale'));
                  
                 {{-- @include('admin.include') --}}
                         
+                
                 <div class="row">
               
 
@@ -226,8 +347,15 @@ App::setLocale(Session::get('locale'));
       
               </div>
 
-             
-            </div><!--/. container-fluid -->
+              {{-- footer --}}
+              <div class="footer-wrap pd-20 mb-20 card-box">
+                <strong>Copyright &copy;2022 <a href="#">ShoTram</a>.</strong>
+                All rights reserved.
+                <a href="#" 
+                  ><b>Version</b> 3.0.4</a
+                >
+              </div>
+            </div>
           </section>
           <!-- /.content -->
           

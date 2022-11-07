@@ -90,6 +90,20 @@
           </div>
           <!-- /.content-header -->
       
+          {{-- <div class="row">
+
+            <div class="col-md-4 col-sm-12 mb-30">
+                <div class="pd-20 card-box height-100-p">
+                    <h4 class="mb-15 text-blue h4"> {{ __('message.seller.cash_sales') }}</h4>
+                    <p>
+                        {{ Session::get('money') }}
+                    </p>
+                    
+                </div>
+            </div>
+            
+        </div> --}}
+
           <!-- Main content -->
           <section class="content">
             <div class="container-fluid">
@@ -124,144 +138,99 @@
                  
                 {{-- @include('admin.include') --}}
                             @if(count((array)$data) > 0)
-                                    <div class="row">
-                                      <div class="col-md-12">
-                                        <div class="car">
-                                          <div class="card-header">
+                            <div class="card-box mb-30">
+                              <div class="pd-20">
+                                <h4 class="text-blue h4">Expired Products</h4>
+                              </div>
+                              <div class="pb-20">
+                                <table
+                                  class="table hover multiple-select-row data-table-export nowrap"
+                                >
+                                  <thead>
+                                    <tr>
+                                      <th class="table-plus datatable-nosort">Product Name</th>
+                                      <th>Product Category</th>
+                                      <th>unit</th>
+                                      <th>quantity</th>
+                                      <th>Total</th>
+                                      <th>purchased Price</th>
+                                      <th>Price for Sale</th>
+                                      <th>Expire Date</th>
+                                      <th>Location</th>
+                                      <th>Action</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
 
-                                           
-                                          
-                                          </div>
-                                        
-                                            <div class="card-body">
-                                              <table id="example1" class="table table-bordered table-striped">
-                                                <thead>
-                                                <tr>
-                                                  <th>Product Name</th>
-                                                  <th>Product Category</th>
-                                                  <th>unit</th>
-                                                  <th>quantity</th>
-                                                  <th>Total</th>
-                                                  <th>purchased Price</th>
-                                                  <th>Price for Sale</th>
-                                                  <th>Expire Date</th>
-                                                  <th>Location</th>
-                                                  <th>Action</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                              
-                    {{-- Full texts	
-                      
-                id	name	owner_id	shop_id	category	unit	quantity	amount	purchased_price	sold_price	expire	created_at	updated_at	
-                    --}}
-                                          @foreach($data as $value)
+                                    @foreach($data as $value)
+                                    <tr>
+                                      <td>{{$value->name}}</td>
+                                      <td>{{$value->category}}</td>
+                                      <td>{{$value->unit}}</td>
+                                      <td>{{$value->quantity}}</td>
+                                      <td>{{$value->total}}
                                       
-                                        <tr>
-                                          <td>{{$value->name}}</td>
-                                          <td>{{$value->category}}</td>
-                                          <td>{{$value->unit}}</td>
-                                          <td>{{$value->quantity}}</td>
-                                          @if ($value->category == "Jumla")
-                                          <td>{{$value->total}}
-                                          @if (session('unsold') == $value->id)
-                                            <small class="text-danger"> <span class="right badge badge-danger">Error</span></small>
-                                          @endif
-                                          @if (session('sold') == $value->id)
-                                            <small class="text-success"> <span class="right badge badge-success">Success</span></small>
-                                          @endif
-                                          </td>
-                                          @else
-                                          <td>{{$value->total}}{{$value->unit}}
-                                                @if (session('unsold') == $value->id)
-                                                <small class="text-danger"> <span class="right badge badge-danger">Error</span></small>
-                                              @endif
-                                              @if (session('sold') == $value->id)
-                                                <small class="text-success"> <span class="right badge badge-success">Success</span></small>
-                                              @endif
-                                          </td>
-                                          @endif
-                                          <td>{{$value->purchased_price}}</td>
-                                          <td>{{$value->sold_price}}</td>
-                                          <td>{{$value->expire}}</td>
-                                          <td>{{$value->location}}</td>
-                                        
-                                          <td>
-                                           
-                                            @if ($value->isExpired == 0)
-                                             <a class="btn btn-warning btn-sm" href="seller-accept-expired?pid={{$value->id}}&&dhfjhdhgfjhgfjdhfhghguh@#gfdf$=5hj5hjg$3$$$$$#*^fg">
-                                            Accept
-                                             </a>
-                                            
-                                            @else
-                                               
-                                             {{-- <a class="btn btn-d1nger btn-sm" href="seller_update_rej?id={{$value->id}}&&dhfjhdhgfjhgfjdhfhghguh@#gfdf$=5hj5hjg$3$$$$$#*^fg">
-                                             
-                                              <i class="fas fa-trash"></i>
-                                             </a> --}}
-                                             <p>No Action</p>
-                                            @endif
-                                          
-
-                                          </td>
-
-                                          
-
-                                        </tr> 
+                                      </td>
                                       
-                      
-                                      @endforeach
-                                              
-                                                </tbody>
-                                                <tfoot>
-                                                <tr>
-                                                  <th>Product Name</th>
-                                                  <th>Category</th>
-                                                  <th>Unit</th>
-                                                  <th>Quantity</th>
-                                                  <th>Product Sold</th>
-                                                  <th>Purchased Price</th>
-                                                  <th>Sold Price</th>
-                                                  <th>Expire Date</th>
-                                                  <th>Location</th>
-                                                  <th>Action</th>
-                                                </tr>
-                                                </tfoot>
-                                              </table>
-                                            </div>
-                                            <!-- /.card-body -->
-                                          </div>
-                                        <!-- /.card -->
-                                      </div>
-                                      <!-- /.col -->
-                                    </div>
-                                    <!-- /.row -->
+                                      <td>{{$value->purchased_price}}</td>
+                                      <td>{{$value->sold_price}}</td>
+                                      <td>{{$value->expire}}</td>
+                                      <td>{{$value->location}}</td>
+                                    
+                                      <td>
+                                       
+                                        @if ($value->isExpired == 0)
+                                         <a class="btn btn-warning btn-sm" href="seller-accept-expired?pid={{$value->id}}&&dhfjhdhgfjhgfjdhfhghguh@#gfdf$=5hj5hjg$3$$$$$#*^fg">
+                                        Accept
+                                         </a>
+                                        
+                                        @else
+                                           
+                                         {{-- <a class="btn btn-d1nger btn-sm" href="seller_update_rej?id={{$value->id}}&&dhfjhdhgfjhgfjdhfhghguh@#gfdf$=5hj5hjg$3$$$$$#*^fg">
+                                         
+                                          <i class="fas fa-trash"></i>
+                                         </a> --}}
+                                         <p>No Action</p>
+                                        @endif
+                                      
+
+                                      </td>
+
+                                      
+
+                                    </tr> 
+                                    @endforeach
+                                   
+                                   
+                                    
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
                   @else
                             
                             <div class="row">
                                 <div class="col-md-12">
                                   <div class="car">
                                     <div class="card-header">
-                                      <h5 class="card-title"> &nbsp;</h5>
+                                      <h5 class="card-title">Shelves</h5>
                 
-                                   
                                     </div>
                                   
                                       <div class="card-body">
                                         <table id="example1" class="table table-bordered table-striped">
                                           <thead>
                                           <tr>
-                                              <th>Product Name</th>
-                                              <th>Product Category</th>
-                                              <th>unit</th>
-                                              <th>quantity</th>
-                                              <th>Product Sold</th>
-                                              <th>purchased Price</th>
-                                              <th>Price for Sale</th>
-                                              <th>Discount</th>
-                                              <th>Expire Date</th>
-                                              <th>Location</th>
-                                              <th>Action</th>
+                                            <th class="table-plus datatable-nosort">Product Name</th>
+                                            <th>Product Category</th>
+                                            <th>unit</th>
+                                            <th>quantity</th>
+                                            <th>Total</th>
+                                            <th>purchased Price</th>
+                                            <th>Price for Sale</th>
+                                            <th>Expire Date</th>
+                                            <th>Location</th>
+                                            <th>Action</th>
                                           </tr>
                                           </thead>
                                           <tbody>
@@ -270,17 +239,16 @@
                                           </tbody>
                                           <tfoot>
                                           <tr>
-                                              <th>Product Name</th>
-                                              <th>Product Category</th>
-                                              <th>unit</th>
-                                              <th>quantity</th>
-                                              <th>Product Sold</th>
-                                              <th>purchased Price</th>
-                                              <th>Price for Sale</th>
-                                              <th>Discount</th>
-                                              <th>Expire Date</th>
-                                              <th>Location</th>
-                                              <th>Action</th>
+                                            <th class="table-plus datatable-nosort">Product Name</th>
+                                            <th>Product Category</th>
+                                            <th>unit</th>
+                                            <th>quantity</th>
+                                            <th>Total</th>
+                                            <th>purchased Price</th>
+                                            <th>Price for Sale</th>
+                                            <th>Expire Date</th>
+                                            <th>Location</th>
+                                            <th>Action</th>
                                           </tr>
                                           </tfoot>
                                         </table>
@@ -306,6 +274,7 @@
           
         </div>
         
+      
       @endsection
       
         

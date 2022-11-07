@@ -10,6 +10,7 @@ use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
@@ -20,10 +21,10 @@ class ProductController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     public function owner_view_jumla_product(Request $request){
         $data = DB::table('products')->where('category','Jumla')->where('total','!=',0)
@@ -78,7 +79,7 @@ class ProductController extends Controller
           //  id	product_id	seller_id	owner_id	shop_id	day	month	year	quantity	amount	profit	created_at	updated_at	
               $mauzo = new Mauzo;
               $mauzo->product_id = $request->product_id;
-              $mauzo->seller_id = Auth::id(); 
+              $mauzo->seller_id = Session::get('seller_id');
               $mauzo->owner_id = Session::get('owner_id');
               $mauzo->shop_id = Session::get('shop_id');
               $mauzo->day = $nameOfDay;
@@ -120,7 +121,7 @@ class ProductController extends Controller
           //  id	product_id	seller_id	owner_id	shop_id	day	month	year	quantity	amount	profit	created_at	updated_at	
               $mauzo = new Mauzo;
               $mauzo->product_id = $request->product_id;
-              $mauzo->seller_id = Auth::id();
+              $mauzo->seller_id = Session::get('seller_id');
               $mauzo->owner_id = Session::get('owner_id');
               $mauzo->shop_id = Session::get('shop_id');
               $mauzo->day = $nameOfDay;
@@ -164,7 +165,7 @@ class ProductController extends Controller
           //  	product_id	seller_id	owner_id	shop_id	day	month	year	sales_date	quantity	amount	sold_price	true_price	discount	profit	created_at	updated_at	
               $mauzo = new Mauzo;
               $mauzo->product_id = $request->product_id;
-              $mauzo->seller_id = Auth::id();
+              $mauzo->seller_id = Session::get('seller_id');
               $mauzo->owner_id = Session::get('owner_id');
               $mauzo->shop_id = Session::get('shop_id');
               $mauzo->day = $nameOfDay;
@@ -206,7 +207,7 @@ class ProductController extends Controller
           //  id	product_id	seller_id	owner_id	shop_id	day	month	year	quantity	amount	profit	created_at	updated_at	
               $mauzo = new Mauzo;
               $mauzo->product_id = $request->product_id;
-              $mauzo->seller_id = Auth::id();
+              $mauzo->seller_id = Session::get('seller_id');
               $mauzo->owner_id = Session::get('owner_id');
               $mauzo->shop_id = Session::get('shop_id');
               $mauzo->day = $nameOfDay;
@@ -245,7 +246,7 @@ class ProductController extends Controller
           //  id	product_id	seller_id	owner_id	shop_id	day	month	year	quantity	amount	profit	created_at	updated_at	
               $mauzo = new Mauzo;
               $mauzo->product_id = $request->product_id;
-              $mauzo->seller_id = Auth::id();
+              $mauzo->seller_id = Session::get('seller_id');
               $mauzo->owner_id = Session::get('owner_id');
               $mauzo->shop_id = Session::get('shop_id');
               $mauzo->day = $nameOfDay;
@@ -310,7 +311,7 @@ class ProductController extends Controller
               //  id	product_id	seller_id	owner_id	shop_id	day	month	year	quantity	amount	profit	created_at	updated_at	
                   $mauzo = new Mauzo;
                   $mauzo->product_id = $request->product_id;
-                  $mauzo->seller_id = Auth::id();
+                  $mauzo->seller_id =Session::get('seller_id');
                   $mauzo->owner_id = $request->owner_id;
                   $mauzo->shop_id = $request->shop_id;
                   $mauzo->day = $nameOfDay;
@@ -348,7 +349,7 @@ class ProductController extends Controller
               //  id	product_id	seller_id	owner_id	shop_id	day	month	year	quantity	amount	profit	created_at	updated_at	
                   $mauzo = new Mauzo;
                   $mauzo->product_id = $request->product_id;
-                  $mauzo->seller_id = Auth::id();
+                  $mauzo->seller_id = Session::get('seller_id');
                   $mauzo->owner_id = $request->owner_id;
                   $mauzo->shop_id = $request->shop_id;
                   $mauzo->day = $nameOfDay;
@@ -381,24 +382,27 @@ class ProductController extends Controller
 
     public function seller_selling_product(Request $request){
         
+        //Summation of two column
+        // $sum = Product::all()->sum(function($sale) {
+        //     return $sale->total * $sale->purchased_price;
+        // });
+
         $date = date('Y-m-d');
         $date1=date('Y-m-d');
         $nameOfDay = date('l', strtotime($date));
         $nameOfMonth = date('M', strtotime($date));
         $nameOfYear = date('Y');
 
-        $sales = DB::table('mauzos')->where('shop_id',$request->shop_id)->cursor();
-        $data = DB::table('products')->where('shop_id',$request->shop_id)->where('total','!=', 0)->where('expire','>=',date('Y-m-d'))
+        $sales = DB::table('mauzos')->where('shop_id',Session::get('shop_id'))->cursor();
+        $data = DB::table('products')->where('shop_id',Session::get('shop_id'))->where('total','!=', 0)->where('expire','>=',date('Y-m-d'))
         ->where('total','>',0)->orderBy('id','desc')->cursor();
-        Session::put('owner_id',$request->id);
-        Session::put('shop_id',$request->shop_id);
+        
         return view('seller.seller_selling_product')->with('data',$data)->with('sales',$sales)
-        ->with('daySales',DB::table('mauzos')->where('sales_date', $date1)->where('shop_id',$request->shop_id)->sum('true_price'))
-        ->with('dayProfit',DB::table('mauzos')->where('sales_date', $date1)->where('shop_id',$request->shop_id)->sum('profit'))
-        ->with('month_profit',DB::table('mauzos')->where('month', $nameOfMonth)->where('shop_id',$request->shop_id)->sum('profit'))
-        ->with('month_sales',DB::table('mauzos')->where('month', $nameOfMonth)->where('shop_id',$request->shop_id)->sum('true_price'));
+        ->with('daySales',DB::table('mauzos')->where('sales_date', $date1)->where('shop_id',Session::get('shop_id'))->sum('true_price'))
+        ->with('dayProfit',DB::table('mauzos')->where('sales_date', $date1)->where('shop_id',Session::get('shop_id'))->sum('profit'))
+        ->with('month_profit',DB::table('mauzos')->where('month', $nameOfMonth)->where('shop_id',Session::get('shop_id'))->sum('profit'))
+        ->with('month_sales',DB::table('mauzos')->where('month', $nameOfMonth)->where('shop_id',Session::get('shop_id'))->sum('true_price'));
 
-       return $request->all();
     }
 
     public function seller_today_sales(Request $request){
@@ -468,7 +472,7 @@ class ProductController extends Controller
     public function seller_saveRejarejaProduct(Request $request){
         // {{-- id	name	owner_id	shop_id	category	unit	quantity	amount	purchased_price	sold_price	expire	location	created_at	updated_at	 --}}
         if ( empty($request->subquantity)) {
-            $amount = $request->amount*$request->quantity;
+            $amount = 1*$request->quantity;
             $product = new Product();
             $product->name = $request->name;
             $product->owner_id = $request->owner_id;
@@ -482,8 +486,11 @@ class ProductController extends Controller
             $product->purchased_price = $request->purchased_price;
             $product->sold_price = $request->sold_price;
             $product->expire = $request->expire;
+            if ($request->isTaxable == 'taxable') {
+                $product->isTaxable = true;
+            } 
             $product->location = $request->location;
-            $product->save();
+             $product->save();
      
             return back()->with('success','Successfully Product(s) Registered......!!');
         } elseif(!empty($request->subquantity)){
@@ -501,6 +508,9 @@ class ProductController extends Controller
             $product->purchased_price = $request->purchased_price;
             $product->sold_price = $request->sold_price;
             $product->expire = $request->expire;
+            if ($request->isTaxable == 'taxable') {
+                $product->isTaxable = true;
+            } 
             $product->location = $request->location;
             $product->save();
      
@@ -608,6 +618,10 @@ class ProductController extends Controller
         $data = DB::table('products')->where('total','!=', 0)->where('expire','>=',date('Y-m-d'))
         ->where('owner_id',Session::get('owner_id'))->
         where('shop_id',Session::get('shop_id'))->orderBy('id','asc')->cursor();
+        // $stock_money = DB::table('products')->where('total','!=', 0)->where('expire','>=',date('Y-m-d'))
+        // ->where('owner_id',Session::get('owner_id'))->
+        // where('shop_id',Session::get('shop_id'))->sum();
+
         return view('seller/product.seller_store')->with('data',$data);
     }
     

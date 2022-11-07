@@ -184,9 +184,9 @@ updated_at
                                           <td>
                                             <a data-toggle="modal" data-target="#loan_return{{ $value->id }}" href="#" class="btn btn-sm btn-info">Return</a>
                                             <a href="#" class="btn btn-warning btn-sm">Update</a>
-                                            <a href="#" class="btn btn-sm btn-success">Details</a>
+                                            <a href="owner-loant-info?ln={{$value->id}}" class="btn btn-sm btn-success">Details</a>
                                            
-                                            <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                            <a href="owner-loant-delete?ln={{$value->id}}" class="btn btn-sm btn-danger">Delete</a>
 
                                           </td>
                                     

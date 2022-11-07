@@ -11,8 +11,8 @@
                   <h1 class="banner-title">Contact</h1>
                   <nav aria-label="breadcrumb">
                       <ol class="breadcrumb justify-content-center">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+                        <li class="breadcrumb-item"><a href="/"></a></li>
+                        <li class="breadcrumb-item active" aria-current="page"></li>
                       </ol>
                   </nav>
                 </div>
@@ -21,7 +21,7 @@
       </div><!-- Container end -->
     </div><!-- Banner text end -->
   </div><!-- Banner area end --> 
-  
+  <br><br>
   <section id="main-container" class="main-container">
     <div class="container">
   
@@ -36,7 +36,7 @@
       <div class="row">
         <div class="col-md-4">
           <div class="ts-service-box-bg text-center h-100" style="background-color: #006837">
-            <span class="ts-service-icon icon-round">
+            <span class="ts-service-icon icon-round"><br>
               <i class="fas fa-map-marker-alt mr-0"></i>
             </span>
             <div class="ts-service-box-content">
@@ -49,7 +49,7 @@
         <div class="col-md-4">
          <a href="mailto:info@shotram.com" class="text-white">
           <div class="ts-service-box-bg text-center h-100" style="background-color: #006837">
-            <span class="ts-service-icon icon-round">
+            <span class="ts-service-icon icon-round"><br>
               <i class="fa fa-envelope mr-0"></i>
             </span>
             <div class="ts-service-box-content">
@@ -63,7 +63,7 @@
         <div class="col-md-4">
          <a href="tel:+255782776467"  class="text-white">
           <div class="ts-service-box-bg text-center h-100" style="background-color: #006837">
-            <span class="ts-service-icon icon-round">
+            <span class="ts-service-icon icon-round"><br>
               <i class="fa fa-phone-square mr-0"></i>
             </span>
             <div class="ts-service-box-content">
@@ -84,46 +84,7 @@
   
       <div class="gap-40"></div>
    <br>
-      <div class="row">
-        <div class="col-md-12">
-          <h3 class="column-title">We love to hear</h3>
-          <!-- contact form works with formspree.io  -->
-          <!-- contact form activation doc: https://docs.themefisher.com/constra/contact-form/ -->
-          <form id="contact-form" action="#" method="post" role="form">
-            <div class="error-container"></div>
-            <div class="row">
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label>Name</label>
-                  <input class="form-control form-control-name" name="name" id="name" placeholder="" type="text" required>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label>Email</label>
-                  <input class="form-control form-control-email" name="email" id="email" placeholder="" type="email"
-                    required>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label>Subject</label>
-                  <input class="form-control form-control-subject" name="subject" id="subject" placeholder="" required>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Message</label>
-              <textarea class="form-control form-control-message" name="message" id="message" placeholder="" rows="10"
-                required></textarea>
-            </div>
-            <div class="text-right"><br>
-              <button class="btn btn-primary solid blank" type="submit">Send Message</button>
-            </div>
-          </form>
-        </div>
-  
-      </div><!-- Content row -->
+    
     </div><!-- Conatiner end -->
   </section><!-- Main container end -->
 

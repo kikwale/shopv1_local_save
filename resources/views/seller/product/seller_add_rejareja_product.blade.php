@@ -39,7 +39,7 @@ App::setLocale(Session::get('locale'));
                 
                
                 <div class="car">
-                    <div style="font-style: bold;" class="card-header"><strong> {{ __('Products Registration') }} &nbsp; Owner Id = &nbsp; 000{{ session()->get('owner_id') }} &nbsp; Shop Id = &nbsp; 000{{ session()->get('shop_id') }} </strong> For Excel<br>
+                    <div style="font-style: bold;" class="card-header"><strong> {{ __('Products Registration') }} &nbsp; Owner Id = &nbsp; 000{{ Session::get('owner_id') }} &nbsp; Shop Id = &nbsp; 000{{ Session::get('shop_id') }} </strong> For Excel<br>
                         <a href="dist/shotram_products_importing_excel_templete.xlsx" class="btn btn-warning">Download Excel Templete</a>
                         <a href="#" data-toggle="modal" data-target="#excel" class="btn btn-primary">Import Excel</a>
                     </div>
@@ -97,7 +97,7 @@ App::setLocale(Session::get('locale'));
                                 <label for="quantity" class="col-md-4 col-form-label text-md-right">{{ __('Quantity') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="quantity" type="number" class="form-control " name="quantity" value="{{ old('quantity') }}" placeholder="Option" autocomplete="quantity" autofocus>
+                                    <input id="quantity" type="number" class="form-control " name="quantity" value="{{ old('quantity') }}" required autocomplete="quantity" autofocus>
     
                                 </div>
                             </div>
@@ -161,6 +161,22 @@ App::setLocale(Session::get('locale'));
     
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="isTaxable" style="float:center;" class="col-md-3 col-form-label text-md-right">{{ __('Is Taxable') }}</label>
+    
+                                <div class="col-md-3">
+                                    <input id="isTaxable" style="float: center;" type="radio" required class="form-" name="isTaxable" value="taxable" autocomplete="isTaxable">
+    
+                                </div>
+
+                                <label for="isTaxable" style="float: center;" class="col-md-3 col-form-label text-md-right">{{ __('Is not Taxable') }}</label>
+    
+                                <div class="col-md-3">
+                                    <input id="isTaxable" style="float: center;" type="radio" required class="form-" name="isTaxable" value="not taxable" autocomplete="isTaxable">
+    
+                                </div>
+                            </div>
+                            
                             
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">

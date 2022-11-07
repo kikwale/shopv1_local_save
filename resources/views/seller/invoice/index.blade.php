@@ -106,7 +106,8 @@
                 
                                             <div class="card-tools">
                                              
-                                              <a class="btn btn-primary" href="seller-new-invoice">New Invoice</a>
+                                              <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#">New Other Invoice</a>
+                                              <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#staticBackdrop">New Products Invoice</a>
                                               <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                                 <i class="fas fa-minus"></i>
                                               </button>
@@ -121,18 +122,13 @@
                                               <table id="example1" class="table table-bordered table-striped">
                                                 <thead>
                                                 <tr>
-                                                  <th>Serial No</th>
                                                   <th>Invoice No</th>
-                                                  <th> Sales Date</th>
-                                                  <th>Product Category</th>
-                                                  <th>unit</th>
-                                                  <th>quantity</th>
-                                                  <th>Amount Sold</th>
-                                                  <th>purchased Price</th>
-                                                  <th>Selling Price</th>
-                                                  <th>Discount</th>
-                                                  <th>Final Price</th>
+                                                  <th>Date</th>
                                                   <th>Customer Name</th>
+                                                  <th>Address</th>
+                                                  <th>Email</th>
+                                                  <th>Phone</th>
+                                                  <th>Action</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -163,21 +159,15 @@ updated_at
                                       
                                         <tr>
                                           <td>#000{{$value->id}}</td>
-                                          <td>{{$value->name}}</td>
-                                          <td>{{$value->sales_date}}</td>
-                                          <td>{{$value->category}}</td>
-                                          <td>{{$value->unit}}</td>
-                                          <td>{{$value->quantity}}</td>
-                                         
-                                          <td>{{$value->amount}}
-                                          </td>
-                                          <td>{{$value->purchased_price}}</td>
-                                          <td>{{$value->sold_price}}</td>
-                                          <td>{{$value->discount}}</td>
-                                          <td>{{$value->true_price}}</td>
+                                          <td>{{$value->date}}</td>
                                           <td>{{$value->customer_name}}</td>
-                                          {{-- <td><a href="seller-print-receipt?id={{$value->id}}&&shop_id={{Session::get('shop_id')}} "><i class="fas fa-print"></i></a></td>
-                                          --}}
+                                          <td>{{$value->address}}</td>
+                                          <td>{{$value->email}}</td>
+                                          <td>{{$value->phone}}</td>
+                                          <td><a href="seller-view-invoice?invoice={{$value->id}}" target="_blank" class="text-primary"><i class="fas fa-eye"></i></a>
+                                           &nbsp; <a href="seller-delete-invoice?invoice={{$value->id}}" style="background-color: ; color:#fc7b03"><i class="fas fa-trash"></i></a>
+                                          </td>
+                                         
                                         
                                         
 
@@ -189,18 +179,13 @@ updated_at
                                                 </tbody>
                                                 <tfoot>
                                                 <tr>
-                                                  <th>Receipt No</th>
-                                                    <th>Product Name</th>
-                                                  <th> Sales Date</th>
-                                                  <th>Product Category</th>
-                                                  <th>unit</th>
-                                                  <th>quantity</th>
-                                                  <th>Amount Sold</th>
-                                                  <th>purchased Price</th>
-                                                  <th>Selling Price</th>
-                                                  <th>Discount</th>
-                                                  <th>Final Price</th>
-                                                  <th>Customer Name</th>
+                                                <th>Invoice No</th>
+                                                <th>Date</th>
+                                                <th>Customer Name</th>
+                                                <th>Address</th>
+                                                <th>Email</th>
+                                                <th>Phone</th>
+                                                <th>Action</th>
                                                  
                                                 </tr>
                                                 </tfoot>
@@ -223,7 +208,7 @@ updated_at
                 
                                       <div class="card-tools">
                                        
-                                        <a class="btn btn-primary" href="seller-new-invoice">New Invoice</a>
+                                        <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#staticBackdrop">New Invoice</a>
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                           <i class="fas fa-minus"></i>
                                         </button>
@@ -238,18 +223,13 @@ updated_at
                                         <table id="example1" class="table table-bordered table-striped">
                                           <thead>
                                           <tr>
-                                            <th>Receipt No</th>
-                                            <th>Product Name</th>
-                                            <th> Sales Date</th>
-                                            <th>Product Category</th>
-                                            <th>unit</th>
-                                            <th>quantity</th>
-                                            <th>Amount Sold</th>
-                                            <th>purchased Price</th>
-                                            <th>Selling Price</th>
-                                            <th>Discount</th>
-                                            <th>Final Price</th>
+                                            <th>Invoice No</th>
+                                            <th>Date</th>
                                             <th>Customer Name</th>
+                                            <th>Address</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Action</th>
                                          
                                           </tr>
                                           </thead>
@@ -259,18 +239,13 @@ updated_at
                                           </tbody>
                                           <tfoot>
                                           <tr>
-                                            <th>Receipt No</th>
-                                            <th>Product Name</th>
-                                            <th> Sales Date</th>
-                                            <th>Product Category</th>
-                                            <th>unit</th>
-                                            <th>quantity</th>
-                                            <th>Amount Sold</th>
-                                            <th>purchased Price</th>
-                                            <th>Selling Price</th>
-                                            <th>Discount</th>
-                                            <th>Final Price</th>
+                                            <th>Invoice No</th>
+                                            <th>Date</th>
                                             <th>Customer Name</th>
+                                            <th>Address</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Action</th>
                                           </tr>
                                           </tfoot>
                                         </table>
@@ -286,7 +261,110 @@ updated_at
                   @endif
                     
             
+                  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog- modal-lg modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Create Invoice</h5>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" action="/seller-new-invoice">
+                                @csrf
+
+                                <div class="form-group row">
+                                  <label for="date" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('Date') }}</label>
+                                   <input required class="col-md-6 form-control" type="date" name="date" class="form-control">
+                                  <div class="col-md-6">
+                                      @error('date')
+                                          <span class="invalid-feedback" role="alert">
+                                              <strong>{{ $message }}</strong>
+                                          </span>
+                                      @enderror
+                                  </div>
+                              </div>
+
+                              
+  {{-- date	customer_name	address	email	phone	--}}
+
+                                <div class="form-group row">
+                                    <label for="customer_name" class="col-md-4 col-form-label text-md-right">{{ __('Customer Name') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input required id="customer_name" type="text" class="form-control @error('customer_name') is-invalid @enderror" name="customer_name" value="{{ old('customer_name') }}"  autocomplete="customer_name" autofocus>
+                                          
+                                        @error('customer_name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="address" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('Address') }}</label>
       
+                                  <div class="col-md-6">
+                                      <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" autocomplete="address" autofocus>
+                                      
+                                     
+                                      @error('address')
+                                          <span class="invalid-feedback" role="alert">
+                                              <strong>{{ $message }}</strong>
+                                          </span>
+                                      @enderror
+                                  </div>
+                              </div>
+
+                                <div class="form-group row">
+                                  <label for="email" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('Email') }}</label>
+      
+                                  <div class="col-md-6">
+                                      <input required id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
+                                      
+                                     
+                                      @error('email')
+                                          <span class="invalid-feedback" role="alert">
+                                              <strong>{{ $message }}</strong>
+                                          </span>
+                                      @enderror
+                                  </div>
+                              </div>
+
+                                <div class="form-group row">
+                                  <label for="phone" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('Phone') }}</label>
+      
+                                  <div class="col-md-6">
+                                      <input required id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" autocomplete="phone" autofocus>
+                                      
+                                     
+                                      @error('phone')
+                                          <span class="invalid-feedback" role="alert">
+                                              <strong>{{ $message }}</strong>
+                                          </span>
+                                      @enderror
+                                  </div>
+                              </div>
+
+                                <div class="form-group row mb-0">
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Next') }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+
+                    </div>
+                  </div>
               </div>
 
              

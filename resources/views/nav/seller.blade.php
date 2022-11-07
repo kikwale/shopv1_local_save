@@ -1,37 +1,106 @@
-<!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-info navbar-i" style="background-color:#27AAE1" >
-  <!-- Left navbar links -->
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars text-white"></i></a>
-    </li>
-    <li class="nav-item d-none d-sm-inline-block">
-      {{-- <a href="index3.html" class="nav-link">Home</a> --}}
-    </li>
-    <li class="nav-item d-none d-sm-inline-block">
-      {{-- <a href="#" class="nav-link">Contact</a> --}}
-    </li>
-  </ul>
+{{--  HEADER --}}
 
-  <!-- SEARCH FORM -->
-  <form class="form-inline ml-3">
-    <div class="input-group input-group-sm">
-      {{-- <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search"> --}}
-      <div class="input-group-append">
-        {{-- <button class="btn btn-navbar" type="submit">
-          <i class="fas fa-search"></i>
-        </button> --}}
+<div class="pre-loader">
+  <div class="pre-loader-box">
+    <div class="loader-logo">
+      <img src="dist/img/shotram.png"  alt="" />
+    </div>
+    <div class="loader-progress" id="progress_div">
+      <div class="bar" id="bar1"></div>
+    </div>
+    <div class="percent" id="percent1">0%</div>
+    <div class="loading-text">Loading...</div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-left">
+    <div class="menu-icon bi bi-list"></div>
+    <div
+      class="search-toggle-icon bi bi-search"
+      data-toggle="header_search"
+    ></div>
+    <div class="header-search">
+      <form>
+        <div class="form-group mb-0">
+          <i class="dw dw-search2 search-icon"></i>
+          <input
+            type="text"
+            class="form-control search-input"
+            placeholder="Search Here"
+          />
+          <div class="dropdown">
+            <a
+              class="dropdown-toggle no-arrow"
+              href="#"
+              role="button"
+              data-toggle="dropdown"
+            >
+              <i class="ion-arrow-down-c"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <div class="form-group row">
+                <label class="col-sm-12 col-md-2 col-form-label"
+                  >From</label
+                >
+                <div class="col-sm-12 col-md-10">
+                  <input
+                    class="form-control form-control-sm form-control-line"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-12 col-md-2 col-form-label">To</label>
+                <div class="col-sm-12 col-md-10">
+                  <input
+                    class="form-control form-control-sm form-control-line"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-12 col-md-2 col-form-label"
+                  >Subject</label
+                >
+                <div class="col-sm-12 col-md-10">
+                  <input
+                    class="form-control form-control-sm form-control-line"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class="text-right">
+                <button class="btn btn-primary">Search</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="dashboard-setting user-notification">
+      <div class="dropdown">
+        <a
+          class="dropdown-toggle no-arrow"
+          href="javascript:;"
+          data-toggle="right-sidebar"
+        >
+          <i class="dw dw-settings2"></i>
+        </a>
       </div>
     </div>
-  </form>
+    <div class="user-notification">
+      <div class="dropdown">
+        <a
+          class="dropdown-toggle no-arrow"
+          href="#"
+          role="button"
+          data-toggle="dropdown"
+        >
+          <i class="icon-copy dw dw-notification"></i>
 
-  <!-- Right navbar links -->
-  <ul class="navbar-nav ml-auto">
-    <!-- Messages Dropdown Menu -->
-    <li class="nav-item dropdown">
-      <a class="nav-link" data-toggle="dropdown" href="#">
-        <i class="far fa-bell text-warning"></i>
-        
           <?php 
           use App\Models\Product;
           $count = 0; ?>
@@ -56,525 +125,416 @@
           @endif
          
           @if ($count != 0)
-           <span class="badge badge-danger navbar-badge">
-          {{ $count }}
+           <span class="badge notification-active">
+          {{-- {{ $count }} --}}
              
            </span>
           @endif
-       
-      </a>
-      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+         
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <div class="notification-list mx-h-350 customscroll">
+            <ul>
 
-        @foreach (App\Models\Product::where('shop_id',Session::get('shop_id'))->where('expire','<=',date('Y-m-d'))
-        ->where('isExpired',0)->get() as $value)
-          <a href="seller_expired_product" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/warning-symbol-01.png" alt="Warning" class="mr-3 img-circle" height="40px;">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                NEW EXPIRED PRODUCTS
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                {{-- <p class="text-sm text-muted">{{ $value->name }}</p>
-                <p class="text-sm text-muted">{{ $value->category }}</p> --}}
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-        @endforeach
-
+              @foreach (App\Models\Product::where('shop_id',Session::get('shop_id'))->where('expire','<=',date('Y-m-d'))
+              ->where('isExpired',0)->get() as $value)
+              <li id = "expired_notification{{ $value->id }}">
+                <a href="#" onclick="removeProductNotification('{{ $value->id }}')">
+                  <img src="dist/img/warning-symbol-01.png" height="40px;" alt="" />
+                  <h3>New Expired Product</h3>
+                  <p>
+                    {{ $value->name }}
+                  </p>
+                </a>
+              </li>
+              @endforeach
+              
         @foreach (App\Models\Product::where('shop_id',Session::get('shop_id'))->where('expire','>=',date('Y-m-d'))
         ->whereRaw('total <= notification')->get() as $value)
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/warning-symbol-01.png" alt="Warning" class="mr-3 img-circle" height="40px;">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                 <b><p>{{ $value->name }}</p></b>
-                  Bidhaa inakaribia kuisha
-               
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                {{-- <p class="text-sm text-muted">{{ $value->name }}</p>
-                <p class="text-sm text-muted">{{ $value->category }}</p> --}}
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
+        <li id = "expired_notification{{ $value->id }}">
+          <a href="#" onclick="removeProductNotification('{{ $value->id }}')">
+            <img src="dist/img/warning-symbol-01.png" height="40px;" alt="" />
+            <h3 style="color: rgb(255, 123, 0)">Bidhaa Inakaribia Kuisha</h3>
+            <p>
+              {{ $value->name }}
+            </p>
           </a>
-          <div class="dropdown-divider"></div>
-        @endforeach
-
-
-        <?php  $i = 0;?><!-- TUTAONGEZA NOTIFIED WHERE CLOUSE -->
-        @foreach (App\Models\Order::where('ordered_shop_id',Session::get('shop_id'))->where('status','normal')->get() as $value)
-          <a href="seller-incoming-order?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <?php $i = $i+1; ?>
-              {{-- <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-               --}}
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  NEW ORDER &nbsp; {{ $i }}
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-        @endforeach
-        
-        
-    </li>
-
-    <li class="nav-item dropdown">
-      <a class="nav-link text-secondary" data-toggle="dropdown" href="#">
-
-          <p>{{__('message.language')}}</p>
-
-        
-      </a>
-      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-        {{-- <span class="dropdown-item dropdown-header">15 Notifications</span> --}}
-        <div class="dropdown-divider"></div>
-        <a href="en" class="dropdown-item">
-         English
-          {{-- <span class="float-right text-muted text-sm">3 mins</span> --}}
-        </a>
-        <div class="dropdown-divider"></div>
-        <a href="sw" class="dropdown-item">
-        Swahili
-          {{-- <span class="float-right text-muted text-sm">12 hours</span> --}}
-        </a>
-        <div class="dropdown-divider"></div>
-       
-
-        {{-- <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a> --}}
-      </div>
-    </li>
-    <!-- Notifications Dropdown Menu -->
-    <li class="nav-item dropdown">
-      <a class="nav-link" data-toggle="dropdown" href="#">
-        <i class="far fa-user text-white"></i>
-        
-      </a>
-      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-        {{-- <span class="dropdown-item dropdown-header">15 Notifications</span> --}}
-        <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">
-          <i class="fas fa-user mr-2"></i> Profile
-          {{-- <span class="float-right text-muted text-sm">3 mins</span> --}}
-        </a>
-        <div class="dropdown-divider"></div>
-        <a href="seller-change-pwd" class="dropdown-item">
-          <i class="fas fa-lock mr-2"></i>{{ __('message.seller.change_psw') }}
-          {{-- <span class="float-right text-muted text-sm">12 hours</span> --}}
-        </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="{{ route('logout') }}"
-                                     onclick="event.preventDefault();
-                                                   document.getElementById('logout-form').submit();">
-                               <i class="fa fa-sign-out" aria-hidden="true"></i>    {{ __('message.seller.logout') }}
-          </a>
-
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-              @csrf
-          </form>
-
-        <div class="dropdown-divider"></div>
-        {{-- <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a> --}}
-      </div>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
-          class="fas fa-th-larg"></i></a>
-    </li>
-  </ul>
-</nav>
-<!-- /.navbar -->
-
-<!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-prima elevation-4" style="background-image:linear-gradient(rgba(3, 57, 88, 0.87), rgba(31, 2, 65, 0.404))">
-    <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-      <img src="dist/img/shotram.png" alt="ShoTram Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">Seller Panel</span>
-    </a>
-  
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="dist/img/person-icon-01.png" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">{{Auth::user()->fname}}</a>
-        </div>
-      </div>
-
-    <!-- SidebarSearch Form -->
-    <div class="form-inline">
-      <div class="input-group" data-widget="sidebar-search">
-        <input class="form-control form-control-sidebar" type="search" placeholder="{{ __('message.seller.search') }}" aria-label="Search" style="background-color:#024263f1">
-        <div class="input-group-append">
-          <button class="btn btn-sidebar"  style="background-color:#024263f1">
-            <i class="fas fa-search fa-fw"></i>
-          </button>
+        </li>
+      @endforeach
+            </ul>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Sidebar Menu -->
-    <nav class="mt-2">
-      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
-             with font-awesome or any other icon font library -->
-        <li class="nav-item has-treeview menu-open">
-          <a href="home" class="nav-link active">
-            <i class="nav-icon fas fa-tachometer-alt text-info"></i>
-            <p>
-         {{__('message.seller.dashboard')}}
-            </p>
-          </a>
+    <div class="user-info-dropdown">
+      <div class="dropdown">
+        <a
+          class="dropdown-toggle"
+          href="#"
+          role="button"
+          data-toggle="dropdown"
+        >
+          
+          <span class="user-name">{{__('message.language')}}</span>
+        </a>
+        <div
+          class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
+        >
+          <a class="dropdown-item" href="sw"
+            ><i class=""></i> Kiswahili</a
+          >
+          <a class="dropdown-item" href="en"
+          ><i class="dw dw-"></i> English</a
+        >
          
-        </li>
-      
-        <li class="nav-item has-treeview">
-          <a href="seller_shop_workers?ower_id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
-            {{-- <i class="nav-icon fas fa-users"></i> --}}
-            <img src="dist/img/people-01.png" width="40px" height="30px" alt="" srcset="">
-            <p>
-            {{__('message.seller.workers')}}
-              {{-- <span class="badge badge-info right">6</span> --}}
-            </p>
-          </a>
-        </li>
-
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <img src="dist/img/sales-icon-01.png" alt="" srcset="">
-            <p>
-               {{__('message.seller.sales')}}
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-          
-            <li class="nav-item">
-              <a href="seller_selling_product?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon  text-info"></i>
-                  <p>{{__('message.seller.start_selling')}}</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="seller-sold-product?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
-                <i class="far fa-circle nav-icon  text-info"></i>
-                <p> {{__('message.seller.sales')}}</p>
-              </a>
-            </li>
-          
-            
-
-          </ul>
-        </li>
-
-
-
-        
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            {{-- <i class="nav-icon fas fa-store" ></i> --}}
-            
-            <img src="dist/img/product-icon.png" width="40px" height="30px" alt="" srcset="">
-            <p>
-                {{__('message.seller.product')}}
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-          
-            {{-- <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                Wholesale
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="seller_add_jumla_product?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
-                    <i class="far fa-dot-circle nav-icon"></i>
-                    <p>Add</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="seller_view_jumla_product?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
-                    <i class="far fa-dot-circle nav-icon"></i>
-                    <p>view</p>
-                  </a>
-                </li>
-              </ul>
-            </li> --}}
          
-            <li class="nav-item has-treeview">
-              <a href="seller-add-rejareja-product" class="nav-link">
-                <i class="far fa-circle nav-icon text-info"></i>
-                <p>
-                  {{__('message.seller.register_products')}}
-                </p>
-              </a>
-              {{-- <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="seller_add_rejareja_product?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
-                    <i class="far fa-dot-circle nav-icon"></i>
-                    <p>Add</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="seller_view_rejareja_product?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
-                    <i class="far fa-dot-circle nav-icon"></i>
-                    <p>View</p>
-                  </a>
-                </li>
-              </ul> --}}
-            </li>
+        </div>
+      </div>
+    </div>
 
+    <div class="user-info-dropdown">
+      <div class="dropdown">
+        <a
+          class="dropdown-toggle"
+          href="#"
+          role="button"
+          data-toggle="dropdown"
+        >
+          <span class="user-icon">
+            <img src="dist/img/person-icon-01.png" class="img-circle elevation-2" alt="User Image">
+          </span>
+          <span class="user-name">{{Session::get('fname')}}</span>
+        </a>
+        <div
+          class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
+        >
+          <a class="dropdown-item" href="profile.html"
+            ><i class="dw dw-user1"></i> Profile</a
+          >
+          <a class="dropdown-item" href="seller-change-pwd"
+            ><i class="icon-copy bi bi-wrench"></i> {{ __('message.seller.change_psw') }}</a
+          >
+                      {{-- <a class="dropdown-item" href="faq.html"
+                        ><i class="dw dw-help"></i> Help</a
+                      > --}}
+                      <a class="dropdown-item" href="{{ route('logout') }}"
+                      onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                <i class="dw dw-logout" aria-hidden="true"></i>    {{ __('message.seller.logout') }}
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+            </form>
          
-
-            {{-- <li class="nav-item">
-              <a href="seller_finished_product?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Product Returned</p>
-              </a>
-            </li> --}}
-
-            <li class="nav-item">
-              <a href="seller-returned-products" class="nav-link">
-                <i class="far fa-circle nav-icon text-info"></i>
-                <p>   {{__('message.seller.returned_products')}}</p>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a href="seller-finished-product" class="nav-link">
-                <i class="far fa-circle nav-icon text-info"></i>
-                <p>   {{__('message.seller.finished_products')}}</p>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a href="seller-store" class="nav-link">
-                <i class="far fa-circle nav-icon text-info"></i>
-                <p>   {{__('message.seller.stock')}}</p>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a href="seller_expired_product" class="nav-link">
-                  <i class="far fa-circle nav-icon text-info"></i>
-                  {{__('message.seller.expired_products')}}
-              </a>
-            </li>
-           
-
-          </ul>
-        </li>
-       
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            {{-- <i class="nav-icon fas fa-users"></i> {{ route('seller.invoice') }} --}}
-            <img src="dist/img/invoice.png" width="40px" height="30px" alt="" srcset="">
-            <p>
-            {{__('message.seller.invoice')}}
-              {{-- <span class="badge badge-info right">6</span> --}}
-            </p>
-          </a>
-        </li>
-
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            {{-- <i class="nav-icon fas fa-users"></i>  seller-quotation --}}
-            <img src="dist/img/quotation.png" width="40px" height="30px" alt="" srcset="">
-            <p>
-            {{__('message.seller.quotation')}}
-              {{-- <span class="badge badge-info right">6</span> --}}
-            </p>
-          </a>
-        </li>
-
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <img src="dist/img/order-icon-01.png" alt="" srcset="">
-            {{-- <i class="nav-icon fas fa-store" ></i> --}}
-            <p>
-         {{__('message.seller.order')}}
-              <i class="fas fa-angle-left right"></i>
-              {{-- <span class="badge badge-info right">6</span> --}}
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="seller-place-order?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon text-info"></i>
-                  {{__('message.seller.place_order')}}
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a href="seller-placed-order?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon text-info"></i>
-                  {{__('message.seller.my_orders')}}
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a href="seller-incoming-order?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
-                <i class="far fa-circle nav-icon text-info"></i>
-              
-                  @if (App\Models\Order::where('status','normal')->where('ordered_shop_id',Session::get('shop_id'))->count() != 0)
-                  <span class="badge badge-info navbar-badge">
-                 
-                  {{ App\Models\Order::where('status','normal')->where('ordered_shop_id',Session::get('shop_id'))->count() }}
-                </span>
-                  @endif
-             
-                  <p>    {{__('message.seller.incoming_orders')}}</p>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a href="seller-delivered-order?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
-                <i class="far fa-circle nav-icon text-info"></i>
-                <p>   {{__('message.seller.delivered_orders')}}</p>
-              </a>
-            </li>
-
-           
-           
-           
-          </ul>
-        </li>
-
-        {{-- <li class="nav-item">
-          <a href="seller-calendar" class="nav-link">
-            <i class="nav-icon far fa-calendar-alt"></i>
-            <p>
-              Calendar
-               <span class="badge badge-info right">2</span> 
-            </p>
-          </a>
-        </li> --}}
-        
-        {{-- <li class="nav-item">
-          <a href="seller-general-profile?id={{Session::get('owner_id')}}&&shop_id={{Session::get('shop_id')}}" class="nav-link">
-              <i class="far fa-user nav-icon"></i>
-              {{__('Shop Details')}}
-          </a>
-        </li> --}}
-        {{-- <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
-            <p>
-           Farm Products
-              <i class="fas fa-angle-left right"></i>
-              {{-- <span class="badge badge-info right">6</span> 
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                 Add User
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="adminPrimary" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>View Users</p>
-              </a>
-            </li>
-           
-           
-          </ul>
-        </li>
-
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
-            <p>
-            Report
-              <i class="fas fa-angle-left right"></i>
-       
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                 Add User
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="adminPrimary" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>View Users</p>
-              </a>
-            </li> --}}
-           
-           
-          {{-- </ul>
-        </li>
-
-
-        <li class="nav-item has-treeview">
-          {{-- <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
-            <p>
-             University Leaders
-              <i class="fas fa-angle-left right"></i>
-              {{-- <span class="badge badge-info right">6</span> --}}
-            {{-- </p>
-          </a>  --
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="selectLeader" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Select Leader</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="adminViewLeader" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>View</p>
-              </a>
-            </li>
-          
-           
-          </ul>
-        </li> --}}
-       
-       
-          
-      </ul>
-    </nav>
-    <!-- /.sidebar-menu -->
+        </div>
+      </div>
+    </div>
+    {{-- <div class="github-link">
+      <a href="https://github.com/dropways/deskapp" target="_blank"
+        ><img src="vendors/images/github.svg" alt=""
+      /></a>
+    </div> --}}
   </div>
-  <!-- /.sidebar -->
-</aside>
+</div>
 
 
+{{-- MENU SIDEBAR --}}
 
 
+<div class="right-sidebar">
+  <div class="sidebar-title">
+    <h3 class="weight-600 font-16 text-blue">
+      Layout Settings
+      <span class="btn-block font-weight-400 font-12"
+        >User Interface Settings</span
+      >
+    </h3>
+    <div class="close-sidebar" data-toggle="right-sidebar-close">
+      <i class="icon-copy ion-close-round"></i>
+    </div>
+  </div>
+  <div class="right-sidebar-body customscroll">
+    <div class="right-sidebar-body-content">
+      <h4 class="weight-600 font-18 pb-10">Header Background</h4>
+      <div class="sidebar-btn-group pb-30 mb-10">
+        <a
+          href="javascript:void(0);"
+          class="btn btn-outline-primary header-white active"
+          >White</a
+        >
+        <a
+          href="javascript:void(0);"
+          class="btn btn-outline-primary header-dark"
+          >Dark</a
+        >
+      </div>
+
+      <h4 class="weight-600 font-18 pb-10">Sidebar Background</h4>
+      <div class="sidebar-btn-group pb-30 mb-10">
+        <a
+          href="javascript:void(0);"
+          class="btn btn-outline-primary sidebar-light"
+          >White</a
+        >
+        <a
+          href="javascript:void(0);"
+          class="btn btn-outline-primary sidebar-dark active"
+          >Dark</a
+        >
+      </div>
+
+      <h4 class="weight-600 font-18 pb-10">Menu Dropdown Icon</h4>
+      <div class="sidebar-radio-group pb-10 mb-10">
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            id="sidebaricon-1"
+            name="menu-dropdown-icon"
+            class="custom-control-input"
+            value="icon-style-1"
+            checked=""
+          />
+          <label class="custom-control-label" for="sidebaricon-1"
+            ><i class="fa fa-angle-down"></i
+          ></label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            id="sidebaricon-2"
+            name="menu-dropdown-icon"
+            class="custom-control-input"
+            value="icon-style-2"
+          />
+          <label class="custom-control-label" for="sidebaricon-2"
+            ><i class="ion-plus-round"></i
+          ></label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            id="sidebaricon-3"
+            name="menu-dropdown-icon"
+            class="custom-control-input"
+            value="icon-style-3"
+          />
+          <label class="custom-control-label" for="sidebaricon-3"
+            ><i class="fa fa-angle-double-right"></i
+          ></label>
+        </div>
+      </div>
+
+      <h4 class="weight-600 font-18 pb-10">Menu List Icon</h4>
+      <div class="sidebar-radio-group pb-30 mb-10">
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            id="sidebariconlist-1"
+            name="menu-list-icon"
+            class="custom-control-input"
+            value="icon-list-style-1"
+            checked=""
+          />
+          <label class="custom-control-label" for="sidebariconlist-1"
+            ><i class="ion-minus-round"></i
+          ></label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            id="sidebariconlist-2"
+            name="menu-list-icon"
+            class="custom-control-input"
+            value="icon-list-style-2"
+          />
+          <label class="custom-control-label" for="sidebariconlist-2"
+            ><i class="fa fa-circle-o" aria-hidden="true"></i
+          ></label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            id="sidebariconlist-3"
+            name="menu-list-icon"
+            class="custom-control-input"
+            value="icon-list-style-3"
+          />
+          <label class="custom-control-label" for="sidebariconlist-3"
+            ><i class="dw dw-check"></i
+          ></label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            id="sidebariconlist-4"
+            name="menu-list-icon"
+            class="custom-control-input"
+            value="icon-list-style-4"
+            checked=""
+          />
+          <label class="custom-control-label" for="sidebariconlist-4"
+            ><i class="icon-copy dw dw-next-2"></i
+          ></label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            id="sidebariconlist-5"
+            name="menu-list-icon"
+            class="custom-control-input"
+            value="icon-list-style-5"
+          />
+          <label class="custom-control-label" for="sidebariconlist-5"
+            ><i class="dw dw-fast-forward-1"></i
+          ></label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            id="sidebariconlist-6"
+            name="menu-list-icon"
+            class="custom-control-input"
+            value="icon-list-style-6"
+          />
+          <label class="custom-control-label" for="sidebariconlist-6"
+            ><i class="dw dw-next"></i
+          ></label>
+        </div>
+      </div>
+
+      <div class="reset-options pt-30 text-center">
+        <button class="btn btn-danger" id="reset-settings">
+          Reset Settings
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
+<div class="left-side-bar">
+  <div class="brand-logo">
+    <a href="#">
+      <img src="dist/img/shotram.png" width="80" height="50" alt="" class="dark-logo" />
+      <img
+        src="dist/img/shotram.png" width="80" height="50"
+        alt=""
+        class="light-logo"
+      />
+    </a>
+    <div class="close-sidebar" data-toggle="left-sidebar-close">
+      <i class="ion-close-round"></i>
+    </div>
+  </div>
+  <div class="menu-block customscroll">
+    <div class="sidebar-menu">
+      <ul id="accordion-menu">
+        <li >
+          <a href="#" class="dropdown-toggle no-arrow">
+            <span class="micon bi bi-house"></span
+            ><span>Dashboard </span>
+          </a>
+          {{-- <ul class="submenu">
+            <li><a href="index.html">Dashboard style 1</a></li>
+            <li><a href="index2.html">Dashboard style 2</a></li>
+            <li><a href="index3.html">Dashboard style 3</a></li>
+          </ul> --}}
+        </li>
+        <li>
+          <a href="seller-calendar" class="dropdown-toggle no-arrow">
+            <span class="micon bi bi-calendar4-week"></span
+            ><span class="mtext">Calendar</span>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:;" class="dropdown-toggle" >
+            <span class="micon icon-copy fa fa-signal"></span
+            ><span class="mtext"> {{__('message.seller.sales')}}</span>
+          </a>
+          <ul class="submenu">
+            
+            <li>
+              <a href="seller_selling_product">{{__('message.seller.start_selling')}}</a>
+            </li>
+            <li><a href="seller-sold-product">{{__('message.seller.sales')}}</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:;" class="dropdown-toggle">
+            <span class="micon bi bi-archive"></span
+            ><span class="mtext"> {{__('message.seller.product')}}</span>
+          </a>
+          <ul class="submenu">
+            <li><a href="seller-add-rejareja-product">{{__('message.seller.register_products')}}</a></li>
+            <li><a href="seller-returned-products">{{__('message.seller.returned_products')}}</a></li>
+            <li><a href="seller-finished-product">{{__('message.seller.finished_products')}}</a></li>
+            <li><a href="seller-store">{{__('message.seller.stock')}}</a></li>
+            <li><a href="seller_expired_product">{{__('message.seller.expired_products')}}</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="seller-invoice" class="dropdown-toggle no-arrow">
+            <span class="micon bi bi-receipt-cutoff"></span
+            ><span class="mtext"> {{__('message.seller.invoice')}}</span>
+          </a>
+        </li>
+        <li>
+          <a href="seller-quotaions" class="dropdown-toggle no-arrow">
+            <span class="micon bi bi-back"></span
+            ><span class="mtext">  {{__('message.seller.quotation')}}</span>
+          </a>
+        </li>
+        <li>
+          <a href="customers" class="dropdown-toggle no-arrow">
+            <span class="micon fa fa-users"></span
+            ><span class="mtext">{{ __('message.seller.customers') }}</span>
+          </a>
+        </li>
+        <li>
+          <a href="supplier" class="dropdown-toggle no-arrow">
+            <span class="micon fa fa-users"></span
+            ><span class="mtext">{{ __('Suppliers') }}</span>
+          </a>
+        </li>
+        <li>
+          <a href="credit-purchase" class="dropdown-toggle no-arrow">
+            <span class="micon icon-copy fa fa-diamond"></span
+            ><span class="mtext"> {{ __('message.seller.credit_purchases') }}</span>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:;" class="dropdown-toggle">
+            <span class="micon bi bi-archive"></span
+            ><span class="mtext">{{__('message.seller.credit_collection') }} </span>
+          </a>
+          <ul class="submenu">
+            <li><a href="collect-from-invoice">{{__('From Invoices') }}</a></li>
+            <li><a href="collect-from-creditSale">{{__('Credit Sales')}}</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:;" class="dropdown-toggle" style="background-color: rgb(255, 123, 0)">
+            <span class="micon icon-copy fa fa-send-o"></span
+            ><span class="mtext">   {{__('Online Operations')}}</span>
+          </a>
+          <ul class="submenu">
+            <li><a href="seller-publish-new"> {{__('Publish')}}</a></li>
+            <li><a href="#">{{__('Marketing')}}</a></li>
+          </ul>
+        </li>
+   
+    
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="mobile-menu-overlay"></div>
 
+<script>
+  function removeProductNotification(product_id){
+    
+    // $('expired_notification'+product_id+'').remove();
+  }
+</script>

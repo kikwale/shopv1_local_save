@@ -19,10 +19,10 @@ class MadukaController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     public function owner_shop(Request $request){
         Session::put('owner_id',$request->owner_id);

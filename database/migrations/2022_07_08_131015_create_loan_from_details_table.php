@@ -20,7 +20,7 @@ class CreateLoanFromDetailsTable extends Migration
             $table->string('shop_id');
             $table->string('year');
             $table->string('month');
-            $table->date('date');
+            $table->date('return_date');
             $table->string('Payment_method');
             $table->string('method_name')->nullable();
             $table->string('number')->nullable();

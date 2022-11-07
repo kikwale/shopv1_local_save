@@ -36,6 +36,7 @@ class CreateProductsTable extends Migration
             $table->string('year')->default(date('Y', strtotime(date('Y-m-d'))));
             $table->string('month')->default(date('M', strtotime(date('Y-m-d'))));
             $table->boolean('isTaxable')->default(false);
+            $table->boolean('isPublished')->default(false);
             $table->timestamps();
         });
     }

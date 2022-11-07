@@ -177,9 +177,9 @@ updated_at
                                           --}}
                                         
                                           <td>
-                                            <a data-toggle="modal" data-target="#payment{{ $value->id }}" href="#" class="btn btn-sm btn-info">Pay</a>
-                                            <a href="#" class="btn btn-sm btn-success">Payments</a>
-                                            <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                            <a data-toggle="modal" data-target="#payment{{ $value->id }}" href="#" class="btn btn-sm btn-success">Pay</a>
+                                            <a href="owner-payment-info?pay={{ $value->id }}" class="btn btn-sm btn-info">Info</a>
+                                            <a href="owner-payment-delete?pay={{ $value->id }}" class="btn btn-sm btn-danger">Delete</a>
                                             <div class="modal fade" id="payment{{ $value->id }}"
                                               data-backdrop="static" data-keyboard="false" tabindex="-1"
                                               aria-labelledby="staticBackdropLabel" aria-hidden="true">

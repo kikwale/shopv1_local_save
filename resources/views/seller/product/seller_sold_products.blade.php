@@ -127,8 +127,8 @@
             
                 <div class="row">
                   <div class="col-md-4">
-                    <a href="#" data-toggle="modal" data-target="#sold_annual">
-                          <div class="info-box bg-" style="background-color: #F15A24">
+                    <a class="btn btn-block" style="background-color: #F15A24" href="#" data-toggle="modal" data-target="#sold_annual">
+                          <div class="info-box bg-" >
                               <div class="info-box-content">
                                   <span class="info-box-text text-center text-light">{{ __('message.seller.annual_sales') }}</span>
                               </div>
@@ -137,7 +137,7 @@
                   </div>
 
                   <div class="col-md-4">
-                      <a href="#" data-toggle="modal" data-target="#sold_month">
+                      <a class="btn btn-block" style="background-color: #F15A24"  href="#" data-toggle="modal" data-target="#sold_month">
                           <div class="info-box bg-" style="background-color: #F15A24">
                               <div class="info-box-content">
                                   <span class="info-box-text text-center text-light">{{ __('message.seller.monthly_sales') }}</span>
@@ -147,7 +147,7 @@
                   </div>
 
                   <div class="col-md-4">
-                      <a href="#" data-toggle="modal" data-target="#sold_day">
+                      <a class="btn btn-block" style="background-color: #F15A24"  href="#" data-toggle="modal" data-target="#sold_day">
                           <div class="info-box bg- " style="background-color: #F15A24">
                               <div class="info-box-content">
                                   <span class="info-box-text text-center text-light">{{ __('message.seller.daily_sales') }}</span>

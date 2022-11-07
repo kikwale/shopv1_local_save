@@ -174,8 +174,8 @@ updated_at
                                           <td>{{$value->amount}}{{ Session::get('money') }}</td>
                                           <td>
                     
-                                            <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                                            <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                            <a href="owner-allowance-edit?al={{ $value->id }}" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="owner-allowance-delete?al={{ $value->id }}" class="btn btn-sm btn-danger">Delete</a>
 
                                           </td>
                                     

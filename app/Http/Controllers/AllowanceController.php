@@ -13,6 +13,7 @@ use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use App\Models\Allowance;
 class AllowanceController extends Controller
@@ -30,13 +31,33 @@ class AllowanceController extends Controller
     $allowance = new Allowance;
     $allowance['owner_id'] = Session::get('owner_id');
     $allowance['shop_id'] = Session::get('shop_id');
-    $allowance['seller_id'] = $request->name;
+    $allowance['seller_id'] = $request->name_id;
     $allowance['amount'] = $request->allowance;
     $allowance->save();
     return back()->with('success','Successfully ....');
 
    }
 
+public function ownerEditAllowance(Request $request){
+   $allowance = seller::join('allowances','allowances.seller_id','=','sellers.id')
+                ->where('allowances.id',$request->al)->where('allowances.shop_id',Session::get('shop_id'))->first();
+  Log::info($allowance);
+   return view('owner/allowance.edit')->with('allowance',$allowance);
+}
 
+public function ownerEditAllowanceForm(Request $request){
+   
+   $allowance = Allowance::where('id',$request->allowance_id)->first();
+   $allowance->seller_id  = $request->name;
+   $allowance->amount = $request->allowance;
+   $allowance->save();
+   return redirect()->to(route('owner.allowance'))->with('success','Successfully...');
+}
+
+public function ownerDeleteAllowance(Request $request){
+   
+   $allowance = Allowance::where('id',$request->al)->delete();
+   return redirect()->to(route('owner.allowance'))->with('success','Allowance Deleted Successfully...');
+}
 
 }

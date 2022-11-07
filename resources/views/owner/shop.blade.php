@@ -8,9 +8,9 @@
             <div class="container-fluid">
       
                            <!-- Preloader -->
-    <div class="preloader flex-column justify-content-center align-items-center">
+    {{-- <div class="preloader flex-column justify-content-center align-items-center">
       <img class="animation__wobble" src="dist/img/shotram.png" alt="ShoTramLogo" height="60" width="60">
-    </div>
+    </div> --}}
 
     <div class="row mb-2">
       <div class="col-sm-6">

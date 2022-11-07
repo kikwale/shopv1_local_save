@@ -105,7 +105,7 @@ App::setLocale(Session::get('locale'));
                 <div class="row mb-2">
                     <div class="col-sm-6">
 
-                        <h1 class="m-0 text-dark">Loan From People/ Finencial Institution</h1>
+                        <h1 class="m-0 text-dark">Loan From People/ Finencial Institutions</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
 
@@ -181,9 +181,9 @@ updated_at --}}
                                                     <td> {{ $value->balance }}{{ Session::get('money') }} </td>
                                                     <td>
                                                         <a data-toggle="modal" data-target="#loan_return{{ $value->id }}"
-                                                            href="#" class="btn btn-sm btn-info">Return</a>
-                                                        <a href="#" class="btn btn-sm btn-success">Payments</a>
-                                                        <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                                            href="#" class="btn btn-sm btn-success">Return</a>
+                                                        <a href="owner-loanf-info?ln={{ $value->id }}" class="btn btn-sm btn-info">Info</a>
+                                                        <a href="owner-loanf-delete?ln={{ $value->id }}" class="btn btn-sm btn-danger">Delete</a>
 
                                                     </td>
 

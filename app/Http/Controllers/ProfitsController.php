@@ -9,11 +9,16 @@ use App\Models\Expenses;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Exception;
+use App\Models\Product;
+use App\Models\Money;
+use DateTime;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ProfitsController extends Controller
 {
-   public function ownerExpenses(){
-        return view('owner.profits.expenses')->with('data','');
+   public function ownerProfitLoss(){
+        return view('owner.profits.index')->with('data','');
    }
 
    public function ownerNetProfit(){
@@ -60,4 +65,76 @@ public function ownerNetProfitForm(Request $request){
      
      
 }
+
+
+public function ownerAnnualProfit(Request $request){
+
+   $data = DB::table('products')
+   ->join('mauzos', 'products.id', '=', 'mauzos.product_id')->where('products.shop_id', $request->shop_id)
+   ->where('mauzos.year', $request->year)
+   ->cursor();
+
+   $grossProfit = Product::where('shop_id',Session::get('shop_id'))->where('owner_id',Session::get('owner_id'))
+   ->where('year','<=', $request->year)->get();
+
+
+    $gross_profit = 0;
+    foreach ($grossProfit as $value) {
+        $gross_profit = $gross_profit + ($value->total*$value->purchased_price);
+    }
+
+   return view('owner/profits.profits')->with('data',$data)
+   ->with('gross_profit',$gross_profit)->with('type',$request->type)->with('val',$request->year);
+   
+}
+
+public function ownerMonthlyProfit(Request $request){
+
+   $data = DB::table('products')
+   ->join('mauzos', 'products.id', '=', 'mauzos.product_id')->where('products.shop_id', $request->shop_id)
+   ->where('mauzos.month', $request->month)->where('mauzos.year', $request->year)
+   ->cursor();
+
+   $grossProfit = Product::where('shop_id',Session::get('shop_id'))->where('owner_id',Session::get('owner_id'))
+  ->where('month','<=', $request->month)->where('year','<=', $request->year)->get();
+
+
+   $gross_profit = 0;
+   foreach ($grossProfit as $value) {
+       $gross_profit = $gross_profit + ($value->total*$value->purchased_price);
+   }
+  
+   $month = $request->month;
+   $year = $request->year;
+
+
+   return view('owner/profits.profits')
+   ->with('data',$data)
+   ->with('gross_profit',$gross_profit)
+   ->with('type',$request->type)
+   ->with('year',$request->year)
+   ->with('month',$request->month);
+}
+
+public function ownerDailyProfit(Request $request){
+
+   $data = DB::table('products')
+->join('mauzos', 'products.id', '=', 'mauzos.product_id')->where('products.shop_id', $request->shop_id)
+->where('mauzos.sales_date', $request->day)
+->cursor();
+
+$grossProfit = Product::where('shop_id',Session::get('shop_id'))->where('owner_id',Session::get('owner_id'))
+->where('date','<=', $request->day)->get();
+
+
+$gross_profit = 0;
+foreach ($grossProfit as $value) {
+$gross_profit = $gross_profit + ($value->total*$value->purchased_price);
+}
+return view('owner/profits.profits')->with('data',$data)
+->with('type',$request->type)->with('date',$request->day)
+->with('gross_profit',$gross_profit)->with('success','ghghgj');
+   
+}
+
 }

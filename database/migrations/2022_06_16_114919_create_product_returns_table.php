@@ -20,6 +20,7 @@ class CreateProductReturnsTable extends Migration
             $table->string('shop_id');
             $table->string('seller_id');//rejareja/jumla
             $table->float('quantity');
+            $table->boolean('isPublished')->default(false);
             $table->timestamps();
         });
     }

@@ -17,10 +17,14 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::any('/auth','AuthenticationController@auth')->name('auth');
 Route::get('/', function () {
-    return redirect()->to('/login');
+    return view('welcome');
 });
 
+Route::get('/registration', function () {
+  return view('auth.register');
+});
 
 Route::get('/user-guid', function() {
   return view('user_guid');
@@ -46,7 +50,7 @@ Route::group(['middleware'=>'auth'], function () {
 
 
 // Shop Owner
-Route::group(['middleware'=>'auth'], function () {
+
 
   Route::get('/owner_shop','MadukaController@owner_shop');
   Route::get('/shop_worker','MadukaController@shop_worker');
@@ -103,20 +107,29 @@ Route::group(['middleware'=>'auth'], function () {
   Route::get('/assign-allowance','AllowanceController@assignAllowance')->name('assign-allowance');
   Route::post('/owner-assign-allowance','AllowanceController@ownerAssignAllowance')->name('owner.assign-allowance');
   Route::post('/owner-monthly-payroll','PayrollController@ownerMonthlyPayroll')->name('owner.monthly-payroll');
-  
+  Route::get('/owner-allowance-edit','AllowanceController@ownerEditAllowance')->name('owner.allowance-edit');
+  Route::get('/owner-allowance-delete','AllowanceController@ownerDeleteAllowance')->name('owner.allowance-delete'); 
+  Route::post('/owner-allowance-edit','AllowanceController@ownerEditAllowanceForm')->name('owner.allowance-edit-form');
+  Route::get('/owner-loanf-info','LoanController@ownerLoanfInfo')->name('owner.loanf-info');
+  Route::get('/owner-loanf-delete','LoanController@ownerLoanfDelete')->name('owner.loanf-delete');
+  Route::get('/owner-loant-info','LoanController@ownerLoantInfo')->name('owner.loant-info');
+  Route::get('/owner-loant-delete','LoanController@ownerLoantDelete')->name('owner.loant-delete');
+  Route::get('/owner-payment-info','PaymentController@ownerPaymentInfo')->name('owner.payment-info');
+  Route::get('/owner-payment-delete','PaymentController@ownerPaymentDelete')->name('owner.payment-delete');
+  Route::get('/owner-profit-loss','ProfitsController@ownerProfitLoss')->name('owner.profit-loss');
+  Route::post('/owner-annual-profit','ProfitsController@ownerAnnualProfit')->name('owner.annual-profit');
+  Route::post('/owner-monthly-profit','ProfitsController@ownerMonthlyProfit')->name('owner.monthly-profit');
+  Route::post('/owner-daily-profit','ProfitsController@ownerDailyProfit')->name('owner.owner-daily-profit');
   
 
-  
-});
 
 
 
 
 //Seller Routes
 
-Route::group(['middleware'=>'auth'], function () {
-  
 
+  
 Route::post('/seller-import-products','ImportingController@sellerImportProducts')->name('seller.import-products');
 Route::post('/rejarejaForm','ProductController@rejarejaForm')->name('seller.rejarejaForm');
 Route::post('/jumlaForm','ProductController@jumlaForm')->name('seller.jumlaForm');
@@ -160,11 +173,30 @@ Route::get('/seller_update_product','ProductController@sellerUpdateProduct')->na
 Route::post('/seller-update-product','ProductController@sellerUpdateProductSave')->name('seller.update-product-save');
 Route::get('/seller-delete-product','ProductController@sellerDeleteProduct')->name('seller.delete-product');
 Route::get('/seller-invoice','InvoiceController@index')->name('seller.invoice');
-Route::get('/seller-new-invoice','InvoiceController@newInvoice')->name('seller.new-invoice');
-
-
-
-
+Route::post('/seller-new-invoice','InvoiceController@newInvoice')->name('seller.new-invoice');
+Route::get('/seller-invoice-product','InvoiceController@sellerInvoiceProduct')->name('seller.invoice-product');
+Route::get('/seller-create-invoicePage','InvoiceController@sellerCreateInvoicePage')->name('seller.create-invoicePage');
+Route::get('/seller-invoice-vat','InvoiceController@sellerInvoiceVat')->name('seller.invoice-vat');
+Route::get('/print-invoice/{invoice_id}','InvoiceController@sellerInvoicePrint')->name('seller.invoice-print');
+Route::get('/print-view-invoice/{id}','InvoiceController@sellerViewInvoicePrint')->name('seller.view-invoice-print');
+Route::get('/seller-view-invoice','InvoiceController@sellerViewInvoice')->name('seller.invoice-view');
+Route::get('/seller-publish-new','PublishController@sellerPublishNew')->name('seller.publish-new');
+Route::get('/publish-new-sales','PublishController@publishNewSales')->name('seller.publish-new-sales');
+Route::get('/publish-new-products','PublishController@publishNewProducts')->name('seller.publish-new-products');
+Route::get('/publish-new-invoices','PublishController@publishNewInvoices')->name('seller.publish-new-invoices');
+Route::get('/seller-quotaions','QuotationController@index')->name('seller.quotation');
+Route::post('/seller-new-quotation','QuotationController@newQuotation')->name('seller.new-quotation');
+Route::get('/seller-create-quotationPage','QuotationController@sellerCreateQuotationPage')->name('seller.create-quotationPage');
+Route::get('/seller-quotation-product','QuotationController@sellerQuotationProduct')->name('seller.quotation-product');
+Route::get('/print-quote/{quote_id}','QuotationController@sellerQuotationPrint')->name('seller.quotation-print');
+Route::get('/seller-view-quotation','QuotationController@sellerViewQuotation')->name('seller.quotation-view');
+Route::get('/customers','CustomerController@index')->name('seller.customers');
+Route::post('/seller-save-customer','CustomerController@saveCustomer')->name('seller.save-customer');
+Route::get('/collect-from-invoice','CreditcollectionController@collectFromInvoice')->name('seller.collect-from-invoice');
+Route::get('/collect-from-creditSale','CreditcollectionController@collectFromCreditSale')->name('seller.collect-from-creditSale');
+Route::get('/credit-purchase','CreditpurchaseController@index')->name('seller.credit-purchase');
+Route::get('/supplier','SupplierController@index')->name('seller.supplier');
+Route::post('/seller-save-supplier','SupplierController@saveSupplier')->name('seller.save-supplier');
 
 Route::get('/seller-calendar', function() {
  return view('seller.calendar');
@@ -177,7 +209,6 @@ Route::get('/seller-notify-order', 'OrderController@sellerNotifyOrder');
   return $request->all();
  });
 
-});
 
 
 
@@ -186,7 +217,7 @@ Route::get('/seller-notify-order', 'OrderController@sellerNotifyOrder');
 
 
 
-Auth::routes(['verify'=>true]);
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 Route::get('/{lang}', function($lang){
@@ -194,4 +225,4 @@ Route::get('/{lang}', function($lang){
   Session::put('locale', $lang);
   return back();
 
-});
+})->name('app.lang');

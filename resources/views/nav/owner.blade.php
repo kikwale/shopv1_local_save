@@ -339,30 +339,13 @@
         </li>
 
         <li class="nav-item has-treeview">
-           <a href="#" class="nav-link">
+           <a href="owner-profit-loss" class="nav-link">
             <img src="dist/img/profits & loss.png" width="30px" height="30px" alt="" srcset="">
             <p style="font-size: 14px">
             Profit/Loss
-              <i class="fas fa-angle-left right"></i>
              
             </p>
           </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Gross Profit/Loss</p>
-              </a>
-            </li>
-           
-           
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Net Profit/Loss</p>
-              </a>
-            </li>
-          </ul>
         </li>
 
         <li class="nav-item has-treeview">

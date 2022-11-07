@@ -13,6 +13,7 @@ use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class LoanController extends Controller
@@ -77,7 +78,7 @@ class LoanController extends Controller
          'shop_id' => Session::get('shop_id'), 
          'year' => $nameOfYear, 
          'month' => $nameOfMonth,
-         'date' => $request['date'], 
+         'return_date' => $request['date'], 
          'payment_method' => $request['payment_method'],
          'method_name' => $request->method_name, 
          'number' => $request->number, 
@@ -147,7 +148,7 @@ class LoanController extends Controller
             'shop_id' => Session::get('shop_id'), 
             'year' => $nameOfYear, 
             'month' => $nameOfMonth,
-            'date' => $request['date'], 
+            'return_date' => $request['date'], 
             'payment_method' => $request['payment_method'],
             'method_name' => $request->method_name, 
             'number' => $request->number, 
@@ -157,6 +158,29 @@ class LoanController extends Controller
              return back()->with('success','Successfull...');
    
       
-      
    }
+
+   public function ownerLoanfInfo(Request $request){
+     
+     $loan_info = LoanFom::join('loan_from_details','loan_foms.id','=','loan_from_details.loan_foms_id')
+                  ->where('loan_from_details.loan_foms_id',$request->ln)->get();
+      Log::info($loan_info);
+     return view('owner.loan.loan_from_details')->with('infos',$loan_info);
+   }
+   public function ownerLoanfDelete(Request $request){
+      LoanFom::where('id',$request->ln)->delete();
+      return back()->with('success','Deleted Successfull...');
+   }
+
+   public function ownerLoantInfo(Request $request){
+     
+      $loan_info = LoanTo::join('loan_to_details','loan_tos.id','=','loan_to_details.loan_tos_id')
+                   ->where('loan_to_details.loan_tos_id',$request->ln)->get();
+       Log::info($loan_info);
+      return view('owner.loan.loan_to_details')->with('infos',$loan_info);
+    }
+    public function ownerLoantDelete(Request $request){
+       LoanTo::where('id',$request->ln)->delete();
+       return back()->with('success','Deleted Successfull...');
+    }
 }

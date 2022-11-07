@@ -31,6 +31,7 @@ class CreateMauzosTable extends Migration
             $table->float('profit');
             $table->string('customer_name')->nullable();
             $table->string('sale_status')->nullable();
+            $table->boolean('isPublished')->default(false);
             $table->timestamps();
         });
     }

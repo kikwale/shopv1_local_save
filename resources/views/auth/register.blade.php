@@ -14,8 +14,8 @@ App::setLocale(Session::get('locale'));
                   <h1 class="banner-title">Register as a Business Owner</h1>
                   <nav aria-label="breadcrumb">
                       <ol class="breadcrumb justify-content-center">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Register</li>
+                        <li class="breadcrumb-item"><a href="/"></a></li>
+                        <li class="breadcrumb-item active" aria-current="page"></li>
                       </ol>
                   </nav>
                 </div>
@@ -49,7 +49,7 @@ App::setLocale(Session::get('locale'));
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div><br>
                         <div class="form-group row">
                             <label for="mname" class="col-md-4 col-form-label text-md-right">{{ __('Middle Name') }}</label>
 
@@ -62,7 +62,7 @@ App::setLocale(Session::get('locale'));
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div><br>
                         <div class="form-group row">
                             <label for="lname" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
 
@@ -75,7 +75,7 @@ App::setLocale(Session::get('locale'));
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div><br>
                         <div class="form-group row">
                             <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
 
@@ -91,7 +91,7 @@ App::setLocale(Session::get('locale'));
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div><br>
                         <div class="form-group row">
                             <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
 
@@ -104,7 +104,7 @@ App::setLocale(Session::get('locale'));
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div><br>
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -118,7 +118,7 @@ App::setLocale(Session::get('locale'));
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div><br>
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
@@ -132,7 +132,7 @@ App::setLocale(Session::get('locale'));
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div><br>
 
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
@@ -140,7 +140,7 @@ App::setLocale(Session::get('locale'));
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
-                        </div>
+                        </div><br>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

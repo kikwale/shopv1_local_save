@@ -8,11 +8,13 @@ use App\Models\YearPeriod;
 use App\Models\Money;
 use App\Models\LoanFom;
 use App\Models\LoanTo;
+use App\Models\Payment;
 use App\Models\seller;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
@@ -92,4 +94,16 @@ try {
 }
    
 }
+
+public function ownerPaymentInfo(Request $request){
+     
+    $payments = Payment::where('employee_id',$request->pay)->get();
+     Log::info($payments);
+    return view('owner/payments.payment_details') ->with('payments',$payments);
+  }
+  public function ownerPaymentDelete(Request $request){
+     Payment::where('employee_id',$request->pay)->delete();
+     return back()->with('success','Deleted Successfull...');
+  }
+
 }

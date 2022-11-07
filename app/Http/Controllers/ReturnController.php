@@ -25,7 +25,7 @@ class ReturnController extends Controller
         $return['product_id'] = $data->product_id;
         $return['shop_id'] = Session::get('shop_id');
         $return['owner_id'] = Session::get('owner_id');
-        $return['seller_id'] = Auth::id();
+        $return['seller_id'] = Session::get('seller_id');
         $return['quantity'] = $data->amount;
         $return->save();
         
@@ -44,7 +44,7 @@ class ReturnController extends Controller
         $data = DB::table('products')
         ->join('product_returns', 'products.id', '=', 'product_returns.product_id')->where('product_returns.shop_id',Session::get('shop_id'))
         ->cursor();
-
+        
         return view('seller.product.product_return')->with('data',$data);
     }
 }

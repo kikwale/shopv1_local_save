@@ -92,6 +92,81 @@
           </div>
           <!-- /.content-header -->
       
+          <div class="row pb-10">
+            <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+              <div class="card-box height-100-p widget-style3">
+                <div class="d-flex flex-wrap">
+                  <div class="widget-data">
+                    <div class="weight-700 font-24 text-dark">{{number_format($daySales)}} {{Session::get('money')}}</div>
+                    <div class="font-14 text-secondary weight-500">
+                  Today Sales
+                    </div>
+                  </div>
+                  <div class="widget-icon">
+                    <div class="icon" data-color="#154c79">
+                      <i class="icon-copy dw dw-calendar1"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+              <div class="card-box height-100-p widget-style3">
+                <div class="d-flex flex-wrap">
+                  <div class="widget-data">
+                    <div class="weight-700 font-24 text-dark">{{number_format($dayProfit)}} {{Session::get('money')}}</div>
+                    <div class="font-14 text-secondary weight-500">
+                      Today Profits
+                    </div>
+                  </div>
+                  <div class="widget-icon">
+                    <div class="icon" data-color="#154c79">
+                      <span class="icon-copy ti-heart"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+              <div class="card-box height-100-p widget-style3">
+                <div class="d-flex flex-wrap">
+                  <div class="widget-data">
+                    <div class="weight-700 font-24 text-dark">{{number_format($month_sales)}} {{Session::get('money')}}</div>
+                    <div class="font-14 text-secondary weight-500">
+                     This Month Sales
+                    </div>
+                  </div>
+                  <div class="widget-icon">
+                    <div class="icon" data-color="#154c79">
+                      <i
+                        class="icon-copy fa fa-stethoscope"
+                        aria-hidden="true"
+                      ></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+              <div class="card-box height-100-p widget-style3">
+                <div class="d-flex flex-wrap">
+                  <div class="widget-data">
+                    <div class="weight-700 font-24 text-dark">{{number_format($month_profit)}} {{Session::get('money')}}</div>
+                    <div class="font-14 text-secondary weight-500">This Month Profits</div>
+                  </div>
+                  <div class="widget-icon">
+                    <div class="icon" data-color="#154c79">
+                      <i class="icon-copy fa fa-money" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+           
+          
+          </div>
+
           <!-- Main content -->
           <section class="content">
             <div class="container-fluid">
@@ -99,7 +174,7 @@
               @if (session('success'))
               <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <strong>Waoo!</strong> {{session('success')}}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               </div>
               @endif
 
@@ -126,142 +201,42 @@
                  
                 {{-- @include('admin.include') --}}
                             @if(count((array)$data) > 0)
-                                    <div class="row">
-                                      <div class="col-md-12">
-                                        <div class="car">
-                                          <div class="card-head">
-
-                                             <div class="row">
-                                               <div class="col-md-3">
-                                                <div class="card card-outline card-primary">
-                                                  <div class="card-header bg-" style="background-color: #fc8803">
-                                                    <h3 class="card-title text-white">{{ __('message.seller.today_sales') }} </h3>
-                                    
-                                                    <div class="card-tools">
-                                                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                                                      </button>
-                                                    </div>
-                                                    <!-- /.card-tools -->
-                                                  </div>
-                                                  <!-- /.card-header -->
-                                                  <div class="card-body">
-                                                    <h3 class="text-info"> &nbsp; {{$daySales}} {{Session::get('money')}}</h3>
-                                                    </div>
-                                                  <!-- /.card-body -->
-                                                </div>
-                                                <!-- /.card -->
-                                               </div>
-                                               <div class="col-md-3">
-                                                  <div class="card card-outline card-primary">
-                                                <div class="card-header" style="background-color: #fc8803">
-                                                   <h3 class="card-title text-white"> {{ __('message.seller.today_profit') }} </h3>
                                   
-                                                  <div class="card-tools">
-                                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                                                    </button>
-                                                  </div>
-                                                  <!-- /.card-tools -->
-                                                </div>
-                                                <!-- /.card-header -->
-                                                <div class="card-body">
-                                                  <h3 class="text-info"> &nbsp; {{$dayProfit}} {{Session::get('money')}}</h3>
-                                                  </div>
-                                                <!-- /.card-body -->
-                                              </div>
-                                              <!-- /.card -->
-                                            </div>
-                                               <div class="col-md-3">
-                                                <div class="card card-outline card-primary">
-                                                  <div class="card-header bg-inf" style="background-color: #fc8803">
-                                                    <h3 class="card-title text-white">{{ __('message.seller.monthly_sales') }}</h3>
-                                    
-                                                    <div class="card-tools">
-                                                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                                                      </button>
-                                                    </div>
-                                                    <!-- /.card-tools -->
-                                                  </div>
-                                                  <!-- /.card-header -->
-                                                  <div class="card-body">
-                                                    <h3 class="text-info"> &nbsp; {{$month_sales}} {{Session::get('money')}}</h3>
-                                                    </div>
-                                                  <!-- /.card-body -->
-                                                </div>
-                                                <!-- /.card -->
-                                               </div>
+                                      <!-- Export Datatable start -->
+                                <div class="card-box mb-30">
+                                  <div class="pd-20">
+                                    <a href="#" class="btn btn-info">Barcode</a>
+                                  </div>
+                                  <div class="pb-20">
+                                    <table
+                                      class="table hover multiple-select-row data-table-export nowrap"
+                                    >
+                                      <thead>
+                                        <tr>
+                                          <th>{{ __('message.seller.product_name') }}</th>
+                                          <th>{{ __('message.seller.selling_price') }}</th>
+                                          <th>{{ __('message.seller.quantity') }}</th>
+                                          <th>{{ __('message.seller.sub_quantity') }}</th>
+                                          <th>{{ __('message.seller.discount') }}</th>
+                                          <th>{{ __('Selling Status') }}</th>
+                                          <th>{{ __('message.seller.action') }}</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
 
-                                               <div class="col-md-3">
-                                                <div class="card card-outline card-primary">
-                                                  <div class="card-header bg-inf" style="background-color: #fc8803">
-                                                    <h3 class="card-title text-white">{{ __('message.seller.monthly_profit') }} </h3>
-                                    
-                                                    <div class="card-tools">
-                                                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                                                      </button>
-                                                    </div>
-                                                    <!-- /.card-tools -->
-                                                  </div>
-                                                  <!-- /.card-header -->
-                                                  <div class="card-body">
-                                                    <h3 class="text-info"> &nbsp; {{$month_profit}} {{Session::get('money')}}</h3>
-                                                    </div>
-                                                  <!-- /.card-body -->
-                                                </div>
-                                                <!-- /.card -->
-                                               </div>
-
-                                               <h5 class="card-title">Shelves &nbsp;  <a href="#" class="btn btn-info btn-sm">Barcode</a></h5><br><br>
-                                             </div>
-                                            <div class="card-tools">
-                                              
-                                              {{-- <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                <i class="fas fa-minus"></i>
-                                              </button>
-                                              
-                                              <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                                <i class="fas fa-times"></i>
-                                              </button> --}}
-                                            </div>
-                                           
-                                          </div>
-                                        
-                                            <div class="card-bod">
-                                              <table id="example1" class="table table-bordered table-striped">
-                                                <thead>
-                                                <tr>
-                                                  <th>{{ __('message.seller.product_name') }}</th>
-                                                  <th>{{ __('message.seller.product_category') }}</th>
-                                                  <th>{{ __('message.seller.unit') }}</th>
-                                                  <th>{{ __('message.seller.quantity') }}</th>
-                                                  <th>{{ __('message.seller.sub_quantity') }}</th>
-                                                  <th>{{ __('message.seller.discount') }}</th>
-                                                  <th>{{ __('Selling Status') }}</th>
-                                                  <th>{{ __('message.seller.customer_fully_name') }}</th>
-                                                  <th>{{ __('message.seller.total') }}</th>
-                                                  <th>{{ __('message.seller.action') }}</th>
-                                                  <th>{{ __('message.seller.location') }}</th>
-                                                  
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                              
-                    {{-- Full texts	
-                      
-                id	name	owner_id	shop_id	category	unit	quantity	amount	purchased_price	sold_price	expire	created_at	updated_at	
-                    --}}
-                                          @foreach($data as $value)
+                                        @foreach($data as $value)
                                       
                                         <tr>
                                           <form method="POST" action="/rejarejaForm">
                                             @csrf
 
-                                          <td>{{$value->name}}</td>
-                                          <td>{{$value->category}}</td>
-                                          <td>{{$value->unit}}</td>
+                                          <td >{{$value->name}}</td>
+                                          <td>{{$value->sold_price}}</td>
                                           <td> <input id="total_quantity" type="number" class="form-control @error('total_quantity') is-invalid @enderror" name="total_quantity" value="{{ old('total_quantity') }}" autocomplete="total_quantity" autofocus>
                                             <input id="product_id" value="{{ $value->id }}" hidden type="number" class="form-control @error('product_id') is-invalid @enderror" name="product_id" value="{{ old('product_id') }}" autocomplete="product_id" autofocus>
                                              <input type="number" hidden name="owner_id" value="{{ Session::get('owner_id') }}">
                                             <input type="number" hidden name="shop_id" value="{{ Session::get('shop_id') }}">
+                                            <input type="number" hidden name="shop_id" value="{{ Session::get('seller_id') }}">
                                             </td>
                                           <td> <select id="subquantity" type="text" class="select2 form-control @error('subquantity') is-invalid @enderror" name="subquantity" value="{{ old('subquantity') }}"  autocomplete="subquantity" autofocus>
                                             <option value=""></option>
@@ -274,35 +249,16 @@
                                           </td>
                                           <td><input type="radio" name="sale_status" required value="Cash">&nbsp; Cash <br>
                                               <input  type="radio" name="sale_status" required value="Credit">&nbsp; Credit
+                                           
                                           </td>
-                                          <td><input id="customer_name" placeholder="Phone/Address" type="text" class="form-control @error('customer_name') is-invalid @enderror" name="customer_name" value="{{ old('customer_name') }}" placeholder="Option" autocomplete="customer_name" autofocus>
-                                          </td>
-                                          @if ($value->category == "Jumla")
-                                          <td>{{$value->total}}
-                                          @if (session('unsold') == $value->id)
-                                            <small class="text-danger"> <span class="right badge badge-danger">Error</span></small>
-                                          @endif
-                                          @if (session('sold') == $value->id)
-                                            <small class="text-success"> <span class="right badge badge-success">Success</span></small>
-                                          @endif
-                                          </td>
-                                          @else
-                                          <td>{{$value->total}}{{$value->unit}}
-                                                @if (session('unsold') == $value->id)
-                                                <small class="text-danger"> <span class="right badge badge-danger">Error</span></small>
-                                              @endif
-                                              @if (session('sold') == $value->id)
-                                                <small class="text-success"> <span class="right badge badge-success">Success</span></small>
-                                              @endif
-                                          </td>
-                                          @endif
+                                        
                                           <td>
-                                            <button type="submit" class="btn btn-info btn-sm">
+                                            <button type="submit" style="background-color: #fc7b03; color:white" class="btn btn-in btn-sm">
                                           
                                              {{ __('message.seller.sell') }}
                                             </button>
                                           </td>
-                                          <td>{{$value->location}}</td>
+                                         
                                         
                                          
 
@@ -312,32 +268,13 @@
                                       
                       
                                       @endforeach
-                                              
-                                                </tbody>
-                                                {{-- <tfoot>
-                                                <tr>
-                                                  <th>{{ __('message.seller.product_name') }}</th>
-                                                  <th>{{ __('message.seller.product_category') }}</th>
-                                                  <th>{{ __('message.seller.unit') }}</th>
-                                                  <th>{{ __('message.seller.quantity') }}</th>
-                                                  <th>{{ __('message.seller.sub_quantity') }}</th>
-                                                  <th>{{ __('message.seller.discount') }}</th>
-                                                  <th>{{ __('Selling Status') }}</th>
-                                                  <th>{{ __('message.seller.customer_fully_name') }}</th>
-                                                  <th>{{ __('message.seller.total') }}</th>
-                                                  <th>{{ __('message.seller.location') }}</th>
-                                                  <th>{{ __('message.seller.action') }}</th>
-                                                </tr>
-                                                </tfoot> --}}
-                                              </table>
-                                            </div>
-                                            <!-- /.card-body -->
-                                          </div>
-                                        <!-- /.card -->
-                                      </div>
-                                      <!-- /.col -->
-                                    </div>
-                                    <!-- /.row -->
+
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                                     
+                                  
                   @else
                             
                             <div class="row">
@@ -366,16 +303,18 @@
                                           <thead>
                                           <tr>
                                             <th>{{ __('message.seller.product_name') }}</th>
-                                                  <th>{{ __('message.seller.product_category') }}</th>
-                                                  <th>{{ __('message.seller.unit') }}</th>
-                                                  <th>{{ __('message.seller.quantity') }}</th>
-                                                  <th>{{ __('message.seller.sub_quantity') }}</th>
-                                                  <th>{{ __('message.seller.discount') }}</th>
-                                                  <th>{{ __('Selling Status') }}</th>
-                                                  <th>{{ __('message.seller.customer_fully_name') }}</th>
-                                                  <th>{{ __('message.seller.total') }}</th>
-                                                  <th>{{ __('message.seller.location') }}</th>
-                                                  <th>{{ __('message.seller.action') }}</th>
+                                            <th>{{ __('message.seller.purchased_price') }}</th>
+                                            <th>{{ __('message.seller.selling_price') }}</th>
+                                            <th>{{ __('message.seller.product_category') }}</th>
+                                            <th>{{ __('message.seller.unit') }}</th>
+                                            <th>{{ __('message.seller.quantity') }}</th>
+                                            <th>{{ __('message.seller.sub_quantity') }}</th>
+                                            <th>{{ __('message.seller.discount') }}</th>
+                                            <th>{{ __('Selling Status') }}</th>
+                                            <th>{{ __('message.seller.customer_fully_name') }}</th>
+                                            <th>{{ __('message.seller.total') }}</th>
+                                            <th>{{ __('message.seller.action') }}</th>
+                                            <th>{{ __('message.seller.location') }}</th>
                                           </tr>
                                           </thead>
                                           <tbody>
@@ -385,6 +324,8 @@
                                           <tfoot>
                                           <tr>
                                             <th>{{ __('message.seller.product_name') }}</th>
+                                            <th>{{ __('message.seller.purchased_price') }}</th>
+                                            <th>{{ __('message.seller.selling_price') }}</th>
                                             <th>{{ __('message.seller.product_category') }}</th>
                                             <th>{{ __('message.seller.unit') }}</th>
                                             <th>{{ __('message.seller.quantity') }}</th>
@@ -393,8 +334,8 @@
                                             <th>{{ __('Selling Status') }}</th>
                                             <th>{{ __('message.seller.customer_fully_name') }}</th>
                                             <th>{{ __('message.seller.total') }}</th>
-                                            <th>{{ __('message.seller.location') }}</th>
                                             <th>{{ __('message.seller.action') }}</th>
+                                            <th>{{ __('message.seller.location') }}</th>
                                           </tr>
                                           </tfoot>
                                         </table>
