@@ -113,7 +113,7 @@
             <div class="row" >
                
                 <div class="col-md-6" id="prd">
-                    <select name="product" class="select2 form-control" id="product" >
+                    <select name="product" class="custom-select2 form-control" id="product" >
                         <option value="">Select Product</option>
                         @foreach (App\Models\Product::where('shop_id',Session::get('shop_id'))->get() as $product)
                             <option value="{{ $product->id }}">{{ $product->name }}</option>

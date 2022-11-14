@@ -173,7 +173,7 @@ App::setLocale(Session::get('locale'));
 
                                             <div class="col-md-5 form-group">
                                                 <select id="year" type="text"
-                                                    class="form-control selected2 @error('year') is-invalid @enderror"
+                                                    class="form-control custom-select2 @error('year') is-invalid @enderror"
                                                     name="year" value="{{ old('year') }}" autocomplete="year">
                                                     <option value="{{ $val }}">{{ $val }}</option>
                                                     <option value="2022">2022</option>
@@ -256,7 +256,7 @@ App::setLocale(Session::get('locale'));
                                             class="col-md- col-form-label text-md-right">{{ __('Month') }}</label>
 
                                         <select id="month" type="text"
-                                            class="form-control select2 @error('month') is-invalid @enderror" name="month"
+                                            class="form-control custom-select2 @error('month') is-invalid @enderror" name="month"
                                             value="{{ old('month') }}" autocomplete="month">
                                             <option value="{{ $month }}">{{ $month }}</option>
                                             <option value="Jan">1 (Jan)</option>
@@ -285,7 +285,7 @@ App::setLocale(Session::get('locale'));
                                             class="col-md- col-form-label text-md-right">{{ __('Year') }}</label>
 
                                         <select id="year" type="text"
-                                            class="form-control select2 @error('year') is-invalid @enderror" name="year"
+                                            class="form-control custom-select2 @error('year') is-invalid @enderror" name="year"
                                             value="{{ old('year') }}" autocomplete="year">
                                             <option value="{{ $year }}">{{ $year }}</option>
                                             <option value="2022">2022</option>

@@ -443,6 +443,12 @@
           </ul> --}}
         </li>
         <li>
+          <a href="seller-calculator" target="_blank" class="dropdown-toggle no-arrow">
+            <span class="micon bi bi-calendar4-week"></span
+            ><span class="mtext">Calculator</span>
+          </a>
+        </li>
+        <li>
           <a href="seller-calendar" class="dropdown-toggle no-arrow">
             <span class="micon bi bi-calendar4-week"></span
             ><span class="mtext">Calendar</span>

@@ -67,7 +67,7 @@ App::setLocale(Session::get('locale'));
                                 <label for="category" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
     
                                 <div class="col-md-6">
-                                    <select id="category" type="text" required class="form-control select2 " name="category" value="{{ old('category') }}" autocomplete="category" autofocus>
+                                    <select id="category" type="text" required class="form-control custom-select2 " name="category" value="{{ old('category') }}" autocomplete="category" autofocus>
                                         <option value=""></option>
                                           
                                            <option value="{{ __('message.wholesale') }}">{{ __('message.wholesale') }}</option>
@@ -82,7 +82,7 @@ App::setLocale(Session::get('locale'));
                                 <label for="unit" class="col-md-4 col-form-label text-md-right">{{ __('Units') }}</label>
     
                                 <div class="col-md-6">
-                                    <select id="unit" type="text"  required class="form-control select2 " name="unit" value="{{ old('unit') }}" autocomplete="unit" autofocus>
+                                    <select id="unit" type="text"  required class="form-control custom-select2 " name="unit" value="{{ old('unit') }}" autocomplete="unit" autofocus>
                                         <option value=""></option>
                                            @foreach (App\Models\UnitTable::all() as $value)
                                            <option value="{{ $value->name }}">{{ $value->name }}</option>

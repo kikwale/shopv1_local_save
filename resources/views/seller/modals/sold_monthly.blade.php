@@ -51,6 +51,7 @@
                           
                                         <select id="year" type="text" class="form-control select2 @error('year') is-invalid @enderror" name="year" value="{{ old('year') }}"  autocomplete="year">
                                           <option value=""></option>
+                                          <option value="2023">2023</option>
                                           <option value="2022">2022</option>
                                           <option value="2021">2021</option>
                                           <option value="2020">2020</option>

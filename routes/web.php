@@ -202,6 +202,10 @@ Route::get('/seller-calendar', function() {
  return view('seller.calendar');
 });
 
+Route::get('/seller-calculator', function() {
+  return view('seller.calculator');
+ });
+
  
 Route::get('/seller-notify-order', 'OrderController@sellerNotifyOrder');
 

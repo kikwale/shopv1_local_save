@@ -24,7 +24,7 @@
                                             <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('message.seller.year') }}</label>
                           
                                             <div class="col-md-6">
-                                                <select id="year" type="text" class="form-control select2 @error('year') is-invalid @enderror" name="year" value="{{ old('year') }}"  autocomplete="year">
+                                                <select id="year" type="text" class="form-control custom-select2 @error('year') is-invalid @enderror" name="year" value="{{ old('year') }}"  autocomplete="year">
                                                   <option value=""></option>
                                                   <option value="2022">2022</option>
                                                   <option value="2021">2021</option>
