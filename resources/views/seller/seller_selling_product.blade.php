@@ -203,7 +203,7 @@
                             @if(count((array)$data) > 0)
                                   
                                       <!-- Export Datatable start -->
-                                <div class="card-box mb-30">
+                                <div class="card-bo mb-30">
                                   <div class="pd-20">
                                     <a href="#" class="btn btn-info">Barcode</a>
                                   </div>
@@ -251,7 +251,6 @@
                                               <input  type="radio" name="sale_status" required value="Credit">&nbsp; Credit
                                            
                                           </td>
-                                        
                                           <td>
                                             <button type="submit" style="background-color: #fc7b03; color:white" class="btn btn-in btn-sm">
                                           

@@ -164,8 +164,8 @@ updated_at
                                           <td>{{$value->address}}</td>
                                           <td>{{$value->email}}</td>
                                           <td>{{$value->phone}}</td>
-                                          <td><a href="seller-view-invoice?invoice={{$value->id}}" target="_blank" class="text-primary"><i class="fas fa-eye"></i></a>
-                                           &nbsp; <a href="seller-delete-invoice?invoice={{$value->id}}" style="background-color: ; color:#fc7b03"><i class="fas fa-trash"></i></a>
+                                          <td><a href="seller-view-invoice?invoice={{$value->id}}" target="_blank" class="text-primary"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                           &nbsp; <a href="seller-delete-invoice?invoice={{$value->id}}" style="background-color: ; color:#fc7b03"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                           </td>
                                          
                                         
