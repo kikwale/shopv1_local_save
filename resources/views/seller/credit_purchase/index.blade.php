@@ -112,7 +112,7 @@
                             @if(count((array)$data) > 0)
                                     <div class="row">
                                       <div class="col-md-12">
-                                        <div class="car">
+                                        <div class="card">
                                           <div class="card-header">
                                      
                 
@@ -133,14 +133,10 @@
                                               <table id="example1" class="table table-bordered table-striped">
                                                 <thead>
                                                 <tr>
-                                                  <th>Customer Name</th>
-                                                  <th>Address</th>
-                                                  <th>Email 1</th>
-                                                  <th>Email 2</th>
-                                                  <th>Phone 1</th>
-                                                  <th>Phone 2</th>
-                                                  <th>Phone 3</th>
-                                                  <th>Description</th>
+                                                  <th>Supplier Name</th>
+                                                  <th>Product Name</th>
+                                                  <th>Quantity</th>
+                                                  <th>Price (TZS)</th>
                                                   <th>Action</th>
                                                 </tr>
                                                 </thead>
@@ -193,18 +189,13 @@ updated_at
                                               
                                                 </tbody>
                                                 <tfoot>
-                                                <tr>
-                                                <th>Customer Name</th>
-                                                <th>Address</th>
-                                                <th>Email 1</th>
-                                                <th>Email 2</th>
-                                                <th>Phone 1</th>
-                                                <th>Phone 2</th>
-                                                <th>Phone 3</th>
-                                                <th>Description</th>
-                                                <th>Action</th>
-                                                 
-                                                </tr>
+                                                  <tr>
+                                                    <th>Supplier Name</th>
+                                                    <th>Product Name</th>
+                                                    <th>Quantity</th>
+                                                    <th>Price (TZS)</th>
+                                                    <th>Action</th>
+                                                  </tr>
                                                 </tfoot>
                                               </table>
                                             </div>
@@ -219,7 +210,7 @@ updated_at
                             
                             <div class="row">
                                 <div class="col-md-12">
-                                  <div class="car">
+                                  <div class="card">
                                     <div class="card-header">
                                      
                 
@@ -240,33 +231,51 @@ updated_at
                                         <table id="example1" class="table table-bordered table-striped">
                                           <thead>
                                           <tr>
-                                            <th>Customer Name</th>
-                                            <th>Address</th>
-                                            <th>Email 1</th>
-                                            <th>Email 2</th>
-                                            <th>Phone 1</th>
-                                            <th>Phone 2</th>
-                                            <th>Phone 3</th>
-                                            <th>Description</th>
-                                            <th>Action</th>
+                                            <tr>
+                                              <th>Supplier Name</th>
+                                              <th>Product Name</th>
+                                              <th>Quantity</th>
+                                              <th>Price (TZS)</th>
+                                              <th>Action</th>
+                                            </tr>
                                          
                                           </tr>
                                           </thead>
                                           <tbody>
+                                            <tr>
+                                              <td>Almas Mzugu</td>
+                                              <td>Book</td>
+                                              <td>3</td>
+                                              <td>16000</td>
+                                              <td>
+                                                <button class="btn btn-dark">Pay</button>
+                                                <button class="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop">Edit</button>
+                                                <button class="btn btn-danger">Delete</button>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td>Almas Mzugu</td>
+                                              <td>Book</td>
+                                              <td>3</td>
+                                              <td>16000</td>
+                                              <td>
+                                                <button class="btn btn-dark">Pay</button>
+                                                <button class="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop">Edit</button>
+                                                <button class="btn btn-danger">Delete</button>
+                                              </td>
+                                            </tr>
                                       
                                         
                                           </tbody>
                                           <tfoot>
                                           <tr>
-                                            <th>Customer Name</th>
-                                            <th>Address</th>
-                                            <th>Email 1</th>
-                                            <th>Email 2</th>
-                                            <th>Phone 1</th>
-                                            <th>Phone 2</th>
-                                            <th>Phone 3</th>
-                                            <th>Description</th>
-                                            <th>Action</th>
+                                            <tr>
+                                              <th>Supplier Name</th>
+                                              <th>Product Name</th>
+                                              <th>Quantity</th>
+                                              <th>Price (TZS)</th>
+                                              <th>Action</th>
+                                            </tr>
                                           </tr>
                                           </tfoot>
                                         </table>
@@ -286,8 +295,8 @@ updated_at
                     <div class="modal-dialog modal-dialog- modal-lg modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Add Customer</h5>
-                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                        <h5 class="modal-title" id="staticBackdropLabel">Add Credit Purchase</h5>
+                        <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                         </div>
@@ -300,27 +309,32 @@ updated_at
   {{-- date	customer_name	address	email	phone	--}}
 
                                 <div class="form-group row">
-                                    <label for="customer_name" class="col-md-4 col-form-label text-md-right">{{ __('Customer Name') }}</label>
+                                    <label for="supplier_name" class="col-md-4 col-form-label text-md-right">{{ __('Select Supplier') }}</label>
 
-                                    <div class="col-md-6">
-                                        <input required id="customer_name" type="text" class="form-control @error('customer_name') is-invalid @enderror" name="customer_name" value="{{ old('customer_name') }}"  autocomplete="customer_name" autofocus>
+                                    <div class="col-md-3">
+                                      <select name="" id="" class="form-control">
+                                        <option value="">Juma Kim</option>
+                                        <option value="">Hanifa Jafari</option>
+                                      </select>
                                           
-                                        @error('customer_name')
+                                        @error('supplier_name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
+                                    <button class="btn btn-primary col-md-3">New Customer</button>
+
                                 </div>
 
                                 <div class="form-group row">
-                                  <label for="address" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('Address') }}</label>
+                                  <label for="product_name" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('Product Name') }}</label>
       
                                   <div class="col-md-6">
-                                      <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" autocomplete="address" autofocus>
+                                      <input id="product_name" type="text" class="form-control @error('product_name') is-invalid @enderror" name="product_name" value="{{ old('product_name') }}" autocomplete="product_name" autofocus>
                                       
                                      
-                                      @error('address')
+                                      @error('product_name')
                                           <span class="invalid-feedback" role="alert">
                                               <strong>{{ $message }}</strong>
                                           </span>
@@ -328,29 +342,15 @@ updated_at
                                   </div>
                               </div>
 
-                                <div class="form-group row">
-                                  <label for="email1" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('Email 1') }}</label>
-      
-                                  <div class="col-md-6">
-                                      <input required id="email1" type="email" class="form-control @error('email1') is-invalid @enderror" name="email1" value="{{ old('email1') }}" autocomplete="email1" autofocus>
-                                      
-                                     
-                                      @error('email1')
-                                          <span class="invalid-feedback" role="alert">
-                                              <strong>{{ $message }}</strong>
-                                          </span>
-                                      @enderror
-                                  </div>
-                              </div>
 
                               <div class="form-group row">
-                                <label for="email2" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('Email 2') }}</label>
+                                <label for="quantity" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('Quantity') }}</label>
     
                                 <div class="col-md-6">
-                                    <input placeholder="Option"  id="email2" type="email" class="form-control @error('email2') is-invalid @enderror" name="email2" value="{{ old('email2') }}" autocomplete="email2" autofocus>
+                                    <input placeholder="Product Quantity"  id="quantity" type="number" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ old('quantity') }}" autocomplete="quantity" autofocus>
                                     
                                    
-                                    @error('email2')
+                                    @error('quantity')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -358,44 +358,15 @@ updated_at
                                 </div>
                             </div>
 
-                                <div class="form-group row">
-                                  <label for="phone1" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('Phone 1') }}</label>
-      
-                                  <div class="col-md-6">
-                                      <input required id="phone1" type="number" class="form-control @error('phone1') is-invalid @enderror" name="phone1" value="{{ old('phone1') }}" autocomplete="phone1" autofocus>
-                                      
-                                     
-                                      @error('phone1')
-                                          <span class="invalid-feedback" role="alert">
-                                              <strong>{{ $message }}</strong>
-                                          </span>
-                                      @enderror
-                                  </div>
-                              </div>
-
-                              <div class="form-group row">
-                                <label for="phone2" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('Phone 2') }}</label>
-    
-                                <div class="col-md-6">
-                                    <input placeholder="Option" id="phone2" type="number" class="form-control @error('phone2') is-invalid @enderror" name="phone2" value="{{ old('phone2') }}" autocomplete="phone2" autofocus>
-                                    
-                                   
-                                    @error('phone2')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
+                            
                             <div class="form-group row">
-                              <label for="phone3" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('Phone 3') }}</label>
+                              <label for="price" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('Price') }}</label>
   
                               <div class="col-md-6">
-                                  <input placeholder="Option" id="phone3" type="number" class="form-control @error('phone3') is-invalid @enderror" name="phone3" value="{{ old('phone3') }}" autocomplete="phone3" autofocus>
+                                  <input required id="price" placeholder="Amount in Tsh" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" autocomplete="price" autofocus>
                                   
                                  
-                                  @error('phone3')
+                                  @error('price')
                                       <span class="invalid-feedback" role="alert">
                                           <strong>{{ $message }}</strong>
                                       </span>
@@ -403,25 +374,10 @@ updated_at
                               </div>
                           </div>
 
-                          <div class="form-group row">
-                            <label for="description" class="col-md-4 col-form-label text-md-right"><sup class="text-danger"></sup>{{ __('Description') }}</label>
-
-                            <div class="col-md-6">
-                                <textarea placeholder="Option" id="description" type="number" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" rows="3" autocomplete="description" autofocus></textarea>
-                                
-                               
-                                @error('description')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
                                 <div class="form-group row mb-0">
                                     <div class="col-md-6 offset-md-4">
                                         <button type="submit" class="btn btn-primary">
-                                            {{ __('save') }}
+                                            {{ __('Add') }}
                                         </button>
                                     </div>
                                 </div>
